@@ -7,6 +7,7 @@ public class CallSet extends Visual {
     public void settings()
     {
         size(1200, 700, P3D);
+        
         println("CWD: " + System.getProperty("user.dir"));
     }
 
@@ -55,6 +56,7 @@ public class CallSet extends Visual {
 
     public void setup()
     {
+        
         colorMode(HSB);
         // noCursor();
         
@@ -75,9 +77,9 @@ public class CallSet extends Visual {
 
     public void draw()
     {
-        Tommy.render(this);
+        //Tommy.render(this);
         //Aniket.render(this);
-        //Basak.render(this);
+        Basak.draw(this);
         //Aaron.render(this);
     }
 
