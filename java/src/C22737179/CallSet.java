@@ -64,7 +64,8 @@ public class CallSet extends Visual {
         frameRate(60);
 
         startMinim();
-        loadAudio("LittleFluffyClouds.mp3");
+        
+        loadAudio("/Users/aaronbaggot/GroupCA/MusicVisuals/data/LittleFluffyClouds.mp3");
 
         //getAudioPlayer().setGain(-25);
     }
@@ -79,8 +80,8 @@ public class CallSet extends Visual {
     {
         //Tommy.render(this);
         //Aniket.render(this);
-        Basak.draw(this);
-        //Aaron.render(this);
+        //Basak.draw(this);
+        Aaron.draw(this);
     }
 
 
