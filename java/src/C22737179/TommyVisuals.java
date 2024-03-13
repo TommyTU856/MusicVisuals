@@ -3,16 +3,30 @@ package C22737179;
 import ie.tudublin.*;
 
 public class TommyVisuals extends Visual{
-    
-    public void render(CallSet e) {
-        
-        this.g = e.getGraphics(); // Initialize the "g" variable
-        background(0);
-        stroke(255);
-        line(50, 50, 300, 300);
 
+    float angle = 0;
+    float radius = 150;
+    float lineLength = 100;
+    float rotationSpeed = 0.02f;
+
+    void drawSphere() {
+        pushMatrix();
+        rotateY(angle);
+        fill(200, 0, 0); // Red color for the sphere
+        sphere(50); // Adjust the size of the sphere as needed
+        popMatrix();
     }
 
 
 
+    public void draw(CallSet e) {
+        
+        this.g = e.getGraphics();
+        lights();
+        background(255);
+        //println(g.width + " " + g.height);
+        translate(g.width / 2, g.height / 2);
+        drawSphere();
+        
+    }
 }
