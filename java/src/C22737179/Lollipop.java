@@ -41,8 +41,8 @@ public class Lollipop extends Visual {
         //println(getSmoothedAmplitude());
         //line(0, 0, x, y);
         e.noStroke();
-        if (e.getSmoothedAmplitude() > 0.1) {
-            e.fill(random(0,360), 80, 100);
+        if (e.getSmoothedAmplitude() > 0.01) {
+            e.fill(random(0,360), 100, 100);
         }
         
         e.translate(x, y);

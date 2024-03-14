@@ -8,6 +8,7 @@ public class TommyVisuals extends Visual{
     Lollipop[] lollipops;
     int numLollipops = 25;
 
+
     public TommyVisuals() {
 
         lollipops = new Lollipop[numLollipops];
@@ -20,7 +21,8 @@ public class TommyVisuals extends Visual{
     public void draw(CallSet e) {
         
         this.g = e.getGraphics();
-        background(80, 100, 80);
+        colorMode(HSB, 360, 100, 100);
+        background(80, 100, 100);
 
         translate(w(0.5f), h(0.5f));
         for(int i = 0; i < numLollipops; i++) {
