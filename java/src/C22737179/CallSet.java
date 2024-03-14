@@ -64,8 +64,18 @@ public class CallSet extends Visual {
         frameRate(60);
 
         startMinim();
-        
-        loadAudio("/Users/aaronbaggot/GroupCA/MusicVisuals/data/LittleFluffyClouds.mp3");
+        /* loadAudio("LittleFluffyClouds.mp3");
+        loadAudio("/Users/aaronbaggot/GroupCA/MusicVisuals/data/LittleFluffyClouds.mp3"); */
+
+        String osName = System.getProperty("os.name");
+
+        if (osName.toLowerCase().contains("win")) {
+            loadAudio("LittleFluffyClouds.mp3");
+        } else if (osName.toLowerCase().contains("mac")) {
+            loadAudio("/Users/aaronbaggot/GroupCA/MusicVisuals/data/LittleFluffyClouds.mp3");
+        } else {
+            System.out.println("Unsupported operating system");
+        }
 
         //getAudioPlayer().setGain(-25);
     }
@@ -78,10 +88,10 @@ public class CallSet extends Visual {
 
     public void draw()
     {
-        //Tommy.render(this);
-        //Aniket.render(this);
+        Tommy.draw(this);
+        //Aniket.draw(this);
         //Basak.draw(this);
-        Aaron.draw(this);
+        //Aaron.draw(this);
     }
 
 
