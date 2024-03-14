@@ -4,16 +4,15 @@ import ie.tudublin.*;
 
 public class TommyVisuals extends Visual{
 
-    //this.g = e.getGraphics();
+    
     Lollipop[] lollipops;
     int numLollipops = 25;
 
-    public void setup() {
+    public TommyVisuals() {
 
         lollipops = new Lollipop[numLollipops];
         for(int i = 0; i < numLollipops; i++) {
-            lollipops[i] = new Lollipop(i);
-            System.out.println(lollipops[i]);
+            lollipops[i] = new Lollipop(i, 25);
         }
         
     }
@@ -21,11 +20,12 @@ public class TommyVisuals extends Visual{
     public void draw(CallSet e) {
         
         this.g = e.getGraphics();
-        background(255);
+        background(80, 100, 80);
+
         translate(w(0.5f), h(0.5f));
         for(int i = 0; i < numLollipops; i++) {
             pushMatrix();
-            lollipops[i].display();
+            lollipops[i].display(e);
             lollipops[i].update(); 
             popMatrix();       
         }
@@ -34,13 +34,13 @@ public class TommyVisuals extends Visual{
     }
 
     public float w(float val) {
-        if (val == 0) return width;
-        return width * val;
+        if (val == 0) return g.width;
+        return g.width * val;
     }
       
     public float h(float val) {
-        if (val == 0) return height;
-        return height * val;
+        if (val == 0) return g.height;
+        return g.height * val;
     }
 
 }
