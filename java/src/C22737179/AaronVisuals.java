@@ -5,94 +5,97 @@ import ie.tudublin.*;
 public class AaronVisuals extends Visual 
 {
     
-    
-    float angle = 0.0f;
+    Grid grid;
+    TimeClock timeClock;
+    Fade fade;
+
+    float angle = 0.5f;
     float offset = 10;
     float scalar = 2;
     float speed = 0.05f;
     
-
+  
     public void draw(CallSet e) 
     {
-        this.g = e.getGraphics(); // Initialize the "g" variable
-
-        colorMode(RGB);
-        background(0);
-
-       
-
-        stroke(255);
-        fill(255, 255, 0);
-        translate(width/2, height/2); // Center the shapes
-        smooth();
+          this.g = e.getGraphics(); // Initialize the "g" variable
+          grid = new Grid(this);
+          timeClock = new TimeClock(this);
+          fade = new Fade(100, 100, 1000, this);
         
-        rotate(angle);
-        float x = offset + cos(angle) * scalar;
-        float y = offset + sin(angle) * scalar;
-        float x1 = offset + cos(angle) * scalar;
-        float y1 = offset + sin(angle) * scalar;
+
+          colorMode(RGB);
+          background(300);
 
 
-        int radius = 40;
-        //float x1 = 110f;
-        float speed = 0.05f;
-        int direction = 1;
-        x1 += speed * direction;
-        if ((x1 > width-radius) || (x1 < radius)) {
-          direction = -direction;  // Flip direction
-        }
-        if (direction == 1) {
-          circle(x1, y1, x); // Face right
-        } else {
-          circle(x1, y1, x);  // Face left
-        } 
+          grid.drawGrid(500,-500,width ,height  );
+          timeClock.drawTimeClock();
+          fade.update();
+          fade.display();
 
-        ellipse(x, y, 100, 100);
+          stroke(255);
+          fill(255, 255, 0);
+          translate(width / 2, height / 2); // Center the shapes
+          smooth();
+          ellipse(mouseX, mouseY, mouseX, mouseX);
+          rotate(angle);
+          float centerX = width / 2;
+          float centerY = height / 2;
+          float x = centerX + (offset + cos(angle) * scalar);
+          float y = centerY + (offset - sin(angle) * scalar);
 
-        float circleX = x + 10;
-        float circleY = y + 10;
+          //float x1 = offset - cos(angle) / scalar;
+          //float y1 = offset + sin(angle) * scalar;
 
-        fill(105,0,105);
-        ellipse(x+10, y+10, 200, 200);
 
-        fill(205,205,0);
-        circle(x1, y1, x1);
+          
 
-        ellipse(circleX, circleY, 200, 200);
+          int radius = 40;
+          float x1 = 110f;
+          float y1 = 110f;
+          float speed = 0.05f;
+          int direction = 1;
+          x1 += speed * direction;
+          y1 += speed * direction;
+          if ((x1 > width-radius) || (x1 < radius)) {
+            direction = -direction;  // Flip direction
+          }
+          if (direction == 1) {
+            circle(x1, y1, x); // Face right
+          } else {
+            circle(x1, y1, x);  // Face left
+          } 
 
-        float circleX1 = x1;
-        float circleY1 = y1;
+          grid.drawGrid(200,150,width, height);
+          triangle(x1, y1, x, y, x, y);
 
-        fill(205,205,0);
-        circle(circleX1, circleY1, 100); 
-        angle += speed;
-        scalar += speed;
+          ellipse(250, -250, 100, 100);
 
-        translate(-width/4, -height/4); // Move origin to a different location
-        fill(0, 255, 0); // Green color
-        rect(0, 0, 50, 50); // Draw a rectangle at the new origin
+          float circleX = x + 10;
+          float circleY = y + 10;
 
-        angle += speed;
-        scalar += speed;
+          fill(105,0,105);
+          ellipse(150, -150, 200, 200);
 
-        // float x1 = 180;           // X-coordinate
-        // float y1 = 400;           // Y-coordinate
-        // float bodyHeight = 153;   // Body height
-        // float neckHeight = 56;
-        // float radius = 45;
-        // float angle1 = 0.0f; 
+          fill(105,205,170);
+          circle(300, -300, x1);
 
-        // ellipseMode(RADIUS);
+          ellipse(circleX, - circleY, 250, 250);
+          
 
-        // // Change position by a small random amount
-        // x1 += random(-4, 4);
-        // y1 += random(-1, 1);
-        // // Change height of neck
-        // neckHeight = 80 + sin(angle1) * 30;
-        // angle1 += 0.05;
-        // // Adjust the height of the head
-        // float ny = y1 - bodyHeight - neckHeight - radius;
-        
-       
-    }
+          float circleX1 = x1;
+          float circleY1 = y1;
+
+          fill(205,205,0);
+          circle(circleX1, -circleY1, 220); 
+          angle += speed;
+          scalar += speed;
+
+          translate(-width/3, -height/3); // Move origin to a different location
+          fill(20, 255, 20); 
+          rect(400, - 400, 150, 150); // Draw a rectangle at the new origin
+
+          angle += speed;
+          scalar += speed;
+            
+      }
 }
