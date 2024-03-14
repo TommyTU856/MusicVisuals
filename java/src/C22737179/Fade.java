@@ -40,3 +40,37 @@ class Fade {
         return pa.millis() - t_initial > t_final;
     }
 }
+
+class Circle extends Fade {
+  
+    int radius;
+    
+    Circle(int x_, int y_, float tf_, int r_, PApplet pa) {
+        super(x_, y_, tf_, pa); // Pass PApplet instance to the super constructor
+        radius = r_;
+    }
+    
+    void drawShape() {
+        pa.ellipse(0, 0, radius*2, radius*2); // Use pa to access ellipse() function
+    }
+  
+}
+
+class Rectangle extends Fade {
+    int w;
+    int h;
+    
+    Rectangle(int x_, int y_, float tf_, int w_, int h_, PApplet pa) {
+        super(x_, y_, tf_, pa); // Pass PApplet instance to the super constructor
+        w = w_;
+        h = h_;
+    }
+    
+    void drawShape() {
+        pa.rectMode(pa.CENTER);
+        pa.rect(0, 0, w, h); // Use pa to access rect() function
+    }
+  
+}
+
+
