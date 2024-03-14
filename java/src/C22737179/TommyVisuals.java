@@ -4,29 +4,43 @@ import ie.tudublin.*;
 
 public class TommyVisuals extends Visual{
 
-    float angle = 0;
-    float radius = 150;
-    float lineLength = 100;
-    float rotationSpeed = 0.02f;
+    //this.g = e.getGraphics();
+    Lollipop[] lollipops;
+    int numLollipops = 25;
 
-    void drawSphere() {
-        pushMatrix();
-        rotateY(angle);
-        fill(200, 0, 0); // Red color for the sphere
-        sphere(50); // Adjust the size of the sphere as needed
-        popMatrix();
+    public void setup() {
+
+        lollipops = new Lollipop[numLollipops];
+        for(int i = 0; i < numLollipops; i++) {
+            lollipops[i] = new Lollipop(i);
+            System.out.println(lollipops[i]);
+        }
+        
     }
-
-
-
+    
     public void draw(CallSet e) {
         
         this.g = e.getGraphics();
-        lights();
         background(255);
-        //println(g.width + " " + g.height);
-        translate(g.width / 2, g.height / 2);
-        drawSphere();
+        translate(w(0.5f), h(0.5f));
+        for(int i = 0; i < numLollipops; i++) {
+            pushMatrix();
+            lollipops[i].display();
+            lollipops[i].update(); 
+            popMatrix();       
+        }
+        
         
     }
+
+    public float w(float val) {
+        if (val == 0) return width;
+        return width * val;
+    }
+      
+    public float h(float val) {
+        if (val == 0) return height;
+        return height * val;
+    }
+
 }
