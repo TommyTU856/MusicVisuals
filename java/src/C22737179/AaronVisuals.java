@@ -9,15 +9,13 @@ public class AaronVisuals extends Visual
     Fade fade;
 
     float angle = 0.5f;
-    float offset = 10;
-    float scalar = 2;
-    float speed = 0.05f;
+    float offset = 0;
+    float scalar = 1;
+    float speed = 0.02f;
 
-    int numEllipses = 10; // Number of ellipses
+    int numEllipses = 70; // Number of ellipses
     float[][] ellipses = new float[numEllipses][4]; // Array to store ellipse coordinates and color
     
-
-
     public void draw(CallSet e) 
     {
         this.g = e.getGraphics(); // Initialize the "g" variable
@@ -26,23 +24,22 @@ public class AaronVisuals extends Visual
         fade = new Fade(100, 100, 1000, this); // Initialize Fade object with specific values
 
         colorMode(RGB);
-        background(300);
-
-        grid.drawGrid(500, -500, width, height);
-        timeClock.drawTimeClock();
+        background(color(130, 230, 330)); // Use color() function for background color
+       
         fade.update();
         fade.display();
+        timeClock.drawTimeClock();
 
         stroke(255);
         fill(255, 255, 0);
         translate(width / 2, height / 2); // Center the shapes
         smooth();
-        ellipse(mouseX, mouseY, mouseX, mouseX);
         rotate(angle);
+
         float centerX = width / 2;
         float centerY = height / 2;
-        float x = centerX + (offset + cos(3100) * scalar);
-        float y = centerY + (offset - sin(250) * scalar);
+        float x = centerX;
+        float y = centerY;
 
         // Drawing the large ellipse
         ellipse(x, y, 50, 50);
@@ -59,25 +56,15 @@ public class AaronVisuals extends Visual
             
             fill(r, g, b);
             ellipse(x2, y2, 10, 10); // Draw ellipse at random location
+            
         }
 
-        int radius = 40;
         float x1 = 110f;
         float y1 = 110f;
-        float speed = 0.05f;
-        int direction = 1;
-        x1 += speed * direction;
-        y1 += speed * direction;
-        if ((x1 > width - radius) || (x1 < radius)) {
-            direction = -direction;  // Flip direction
-        }
-        if (direction == 1) {
-            circle(x1, y1, x); // Face right
-        } else {
-            circle(x1, y1, x);  // Face left
-        } 
 
-        grid.drawGrid(200, 150, width, height);
+        x1 += speed * 2;
+        y1 += speed * 2;
+
         triangle(x1, y1, x, y, x, y);
         ellipse(250, -250, 100, 100);
         float circleX = x + 10;
@@ -87,7 +74,7 @@ public class AaronVisuals extends Visual
         ellipse(150, -150, 200, 200);
         fill(105, 205, 170);
         circle(300, -300, x1);
-        ellipse(circleX, - circleY, 250, 250);
+        ellipse(circleX, -circleY, 250, 250);
 
         float circleX1 = x1;
         float circleY1 = y1;
@@ -103,7 +90,25 @@ public class AaronVisuals extends Visual
        
         angle += speed;
         scalar += speed;    
-        
-        
       }
+
+      void drawShape(){
+        pushMatrix();
+        float x2 = random(width); // Generate random x-coordinate
+        float y2 = random(height); // Generate random y-coordinate
+        ellipse(x2, y2, 10, 10); // Draw ellipse at random location
+        smooth();
+        ellipse(mouseX, mouseY, mouseX, mouseX);
+        sphere(10);
+        popMatrix();
+      }
+
+      void drawGrid(int x, int y, int width, int height) {
+        for (int gridY = 0; gridY < height; gridY += height / 10){
+            for (int gridX = 0; gridX < width; gridX += width / 10){
+                line(gridX, gridY, gridX + width / 10, gridY + height / 10);
+                line(gridX + width / 10, gridY, gridX, gridY + height / 10);
+            }
+        }
+    }
 }

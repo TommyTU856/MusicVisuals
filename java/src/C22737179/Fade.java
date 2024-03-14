@@ -33,7 +33,8 @@ class Fade {
     }
 
     void drawShape() {
-        // Implement this method according to your needs
+        pa.rectMode(pa.CENTER);
+        pa.rect(60, 0, 100, 100);
     }
 
     boolean died() {
@@ -51,7 +52,7 @@ class Circle extends Fade {
     }
     
     void drawShape() {
-        pa.ellipse(0, 0, radius*2, radius*2); // Use pa to access ellipse() function
+        pa.ellipse(30, 0, radius*2, radius*2); // Use pa to access ellipse() function
     }
   
 }
@@ -68,7 +69,7 @@ class Rectangle extends Fade {
     
     void drawShape() {
         pa.rectMode(pa.CENTER);
-        pa.rect(0, 0, w, h); // Use pa to access rect() function
+        pa.rect(150, 0, w, h); // Use pa to access rect() function
     }
   
 }
