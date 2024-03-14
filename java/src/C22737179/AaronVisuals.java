@@ -41,8 +41,8 @@ public class AaronVisuals extends Visual
         rotate(angle);
         float centerX = width / 2;
         float centerY = height / 2;
-        float x = centerX + (offset + cos(angle) * scalar);
-        float y = centerY + (offset - sin(angle) * scalar);
+        float x = centerX + (offset + cos(3100) * scalar);
+        float y = centerY + (offset - sin(250) * scalar);
 
         // Drawing the large ellipse
         ellipse(x, y, 50, 50);
