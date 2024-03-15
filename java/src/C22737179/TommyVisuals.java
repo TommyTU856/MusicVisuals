@@ -1,20 +1,20 @@
 package C22737179;
 
-import ddf.minim.AudioPlayer;
 import ie.tudublin.*;
 
 public class TommyVisuals extends Visual{
 
-    
+
     Lollipop[] lollipops;
     int numLollipops = 25;
-
+    float radius = 25;
+    int p;
 
     public TommyVisuals() {
 
         lollipops = new Lollipop[numLollipops];
         for(int i = 0; i < numLollipops; i++) {
-            lollipops[i] = new Lollipop(i, 25);
+            lollipops[i] = new Lollipop(i, radius);
         }
         
     }
@@ -22,6 +22,7 @@ public class TommyVisuals extends Visual{
     public void draw(CallSet e) {
 
         this.g = e.getGraphics();
+        
         
         if(e.paused == false) {
             
@@ -35,6 +36,8 @@ public class TommyVisuals extends Visual{
                 lollipops[i].update(); 
                 popMatrix();       
             }
+            p = p + 1;
+            println(p);
         }
         
     }
