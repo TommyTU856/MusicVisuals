@@ -36,8 +36,8 @@ public class AaronVisuals extends Visual
         smooth();
         rotate(angle);
 
-        float centerX = width / 2;
-        float centerY = height / 2;
+        float centerX = g.width / 2;
+        float centerY = g.height / 2;
         float x = centerX;
         float y = centerY;
 
