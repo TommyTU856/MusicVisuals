@@ -4,7 +4,7 @@ import ie.tudublin.*;
 
 public class AaronVisuals extends Visual 
 {
-    Grid grid;
+    DrawGrid grid;
     TimeClock timeClock;
     Fade fade;
 
@@ -19,7 +19,7 @@ public class AaronVisuals extends Visual
     public void draw(CallSet e) 
     {
         this.g = e.getGraphics(); // Initialize the "g" variable
-        grid = new Grid(this);
+        grid = new DrawGrid(this);
         timeClock = new TimeClock(this);
         fade = new Fade(100, 100, 1000, this); // Initialize Fade object with specific values
 
@@ -32,7 +32,7 @@ public class AaronVisuals extends Visual
 
         stroke(255);
         fill(255, 255, 0);
-        translate(width / 2, height / 2); // Center the shapes
+        translate(g.width / 2, g.height / 2); // Center the shapes
         smooth();
         rotate(angle);
 
@@ -47,8 +47,8 @@ public class AaronVisuals extends Visual
         // Generating and drawing small random ellipses
         for (int i = 0; i < numEllipses; i++) 
         {
-            float x2 = random(width); // Generate random x-coordinate
-            float y2 = random(height); // Generate random y-coordinate
+            float x2 = random(g.width); // Generate random x-coordinate
+            float y2 = random(g.height); // Generate random y-coordinate
             
             int r = (int)(random(255)); // Generate random red component
             int g = (int)(random(255)); // Generate random green component
@@ -84,7 +84,7 @@ public class AaronVisuals extends Visual
         angle += speed;
         scalar += speed;
        
-        translate(-width / 3, -height / 3); // Move origin to a different location
+        translate(-g.width / 3, -g.height / 3); // Move origin to a different location
         fill(20, 255, 20); 
         rect(400, -400, 150, 150); // Draw a rectangle at the new origin
        
@@ -94,8 +94,8 @@ public class AaronVisuals extends Visual
 
       void drawShape(){
         pushMatrix();
-        float x2 = random(width); // Generate random x-coordinate
-        float y2 = random(height); // Generate random y-coordinate
+        float x2 = random(g.width); // Generate random x-coordinate
+        float y2 = random(g.height); // Generate random y-coordinate
         ellipse(x2, y2, 10, 10); // Draw ellipse at random location
         smooth();
         ellipse(mouseX, mouseY, mouseX, mouseX);
