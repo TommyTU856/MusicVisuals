@@ -2,11 +2,11 @@ package C22737179;
 
 import processing.core.PApplet;
 
-class Grid {
+class DrawGrid {
 
     PApplet pa; // Declare a PApplet variable
 
-    public Grid(PApplet pa) {
+    public DrawGrid(PApplet pa) {
         this.pa = pa;
     }
         
