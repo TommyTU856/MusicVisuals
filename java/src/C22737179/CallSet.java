@@ -88,9 +88,9 @@ public class CallSet extends Visual {
 
     public void draw()
     {
-        Tommy.draw(this);
+        //Tommy.draw(this);
         //Aniket.draw(this);
-        //Basak.draw(this);
+        Basak.draw(this);
         //Aaron.draw(this);
     }
 
