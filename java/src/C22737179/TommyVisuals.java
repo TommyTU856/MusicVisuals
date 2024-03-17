@@ -1,6 +1,7 @@
 package C22737179;
 
 import ie.tudublin.*;
+import processing.core.PGraphics;
 
 public class TommyVisuals extends Visual{
 
@@ -12,14 +13,16 @@ public class TommyVisuals extends Visual{
 
     Intro intro;
 
-    public TommyVisuals() {
+    public TommyVisuals(PGraphics pg) {
+
+        this.g = pg;
 
         lollipops = new Lollipop[numLollipops];
         for(int i = 0; i < numLollipops; i++) {
             lollipops[i] = new Lollipop(i, radius);
         }
 
-        intro = new Intro();
+        intro = new Intro(this.g);
         
     }
     
