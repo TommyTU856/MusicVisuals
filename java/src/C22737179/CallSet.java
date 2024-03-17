@@ -83,7 +83,7 @@ public class CallSet extends Visual {
     AaronVisuals Aaron = new AaronVisuals();
     AniketVisuals Aniket = new AniketVisuals();
     BasakVisuals Basak = new BasakVisuals();
-    TommyVisuals Tommy = new TommyVisuals();
+    TommyVisuals Tommy = new TommyVisuals(this.g);
     
 
     public void draw()
