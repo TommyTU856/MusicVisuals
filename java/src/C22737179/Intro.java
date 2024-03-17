@@ -11,16 +11,18 @@ public class Intro extends Visual{
         }
 
         public void rooster() {
+
             pushMatrix();
-            rooster = loadShape("java/data/GS0D6S94RVZNHC4AZDRXMJDLF.obj");
+            rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
+            scale(200);
             shape(rooster);
             popMatrix();
 
         }
     
         public void draw(CallSet e) {
-
-            e.background(0);
+            this.g = e.getGraphics();
+            e.background(255);
             rooster();
 
         }
