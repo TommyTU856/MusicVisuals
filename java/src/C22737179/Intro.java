@@ -1,7 +1,6 @@
 package C22737179;
 
 import ie.tudublin.*;
-import processing.core.PGraphics;
 import processing.core.PShape;
 
 public class Intro extends Visual{
@@ -12,8 +11,8 @@ public class Intro extends Visual{
         float roosterX;
         PShape rooster;
     
-        public Intro(PGraphics pg) {
-            this.g = pg;
+        public Intro() {
+            
             this.rooster = g.loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
             this.speed = g.width / 5.0f;
             this.roosterX = -100;

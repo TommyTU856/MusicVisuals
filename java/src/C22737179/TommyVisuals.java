@@ -5,48 +5,47 @@ import processing.core.PGraphics;
 
 public class TommyVisuals extends Visual{
 
+    float angle;
+    float angleSpeed;
+    float radius;
+    CallSet e;
 
-    Lollipop[] lollipops;
-    int numLollipops = 50;
-    float radius = 25;
-    int p;
+    public TommyVisuals() {   
+    }
 
-    Intro intro;
+    public void showSphere(CallSet e, int n) {
 
-    public TommyVisuals(PGraphics pg) {
+        angle = 0;
+        angleSpeed = 0.01f + n * 0.001f;
+        radius = 30 + n * 6;
 
-        this.g = pg;
+        e.lights();
+        e.calculateAverageAmplitude();
+        e.stroke(map(e.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
 
-        lollipops = new Lollipop[numLollipops];
-        for(int i = 0; i < numLollipops; i++) {
-            lollipops[i] = new Lollipop(i, radius);
+        e.noStroke();
+        if (e.getSmoothedAmplitude() > 0.05) {
+            e.fill(e.random(0,360), 250, 250);
         }
+        
+        float sphereSize = 25 + (200 * e.getSmoothedAmplitude()); 
+        e.sphere(sphereSize);
 
-        intro = new Intro(this.g);
+    }
+
+    public void rooster(CallSet e) {
         
     }
     
     public void draw(CallSet e) {
-
-        this.g = e.getGraphics();
         
-        intro.draw(e);
-        
-        if(e.paused == false) {
-            
-            colorMode(HSB, 360, 100, 100);
-            background(80, 100, 100);
+        e.background(0);
 
-            translate(g.width / 2, g.height / 2);
-            for(int i = 0; i < numLollipops; i++) {
-                pushMatrix();
-                lollipops[i].display(e);
-                lollipops[i].update(); 
-                popMatrix();       
-            }
-            p = p + 1;
-            println(p);
-        }
+
+
+        e.translate(e.width / 2, e.height / 2);
+        showSphere(e, 5);
+        //print(e.width, e.height);
         
     }
 
