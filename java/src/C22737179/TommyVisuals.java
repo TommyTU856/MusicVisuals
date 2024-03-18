@@ -16,15 +16,36 @@ public class TommyVisuals extends Visual{
     float scale = 0;
     float roosterGrow = 0;
     float startTime = millis();
+    float roosterSize;
+    float cloudX = -100;
+    float cloudY;
+    float cloudSpeed = 50;
+    boolean movingRight = true;
 
     public TommyVisuals() {   
     }
 
-    public void showSphere(CallSet e, int n) {
+    public void cloud(CallSet e, float cloudX) {
 
-        angle = 0;
-        angleSpeed = 0.01f + n * 0.001f;
-        radius = 30 + n * 6;
+        e.pushMatrix();
+        e.lights();
+        e.noStroke();
+        e.fill(0, 0, 255);
+        e.translate(cloudX, e.height / 2);
+        e.sphere(50);
+        e.translate(60, 0);
+        e.sphere(50);
+        e.translate(60, 0);
+        e.sphere(40);
+        e.translate(-80, -40);
+        e.sphere(40);
+        e.popMatrix();
+
+    }
+
+    
+
+    public void showSphere(CallSet e) {
 
         e.lights();
         e.calculateAverageAmplitude();
@@ -52,12 +73,12 @@ public class TommyVisuals extends Visual{
         e.background(0);
 
 
-        if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 7000 && e.paused == false) {
+        if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 2000 && e.paused == false) {
 
             //float elapsedTime = millis() - startTime;
-            scale = 50.0f;
-            roosterGrow += scale;
-            //roosterGrow = Visual.lerp(roosterGrow, 200, 0.5f);
+            /* scale = 50.0f;
+            roosterGrow += scale; */
+            roosterGrow = Visual.lerp(roosterGrow, 200, 0.5f);
 
             e.translate(e.width / 4, e.height / 1.5f);
             e.rotateX(0);
@@ -75,19 +96,65 @@ public class TommyVisuals extends Visual{
 
         }
 
-        if(e.getAudioPlayer().position() > 7000 && e.getAudioPlayer().position() < 15000 && e.paused == false) {
+        if(e.getAudioPlayer().position() > 2000 && e.getAudioPlayer().position() < 15000 && e.paused == false) {
+
+            e.pushMatrix();
             e.translate(e.width / 4, e.height / 1.5f);
             e.rotateX(0);
             e.rotateY(1.4f);
             e.rotateZ(3);
             e.scale(200);
             rooster(e);
+            e.popMatrix();
+            
         }
 
+        if(e.getAudioPlayer().position() > 15000 && e.getAudioPlayer().position() < 27000 && e.paused == false) {
+
+            e.pushMatrix();
+            e.translate(e.width / 4, e.height / 1.5f);
+            e.rotateX(0);
+            e.rotateY(1.4f);
+            e.rotateZ(3);
+            e.scale(200);
+            rooster(e);
+            e.popMatrix();
+
+            if(movingRight) {
+                cloudX += cloudSpeed;
+                if(cloudX > e.width + 100) {
+                    movingRight = false;
+                    cloudX = -200;
+                }
+            }
+            
+            cloud(e, cloudX);
+            
+        }
+
+        if(e.getAudioPlayer().position() > 27000 && e.getAudioPlayer().position() < 270000 && e.paused == false) {
+
+            e.pushMatrix();
+            e.translate(e.width / 4, e.height / 1.5f);
+            e.rotateX(0);
+            e.rotateY(1.4f);
+            e.rotateZ(3);
+            e.scale(200);
+            rooster(e);
+            e.popMatrix();
+
+            
+            
+        }
+
+        
+
+        
         /* e.translate(e.width / 2, e.height / 2);
         showSphere(e, 5); */
         //print(e.width, e.height);
         print(e.getAudioPlayer().position() + "\n");
+        print(e.getSmoothedAmplitude() + "\n");
     }
 
 }
