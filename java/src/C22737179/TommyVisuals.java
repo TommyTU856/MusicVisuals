@@ -2,6 +2,7 @@ package C22737179;
 
 import ie.tudublin.*;
 import processing.core.PGraphics;
+import processing.core.PShape;
 
 public class TommyVisuals extends Visual{
 
@@ -9,6 +10,9 @@ public class TommyVisuals extends Visual{
     float angleSpeed;
     float radius;
     CallSet e;
+    PShape rooster;
+    float theta = 0;
+    float speed = 0;
 
     public TommyVisuals() {   
     }
@@ -34,17 +38,25 @@ public class TommyVisuals extends Visual{
     }
 
     public void rooster(CallSet e) {
-        
+        e.pushMatrix();
+        rooster = e.loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
+        e.scale(200);
+        e.shape(rooster);
+        e.popMatrix();
     }
     
     public void draw(CallSet e) {
         
         e.background(0);
 
-
+        
 
         e.translate(e.width / 2, e.height / 2);
-        showSphere(e, 5);
+        e.rotateY();
+        rooster(e);
+
+        /* e.translate(e.width / 2, e.height / 2);
+        showSphere(e, 5); */
         //print(e.width, e.height);
         
     }
