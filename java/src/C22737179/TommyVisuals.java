@@ -22,16 +22,17 @@ public class TommyVisuals extends Visual{
     float cloudSpeed = 50;
     boolean movingRight = true;
 
+
     public TommyVisuals() {   
     }
 
-    public void cloud(CallSet e, float cloudX) {
-
+    public void cloud(CallSet e, float cloudX, float cloudY) {
+        
         e.pushMatrix();
         e.lights();
         e.noStroke();
         e.fill(0, 0, 255);
-        e.translate(cloudX, e.height / 2);
+        e.translate(cloudX, cloudY);
         e.sphere(50);
         e.translate(60, 0);
         e.sphere(50);
@@ -43,7 +44,18 @@ public class TommyVisuals extends Visual{
 
     }
 
-    
+    public void randomClouds(CallSet e) {
+
+        float x;
+        float y;
+        
+        for(int i = 0; i < e.random(10, 50); i++) {
+            x = e.random(e.width);
+            y = e.random(e.height);
+            cloud(e, x, y);
+        }
+
+    }
 
     public void showSphere(CallSet e) {
 
@@ -70,8 +82,9 @@ public class TommyVisuals extends Visual{
     
     public void draw(CallSet e) {
         
+        e.colorMode(HSB, 360, 100, 100);
         e.background(0);
-
+        e.calculateAverageAmplitude();
 
         if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 2000 && e.paused == false) {
 
@@ -109,7 +122,7 @@ public class TommyVisuals extends Visual{
             
         }
 
-        if(e.getAudioPlayer().position() > 15000 && e.getAudioPlayer().position() < 27000 && e.paused == false) {
+        if(e.getAudioPlayer().position() > 15000 && e.getAudioPlayer().position() < 28000 && e.paused == false) {
 
             e.pushMatrix();
             e.translate(e.width / 4, e.height / 1.5f);
@@ -128,11 +141,11 @@ public class TommyVisuals extends Visual{
                 }
             }
             
-            cloud(e, cloudX);
+            cloud(e, cloudX, e.height / 4);
             
         }
 
-        if(e.getAudioPlayer().position() > 27000 && e.getAudioPlayer().position() < 270000 && e.paused == false) {
+        if(e.getAudioPlayer().position() > 28000 && e.getAudioPlayer().position() < 41500 && e.paused == false) {
 
             e.pushMatrix();
             e.translate(e.width / 4, e.height / 1.5f);
@@ -143,11 +156,60 @@ public class TommyVisuals extends Visual{
             rooster(e);
             e.popMatrix();
 
-            
+            randomClouds(e);
             
         }
 
-        
+        if(e.getAudioPlayer().position() > 41500 && e.getAudioPlayer().position() < 42500 && e.paused == false) {
+
+            e.background(279, 87, 94);
+
+            e.pushMatrix();
+            e.translate(e.width / 4, e.height / 1.5f);
+            e.rotateX(0);
+            e.rotateY(1.4f);
+            e.rotateZ(3);
+            e.scale(200);
+            rooster(e);
+            e.popMatrix();
+
+            randomClouds(e);
+            
+        }
+
+        if(e.getAudioPlayer().position() > 42500 && e.getAudioPlayer().position() < 43500 && e.paused == false) {
+
+            e.background(0, 87, 94);
+
+            e.pushMatrix();
+            e.translate(e.width / 4, e.height / 1.5f);
+            e.rotateX(0);
+            e.rotateY(1.4f);
+            e.rotateZ(3);
+            e.scale(200);
+            rooster(e);
+            e.popMatrix();
+
+            randomClouds(e);
+            
+        }
+
+        if(e.getAudioPlayer().position() > 43500 && e.getAudioPlayer().position() < 460000 && e.paused == false) {
+
+            e.background(60, 87, 94);
+
+            e.pushMatrix();
+            e.translate(e.width / 4, e.height / 1.5f);
+            e.rotateX(0);
+            e.rotateY(1.4f);
+            e.rotateZ(3);
+            e.scale(200);
+            rooster(e);
+            e.popMatrix();
+
+            randomClouds(e);
+            
+        }
 
         
         /* e.translate(e.width / 2, e.height / 2);
