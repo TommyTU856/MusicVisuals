@@ -9,15 +9,6 @@ public class Lollipop extends Visual {
     float angleSpeed;
     float radius;
 
-    public float getRadius() {
-        return radius;
-    }
-
-    public void setRadius(float radius) {
-        this.radius = radius;
-    }
-
-
     public Lollipop(int n, float radius){
         this.angle = 0;
         this.angleSpeed = 0.01f + n * 0.001f;
