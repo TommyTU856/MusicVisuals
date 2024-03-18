@@ -13,6 +13,9 @@ public class TommyVisuals extends Visual{
     PShape rooster;
     float theta = 0;
     float speed = 0;
+    float scale = 0;
+    float roosterGrow = 0;
+    float startTime = millis();
 
     public TommyVisuals() {   
     }
@@ -40,7 +43,6 @@ public class TommyVisuals extends Visual{
     public void rooster(CallSet e) {
         e.pushMatrix();
         rooster = e.loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
-        e.scale(200);
         e.shape(rooster);
         e.popMatrix();
     }
@@ -49,16 +51,43 @@ public class TommyVisuals extends Visual{
         
         e.background(0);
 
-        
 
-        e.translate(e.width / 2, e.height / 2);
-        e.rotateY();
-        rooster(e);
+        if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 7000 && e.paused == false) {
+
+            //float elapsedTime = millis() - startTime;
+            scale = 50.0f;
+            roosterGrow += scale;
+            //roosterGrow = Visual.lerp(roosterGrow, 200, 0.5f);
+
+            e.translate(e.width / 4, e.height / 1.5f);
+            e.rotateX(0);
+            e.rotateY(1.4f);
+            e.rotateZ(3);
+
+            if(roosterGrow < 200) {
+                e.scale(roosterGrow);
+            } else {
+                e.scale(200);
+            }
+            
+            //e.rotateY(theta);
+            rooster(e);
+
+        }
+
+        if(e.getAudioPlayer().position() > 7000 && e.getAudioPlayer().position() < 15000 && e.paused == false) {
+            e.translate(e.width / 4, e.height / 1.5f);
+            e.rotateX(0);
+            e.rotateY(1.4f);
+            e.rotateZ(3);
+            e.scale(200);
+            rooster(e);
+        }
 
         /* e.translate(e.width / 2, e.height / 2);
         showSphere(e, 5); */
         //print(e.width, e.height);
-        
+        print(e.getAudioPlayer().position() + "\n");
     }
 
 }
