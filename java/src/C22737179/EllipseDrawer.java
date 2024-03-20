@@ -13,7 +13,7 @@ public class EllipseDrawer extends Visual {
 
     
   
-    float hueOffset = 0;
+    //float hueOffset = 0;
     
     public void draw(CallSet e) {
         e.calculateAverageAmplitude();
@@ -45,6 +45,7 @@ public class EllipseDrawer extends Visual {
             e.pushMatrix();
             e.rotate(-radians(properties.angle));
             e.ellipse(smoothedEllipseSize* sin(radians(properties.angle)), properties.y, 5, 5);
+            //e.triangle(properties.x*sin(radians(properties.angle)), 0, 0, 5, 0, 0);
             e.popMatrix();
 
             e.pushMatrix();
@@ -61,7 +62,16 @@ public class EllipseDrawer extends Visual {
 
             e.pushMatrix();
             e.rotate(radians(properties.angle));
-            e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), properties.y + 150, 30, 30);
+            //e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), properties.y + 150, 30, 30);
+           
+            e.stroke(32, 255, 255);
+            
+            float triangleBaseX = properties.x + 48; // Üçgenin tabanının x koordinatı
+            float triangleBaseY = properties.y; // Üçgenin tabanının y koordinatı
+            float triangleHeight = 20; // Üçgenin yüksekliği (tabandan tepeye kadar olan mesafe)
+            float triangleTopX = properties.x + 10; // Üçgenin tepe noktasının x koordinatı
+            float triangleTopY = properties.y - triangleHeight; // Üçgenin tepe noktasının y koordinatı
+            e.triangle(triangleBaseX, triangleBaseY, triangleTopX, triangleTopY, properties.x +20, properties.y-30);
             e.popMatrix();
 
             e.popMatrix();
