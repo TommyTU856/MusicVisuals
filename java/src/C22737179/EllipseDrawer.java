@@ -61,20 +61,24 @@ public class EllipseDrawer extends Visual {
             e.popMatrix();
 
             e.pushMatrix();
+            
             e.rotate(radians(properties.angle));
             //e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), properties.y + 150, 30, 30);
            
             e.stroke(32, 255, 255);
+            //e.fill(255, 255, 0);
             
             float triangleBaseX = properties.x + 48; // Üçgenin tabanının x koordinatı
             float triangleBaseY = properties.y; // Üçgenin tabanının y koordinatı
             float triangleHeight = 20; // Üçgenin yüksekliği (tabandan tepeye kadar olan mesafe)
             float triangleTopX = properties.x + 10; // Üçgenin tepe noktasının x koordinatı
             float triangleTopY = properties.y - triangleHeight; // Üçgenin tepe noktasının y koordinatı
-            e.triangle(triangleBaseX, triangleBaseY, triangleTopX, triangleTopY, properties.x +20, properties.y-30);
+            e.triangle(triangleBaseX+40, triangleBaseY+20, triangleTopX, triangleTopY, properties.x +30, properties.y-40);
             e.popMatrix();
 
             e.popMatrix();
+
+            println(getAmplitude());
         }
 
         properties.angle += 1;
