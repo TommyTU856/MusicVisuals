@@ -1,0 +1,73 @@
+package C22737179;
+import ie.tudublin.*;
+
+public class EllipseDrawer extends Visual {
+    private EllipseProperties properties;
+    private float smoothedEllipseSize = 0;
+    //private float previousVolume = 10;
+    private float strokeWeightMapped;
+
+    public EllipseDrawer(EllipseProperties properties) {
+        this.properties = properties;
+    }
+
+    
+  
+    float hueOffset = 0;
+    
+    public void draw(CallSet e) {
+        e.calculateAverageAmplitude();
+        
+
+        for (float a = 0; a < 360; a += 5) {
+            e.pushMatrix();
+            e.rotate(radians(a));
+            e.lights();
+
+            e.noFill();
+            float EllipseSize = 75 + (e.getAmplitude() * 1000);
+            smoothedEllipseSize = lerp(smoothedEllipseSize, EllipseSize, 0.2f);
+         
+
+            // Map amplitude to color values-run one colour in each time
+            //float hue =(float) (hueOffset + millis() / 20.0) % 255;
+            //e.stroke(hue, 255, 255);
+      
+            
+            e.stroke(map(a, 0, 360, 0, 255), 255, 255);
+            strokeWeightMapped = map(e.getAmplitude(), 0, 1, 1, 5);
+            e.strokeWeight(strokeWeightMapped * 2);
+
+            e.line(properties.x * sin(radians(properties.angle)), 0, 0, properties.y);
+            e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), 0, 5, 5);
+            e.line(properties.x * sin(radians(properties.angle)), 0, 0, 5, 0, 0);
+
+            e.pushMatrix();
+            e.rotate(-radians(properties.angle));
+            e.ellipse(smoothedEllipseSize* sin(radians(properties.angle)), properties.y, 5, 5);
+            e.popMatrix();
+
+            e.pushMatrix();
+            e.rotate(radians(properties.angle));
+            e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), properties.y + 50, 10, 10);
+            e.popMatrix();
+            
+
+            //e.stroke(hue, 255, 255);
+            e.pushMatrix();
+            e.rotate(-radians(properties.angle));
+            e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), properties.y + 100, 20, 20);
+            e.popMatrix();
+
+            e.pushMatrix();
+            e.rotate(radians(properties.angle));
+            e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), properties.y + 150, 30, 30);
+            e.popMatrix();
+
+            e.popMatrix();
+        }
+
+        properties.angle += 1;
+        
+    }
+}
