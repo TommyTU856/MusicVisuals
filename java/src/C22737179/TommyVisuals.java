@@ -23,9 +23,11 @@ public class TommyVisuals extends Visual{
     boolean movingRight = true;
     float roosterY = 1.4f;
     float roosterX = 1200 / 4;
+    ResponsiveShape responsiveShape;
 
 
-    public TommyVisuals() {   
+    public TommyVisuals() {  
+         
     }
 
     public void cloud(CallSet e, float cloudX, float cloudY) {
@@ -77,10 +79,12 @@ public class TommyVisuals extends Visual{
 
     public void rooster(CallSet e) {
         e.pushMatrix();
-        rooster = e.loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
-        e.shape(rooster);
+        //rooster = e.loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
+        e.shape(e.rooster);
         e.popMatrix();
     }
+
+    
     
     public void draw(CallSet e) {
         
@@ -88,12 +92,18 @@ public class TommyVisuals extends Visual{
         e.background(0);
         e.calculateAverageAmplitude();
 
-        if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 2000 && e.paused == false) {
+        responsiveShape = new ResponsiveShape();
+        responsiveShape.render(e);
+
+
+
+
+        /* if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 2000 && e.paused == false) {
 
             //float elapsedTime = millis() - startTime;
-            /* scale = 50.0f;
-            roosterGrow += scale; */
-            roosterGrow = Visual.lerp(roosterGrow, 200, 0.5f);
+            //* scale = 50.0f;
+            //roosterGrow += scale;
+            roosterGrow = Visual.lerp(roosterGrow, 200, 0.1f);
 
             e.translate(e.width / 4, e.height / 1.5f);
             e.rotateX(0);
@@ -150,7 +160,7 @@ public class TommyVisuals extends Visual{
         if(e.getAudioPlayer().position() > 28000 && e.getAudioPlayer().position() < 42000 && e.paused == false) {
 
             
-            roosterY += 0.2f;
+            roosterY += 0.1f;
 
             e.pushMatrix();
             e.translate(e.width / 4, e.height / 1.5f);
@@ -166,7 +176,7 @@ public class TommyVisuals extends Visual{
         }
 
         if(e.getAudioPlayer().position() > 42000 && e.getAudioPlayer().position() < 43000 && e.paused == false) {
-            roosterX += 50.0f;
+            roosterX += 25.0f;
             e.background(279, 87, 94);
 
             e.pushMatrix();
@@ -183,7 +193,7 @@ public class TommyVisuals extends Visual{
         }
 
         if(e.getAudioPlayer().position() > 43000 && e.getAudioPlayer().position() < 44000 && e.paused == false) {
-            roosterX += 50.0f;
+            roosterX += 25.0f;
             e.background(0, 87, 94);
 
             e.pushMatrix();
@@ -200,7 +210,7 @@ public class TommyVisuals extends Visual{
         }
 
         if(e.getAudioPlayer().position() > 44000 && e.getAudioPlayer().position() < 460000 && e.paused == false) {
-            roosterX += 50.0f;
+            roosterX += 25.0f;
             e.background(60, 87, 94);
 
             e.pushMatrix();
@@ -222,12 +232,13 @@ public class TommyVisuals extends Visual{
 
             
             
-        }
-        /* e.translate(e.width / 2, e.height / 2);
-        showSphere(e, 5); */
+            
+        } */
+        //* e.translate(e.width / 2, e.height / 2);
+        //showSphere(e, 5);
         //print(e.width, e.height);
-        print(e.getAudioPlayer().position() + "\n");
-        print(e.getSmoothedAmplitude() + "\n");
+        //print(e.getAudioPlayer().position() + "\n");
+        //print(e.getSmoothedAmplitude() + "\n");
     }
 
 }

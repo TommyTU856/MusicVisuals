@@ -1,6 +1,7 @@
 package C22737179;
 
 import ie.tudublin.Visual;
+import processing.core.PShape;
 
 public class CallSet extends Visual {
     
@@ -13,6 +14,7 @@ public class CallSet extends Visual {
 
     int mode = 1;
     boolean paused = true;
+    PShape rooster;
 
     public void keyPressed()
     {
@@ -76,7 +78,8 @@ public class CallSet extends Visual {
         } else {
             System.out.println("Unsupported operating system");
         }
-
+        
+        rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
         //getAudioPlayer().setGain(-25);
     }
 
