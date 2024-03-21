@@ -93,6 +93,19 @@ public class TommyVisuals extends Visual{
         e.calculateAverageAmplitude();
 
         responsiveShape = new ResponsiveShape();
+        
+        e.background(0);
+
+        e.translate(e.width / 2, e.height / 2);
+        e.stroke(180, 50, 80);
+        responsiveShape.render(e);
+
+        e.translate(4, 3);
+        e.stroke(10, 50, 80);
+        responsiveShape.render(e);
+
+        e.translate(-4, -3);
+        e.stroke(0, 0, 50);
         responsiveShape.render(e);
 
 
