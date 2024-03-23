@@ -16,6 +16,7 @@ public class CallSet extends Visual {
     int mode = 1;
     boolean paused = true;
     PShape rooster;
+    PShape cloud;
 
     public void keyPressed()
     {
@@ -79,9 +80,10 @@ public class CallSet extends Visual {
         } else {
             System.out.println("Unsupported operating system");
         }
-        
+
         rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
         //getAudioPlayer().setGain(-25);
+        cloud = loadShape("cloud1.svg");
     }
 
     AaronVisuals Aaron = new AaronVisuals();
@@ -92,8 +94,8 @@ public class CallSet extends Visual {
 
     public void draw()
     {
-        Tommy.draw(this);
-        //Aniket.draw(this);
+        //Tommy.draw(this);
+        Aniket.draw(this);
         //Basak.draw(this);
         //Aaron.draw(this);
     }
