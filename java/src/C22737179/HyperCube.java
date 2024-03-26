@@ -12,7 +12,7 @@ public class HyperCube {
 
         e.pushMatrix();
         e.noFill();
-        //e.stroke(255);
+        e.strokeWeight(2);
         e.box(50 + (100 * e.getAmplitude()));
         e.box(150 + (100 * e.getAmplitude()));
         e.box(300 + (100 * e.getAmplitude()));
