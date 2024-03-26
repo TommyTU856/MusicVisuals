@@ -29,11 +29,15 @@ public class TommyVisuals extends Visual{
     float rotZ;
     float rotY;
     float rotX;
-    float cubeAngle;
+    float cubeAngleY;
+    float cubeAngleZ;
+    float totalRotationZ = 0;
 
+    float textSpacing = 0;
+    Lyrics lyrics;
 
     public TommyVisuals() {  
-        
+        lyrics = new Lyrics();
     } 
 
     public void cloud(CallSet e, float cloudX, float cloudY) {
@@ -99,12 +103,12 @@ public class TommyVisuals extends Visual{
         e.calculateAverageAmplitude();
         
 
-        hyperCube = new HyperCube();
+        /* hyperCube = new HyperCube();
 
         e.pushMatrix();
         e.translate(e.width / 2 - 4, e.height / 2);
-        cubeAngle = e.frameCount * 0.01f; 
-        e.rotateY(cubeAngle);
+        cubeAngleY = e.frameCount * 0.01f; 
+        //e.rotateY(cubeAngleY);
         //e.stroke(0, 100, 50);
         e.stroke(240, 100, 50);
         hyperCube.render(e);
@@ -112,12 +116,25 @@ public class TommyVisuals extends Visual{
 
         e.pushMatrix();
         e.translate(e.width / 2 + 4, e.height / 2 - 8);
-        cubeAngle = e.frameCount * 0.01f; 
-        e.rotateY(cubeAngle);
+        cubeAngleY = e.frameCount * 0.01f;
+        
+        
+
+        if(totalRotationZ < 30) {
+            cubeAngleZ = e.frameCount * 0.01f; 
+            e.rotateZ(cubeAngleZ);
+            totalRotationZ += cubeAngleZ;
+        } else {
+            
+            e.rotateY(cubeAngleY);
+            e.rotateZ(PI / 4);
+        }
+        
+        
         e.stroke(0, 100, 50);
         //e.stroke(240, 100, 50);
         hyperCube.render(e);
-        e.popMatrix();
+        e.popMatrix(); */
 
         /* responsiveShape = new ResponsiveShape();
         
@@ -129,7 +146,7 @@ public class TommyVisuals extends Visual{
         //e.stroke(0, 100, 20);
         e.stroke(240, 100, 50);
         responsiveShape.render(e);
-        e.popMatrix();
+        e.popMatrix(); 
 
         
         e.pushMatrix();
@@ -186,7 +203,20 @@ public class TommyVisuals extends Visual{
         //e.circle(e.width / 2, e.height / 2, 200);
         e.popMatrix(); */
 
-        /* if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 2000 && e.paused == false) {
+
+
+
+
+//                          ------------START OF TIMED CODE--------------
+
+        //String songWords = "Over the past few years To the traditional sounds of the English summer The drone of lawnmowers The smack of leather on willow";
+        //lyrics = new Lyrics();
+        //lyrics.render(e);
+        if(e.getAudioPlayer().position() > 5000 && e.getAudioPlayer().position() < 20000 && e.paused == false) {
+            lyrics.render(e);
+        }
+
+        if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 2000 && e.paused == false) {
 
             //float elapsedTime = millis() - startTime;
             //* scale = 50.0f;
@@ -321,11 +351,11 @@ public class TommyVisuals extends Visual{
             
             
             
-        } */
+        }
         //* e.translate(e.width / 2, e.height / 2);
         //showSphere(e, 5);
         //print(e.width, e.height);
-        //print(e.getAudioPlayer().position() + "\n");
+        print(e.getAudioPlayer().position() + "\n");
         //print(e.getSmoothedAmplitude() + "\n");
     }
 
