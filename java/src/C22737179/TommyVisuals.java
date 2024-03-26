@@ -40,8 +40,8 @@ public class TommyVisuals extends Visual{
     String songWords2;
 
     DrawSphere drawSphere;
-    float sphereX1, sphereX2, sphereX3;
-    float sphereY1, sphereY2, sphereY3;
+    float sphereX1, sphereX2, sphereX3, sphereX4, sphereX5, sphereX6;
+    float sphereY1, sphereY2, sphereY3, sphereY4, sphereY5, sphereY6;
 
     public TommyVisuals() {  
         lyrics1 = new Lyrics();
@@ -427,7 +427,9 @@ public class TommyVisuals extends Visual{
             hyperCube.render(e);
             e.popMatrix();
 
-            e.pushMatrix();
+            
+
+            /* e.pushMatrix();
             e.noFill();
             e.stroke(0, 100, 50);
             e.translate(e.width / 2, e.height / 2);
@@ -439,33 +441,69 @@ public class TommyVisuals extends Visual{
             e.stroke(240, 100, 50);
             e.translate(e.width / 2 + 4, e.height / 2);
             e.sphere(200);
-            e.popMatrix();
+            e.popMatrix(); */
 
-            sphereX1 = e.width / 6;
-            sphereX2 = e.width / 6;
-            sphereX3 = e.width / 6;
+            /* sphereX1 = e.width / 8;
+            sphereX2 = e.width / 8;
+            sphereX3 = e.width / 8;
+            sphereX4 = e.width / 8 * 7;
+            sphereX5 = e.width / 8 * 7;
+            sphereX6 = e.width / 8 * 7;
+
             
-            sphereY1 = e.height / 4;
+            sphereY1 = e.height / 6;
             sphereY2 = e.height / 2;
-            sphereY3 = e.height / 4 * 3;
+            sphereY3 = e.height / 6 * 5;
+            sphereY4 = e.height / 6;
+            sphereY5 = e.height / 2;
+            sphereY6 = e.height / 6 * 5;
             
             
             float maxSphereMove = 100;
-            float sphereMoveZ = Visual.map(Math.abs(100 * e.getAmplitude()), 0, 1, 0, maxSphereMove);
-            float sphereMoveY = Visual.map(Math.abs(100 * e.getAmplitude()), 0, 1, 0, maxSphereMove);
+            float sphereMoveZ = Visual.map(-Math.abs(100 * e.getAmplitude()), 0, 1, 0, maxSphereMove);
+            float sphereMoveY = Visual.map(-Math.abs(100 * e.getAmplitude()), 0, 1, 0, maxSphereMove);
     
-            /* sphereX1 = Visual.lerp(sphereX1, e.width / 4 + sphereMoveZ, 0.1f);
+            sphereX1 = Visual.lerp(sphereX1, e.width / 4 + sphereMoveZ, 0.1f);
             sphereX2 = Visual.lerp(sphereX2, e.width / 2 + sphereMoveZ, 0.1f);
-            sphereX3 = Visual.lerp(sphereX3, 3 * e.width / 4 + sphereMoveZ, 0.1f); */
+            sphereX3 = Visual.lerp(sphereX3, 3 * e.width / 4 + sphereMoveZ, 0.1f);
             
             sphereY1 = Visual.lerp(sphereY1, e.height / 2 + sphereMoveY, 0.1f);
             sphereY2 = Visual.lerp(sphereY2, e.height / 2 + sphereMoveY, 0.1f);
             sphereY3 = Visual.lerp(sphereY3, e.height / 2 + sphereMoveY, 0.1f);
+            sphereY4 = Visual.lerp(sphereY4, e.height / 2 + sphereMoveY, 0.1f);
+            sphereY5 = Visual.lerp(sphereY5, e.height / 2 + sphereMoveY, 0.1f);
+            sphereY6 = Visual.lerp(sphereY6, e.height / 2 + sphereMoveY, 0.1f);
 
+            e.pushMatrix();
+            e.stroke(0, 100, 50);
             drawSphere.draw(e, sphereX1, sphereY1);
             drawSphere.draw(e, sphereX2, sphereY2);
             drawSphere.draw(e, sphereX3, sphereY3);
-            print(sphereMoveZ);
+            e.popMatrix();
+
+            e.pushMatrix();
+            e.stroke(240, 100, 50);
+            drawSphere.draw(e, sphereX4, sphereY4);
+            drawSphere.draw(e, sphereX5, sphereY5);
+            drawSphere.draw(e, sphereX6, sphereY6);
+            e.popMatrix();
+
+            e.pushMatrix();
+            e.stroke(240, 100, 50);
+            drawSphere.draw(e, sphereX1 + 4, sphereY1);
+            drawSphere.draw(e, sphereX2 + 4, sphereY2);
+            drawSphere.draw(e, sphereX3 + 4, sphereY3);
+            e.popMatrix();
+
+            e.pushMatrix();
+            e.stroke(0, 100, 50);
+            drawSphere.draw(e, sphereX4 + 4, sphereY4);
+            drawSphere.draw(e, sphereX5 + 4, sphereY5);
+            drawSphere.draw(e, sphereX6 + 4, sphereY6);
+            e.popMatrix(); */
+
+
+            //print(sphereMoveZ);
         }
 
         if(e.getAudioPlayer().position() > 15000 && e.getAudioPlayer().position() < 100000 && e.paused == false) {
@@ -503,7 +541,26 @@ public class TommyVisuals extends Visual{
         }
 
          
+        /* float angleIncrement = TWO_PI / 10;
+            float radius = 100;
 
+            for (float phi = 0; phi <= TWO_PI; phi += angleIncrement) {
+                float circleZ = e.height / 2 + Visual.cos(phi) * radius;
+        
+                e.beginShape();
+                for (float theta = 0; theta <= TWO_PI; theta += angleIncrement) {
+                    float circleX = e.width / 2 + Visual.cos(theta) * radius * Visual.sin(phi);
+                    float circleY = e.height / 2 + Visual.sin(theta) * radius * Visual.sin(phi);
+                    e.stroke(0,0,100);
+                    e.vertex(circleX, circleY, circleZ);
+
+                    circleX = e.width / 2 + Visual.cos(theta) * radius * Visual.sin(phi + angleIncrement);
+                    circleY = e.height / 2 + Visual.sin(theta) * radius * Visual.sin(phi + angleIncrement);
+                    e.vertex(circleX, circleY, circleZ);
+
+                }
+                e.endShape(CLOSE);
+            } */
 
         //* e.translate(e.width / 2, e.height / 2);
         //showSphere(e, 5);

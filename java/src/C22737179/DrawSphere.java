@@ -12,7 +12,8 @@ public class DrawSphere {
 
         e.pushMatrix();
         e.translate(x, y, 0);
-        e.sphere(50);
+        e.strokeWeight(1);
+        e.sphere(100);
         e.popMatrix();
         
     }
