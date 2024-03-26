@@ -39,10 +39,15 @@ public class TommyVisuals extends Visual{
     String songWords1;
     String songWords2;
 
+    DrawSphere drawSphere;
+    float sphereX1, sphereX2, sphereX3;
+    float sphereY1, sphereY2, sphereY3;
+
     public TommyVisuals() {  
         lyrics1 = new Lyrics();
         lyrics2 = new Lyrics();
         hyperCube = new HyperCube();
+        drawSphere = new DrawSphere();
     } 
 
     public void cloud(CallSet e, float cloudX, float cloudY) {
@@ -80,7 +85,7 @@ public class TommyVisuals extends Visual{
 
         e.lights();
         e.calculateAverageAmplitude();
-        e.stroke(map(e.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+        //e.stroke(map(e.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
 
         e.noStroke();
         /* if (e.getSmoothedAmplitude() > 0.05) {
@@ -219,7 +224,7 @@ public class TommyVisuals extends Visual{
         //lyrics.render(e);
         
 
-        if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 2000 && e.paused == false) {
+        /* if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 2000 && e.paused == false) {
 
             //float elapsedTime = millis() - startTime;
             //* scale = 50.0f;
@@ -274,12 +279,6 @@ public class TommyVisuals extends Visual{
             lyrics1.render(e, songWords1);
             e.popMatrix();
 
-            /* e.pushMatrix();
-            e.fill(0, 0, 100);
-            lyrics.render(e);
-            e.popMatrix(); */
-
-
         }
 
         if(e.getAudioPlayer().position() > 15000 && e.getAudioPlayer().position() < 28000 && e.paused == false) {
@@ -305,8 +304,8 @@ public class TommyVisuals extends Visual{
 
             songWords2 = "What were the skies like when you were young?";
             
-                    /* \nThey went on forever and they, when I, we lived in Arizona\n" +
-                    "And the skies always had little fluffy clouds in them and, er\nThey were long and clear and"; */
+                    // \nThey went on forever and they, when I, we lived in Arizona\n" +
+                    //"And the skies always had little fluffy clouds in them and, er\nThey were long and clear and"; 
 
             e.pushMatrix();
             e.translate(-548, -200);
@@ -393,43 +392,119 @@ public class TommyVisuals extends Visual{
 
             randomClouds(e);
             
-        }
+        } */
 
-        if(e.getAudioPlayer().position() > 46000 && e.getAudioPlayer().position() < 460000 && e.paused == false) {
+        if(e.getAudioPlayer().position() > 0 && e.getAudioPlayer().position() < 15000 && e.paused == false) {
+
+            e.calculateAverageAmplitude();
 
             e.pushMatrix();
             e.translate(e.width / 2 - 4, e.height / 2);
-            cubeAngleY = e.frameCount * 0.01f; 
+            cubeAngleY = e.frameCount * 0.01f;
+            cubeAngleZ = e.frameCount * 0.01f; 
+            e.rotateZ(cubeAngleZ);
+            totalRotationZ += cubeAngleZ;
+            e.rotateY(cubeAngleY);
+            e.rotateZ(PI / 4);
             //e.rotateY(cubeAngleY);
             //e.stroke(0, 100, 50);
             e.stroke(240, 100, 50);
             hyperCube.render(e);
             e.popMatrix();
 
+
+
             e.pushMatrix();
             e.translate(e.width / 2 + 4, e.height / 2 - 8);
             cubeAngleY = e.frameCount * 0.01f;
-            
-            if(totalRotationZ < 30) {
-                cubeAngleZ = e.frameCount * 0.01f; 
-                e.rotateZ(cubeAngleZ);
-                totalRotationZ += cubeAngleZ;
-            } else {
-                
-                e.rotateY(cubeAngleY);
-                e.rotateZ(PI / 4);
-            }
-            
-            
+            cubeAngleZ = e.frameCount * 0.01f; 
+            e.rotateZ(cubeAngleZ);
+            totalRotationZ += cubeAngleZ;
+            e.rotateY(cubeAngleY);
+            e.rotateZ(PI / 4);
             e.stroke(0, 100, 50);
             //e.stroke(240, 100, 50);
             hyperCube.render(e);
             e.popMatrix();
 
+            e.pushMatrix();
+            e.noFill();
+            e.stroke(0, 100, 50);
+            e.translate(e.width / 2, e.height / 2);
+            e.sphere(200);
+            e.popMatrix(); 
+
+            e.pushMatrix();
+            e.noFill();
+            e.stroke(240, 100, 50);
+            e.translate(e.width / 2 + 4, e.height / 2);
+            e.sphere(200);
+            e.popMatrix();
+
+            sphereX1 = e.width / 6;
+            sphereX2 = e.width / 6;
+            sphereX3 = e.width / 6;
+            
+            sphereY1 = e.height / 4;
+            sphereY2 = e.height / 2;
+            sphereY3 = e.height / 4 * 3;
             
             
+            float maxSphereMove = 100;
+            float sphereMoveZ = Visual.map(Math.abs(100 * e.getAmplitude()), 0, 1, 0, maxSphereMove);
+            float sphereMoveY = Visual.map(Math.abs(100 * e.getAmplitude()), 0, 1, 0, maxSphereMove);
+    
+            /* sphereX1 = Visual.lerp(sphereX1, e.width / 4 + sphereMoveZ, 0.1f);
+            sphereX2 = Visual.lerp(sphereX2, e.width / 2 + sphereMoveZ, 0.1f);
+            sphereX3 = Visual.lerp(sphereX3, 3 * e.width / 4 + sphereMoveZ, 0.1f); */
             
+            sphereY1 = Visual.lerp(sphereY1, e.height / 2 + sphereMoveY, 0.1f);
+            sphereY2 = Visual.lerp(sphereY2, e.height / 2 + sphereMoveY, 0.1f);
+            sphereY3 = Visual.lerp(sphereY3, e.height / 2 + sphereMoveY, 0.1f);
+
+            drawSphere.draw(e, sphereX1, sphereY1);
+            drawSphere.draw(e, sphereX2, sphereY2);
+            drawSphere.draw(e, sphereX3, sphereY3);
+            print(sphereMoveZ);
         }
+
+        if(e.getAudioPlayer().position() > 15000 && e.getAudioPlayer().position() < 100000 && e.paused == false) {
+
+
+            e.pushMatrix();
+            e.translate(e.width / 2 - 4, e.height / 2);
+            cubeAngleY = e.frameCount * 0.01f;
+            cubeAngleZ = e.frameCount * 0.01f; 
+            e.rotateZ(cubeAngleZ);
+            totalRotationZ += cubeAngleZ;
+            e.rotateY(cubeAngleY);
+            e.rotateZ(PI / 4);
+            //e.rotateY(cubeAngleY);
+            e.stroke(0, 100, 50);
+            //e.stroke(240, 100, 50);
+            hyperCube.render(e);
+            e.popMatrix();
+
+
+
+            e.pushMatrix();
+            e.translate(e.width / 2 + 4, e.height / 2 - 8);
+            cubeAngleY = e.frameCount * 0.01f;
+            cubeAngleZ = e.frameCount * 0.01f; 
+            e.rotateZ(cubeAngleZ);
+            totalRotationZ += cubeAngleZ;
+            e.rotateY(cubeAngleY);
+            e.rotateZ(PI / 4);
+            //e.stroke(0, 100, 50);
+            e.stroke(240, 100, 50);
+            hyperCube.render(e);
+            e.popMatrix();
+ 
+        }
+
+         
+
+
         //* e.translate(e.width / 2, e.height / 2);
         //showSphere(e, 5);
         //print(e.width, e.height);
