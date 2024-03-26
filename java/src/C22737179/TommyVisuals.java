@@ -34,10 +34,15 @@ public class TommyVisuals extends Visual{
     float totalRotationZ = 0;
 
     float textSpacing = 0;
-    Lyrics lyrics;
+    Lyrics lyrics1;
+    Lyrics lyrics2;
+    String songWords1;
+    String songWords2;
 
     public TommyVisuals() {  
-        lyrics = new Lyrics();
+        lyrics1 = new Lyrics();
+        lyrics2 = new Lyrics();
+        hyperCube = new HyperCube();
     } 
 
     public void cloud(CallSet e, float cloudX, float cloudY) {
@@ -212,9 +217,7 @@ public class TommyVisuals extends Visual{
         //String songWords = "Over the past few years To the traditional sounds of the English summer The drone of lawnmowers The smack of leather on willow";
         //lyrics = new Lyrics();
         //lyrics.render(e);
-        if(e.getAudioPlayer().position() > 5000 && e.getAudioPlayer().position() < 20000 && e.paused == false) {
-            lyrics.render(e);
-        }
+        
 
         if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 2000 && e.paused == false) {
 
@@ -251,6 +254,33 @@ public class TommyVisuals extends Visual{
             e.popMatrix();
             
         }
+        
+        if(e.getAudioPlayer().position() > 4800 && e.getAudioPlayer().position() < 28000 && e.paused == false) {
+
+            songWords1 = "Over the past few years\nTo the traditional sounds of the English summer\nThe drone of lawnmowers\n" + 
+                            "The smack of leather on willow\nHas been added a new noise\n";
+
+            e.pushMatrix();
+            e.translate(-2, 0);
+            e.fill(240, 100, 50);
+            e.textSize(40);
+            lyrics1.render(e, songWords1);
+            e.popMatrix();
+
+            e.pushMatrix();
+            e.translate(2, 0);
+            e.fill(0, 100, 50);
+            e.textSize(40);
+            lyrics1.render(e, songWords1);
+            e.popMatrix();
+
+            /* e.pushMatrix();
+            e.fill(0, 0, 100);
+            lyrics.render(e);
+            e.popMatrix(); */
+
+
+        }
 
         if(e.getAudioPlayer().position() > 15000 && e.getAudioPlayer().position() < 28000 && e.paused == false) {
 
@@ -272,6 +302,27 @@ public class TommyVisuals extends Visual{
             }
             
             cloud(e, cloudX, e.height / 4);
+
+            songWords2 = "What were the skies like when you were young?";
+            
+                    /* \nThey went on forever and they, when I, we lived in Arizona\n" +
+                    "And the skies always had little fluffy clouds in them and, er\nThey were long and clear and"; */
+
+            e.pushMatrix();
+            e.translate(-548, -200);
+            e.fill(0, 100, 50);
+            e.textSize(60);
+            lyrics2.render(e, songWords2);
+            e.popMatrix();
+
+            e.pushMatrix();
+            e.translate(-552, -200);
+            e.fill(240, 100, 50);
+            e.textSize(60);
+            lyrics2.render(e, songWords2);
+            e.popMatrix();
+
+
             
         }
 
@@ -327,7 +378,7 @@ public class TommyVisuals extends Visual{
             
         }
 
-        if(e.getAudioPlayer().position() > 44000 && e.getAudioPlayer().position() < 460000 && e.paused == false) {
+        if(e.getAudioPlayer().position() > 44000 && e.getAudioPlayer().position() < 46000 && e.paused == false) {
             roosterX += 25.0f;
             e.background(60, 87, 94);
 
@@ -344,9 +395,36 @@ public class TommyVisuals extends Visual{
             
         }
 
-        if(e.getAudioPlayer().position() > 54000 && e.getAudioPlayer().position() < 460000 && e.paused == false) {
+        if(e.getAudioPlayer().position() > 46000 && e.getAudioPlayer().position() < 460000 && e.paused == false) {
 
-            e.background(0);
+            e.pushMatrix();
+            e.translate(e.width / 2 - 4, e.height / 2);
+            cubeAngleY = e.frameCount * 0.01f; 
+            //e.rotateY(cubeAngleY);
+            //e.stroke(0, 100, 50);
+            e.stroke(240, 100, 50);
+            hyperCube.render(e);
+            e.popMatrix();
+
+            e.pushMatrix();
+            e.translate(e.width / 2 + 4, e.height / 2 - 8);
+            cubeAngleY = e.frameCount * 0.01f;
+            
+            if(totalRotationZ < 30) {
+                cubeAngleZ = e.frameCount * 0.01f; 
+                e.rotateZ(cubeAngleZ);
+                totalRotationZ += cubeAngleZ;
+            } else {
+                
+                e.rotateY(cubeAngleY);
+                e.rotateZ(PI / 4);
+            }
+            
+            
+            e.stroke(0, 100, 50);
+            //e.stroke(240, 100, 50);
+            hyperCube.render(e);
+            e.popMatrix();
 
             
             
