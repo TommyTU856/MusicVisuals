@@ -4,6 +4,7 @@ import ie.tudublin.*;
 import processing.core.PGraphics;
 import processing.core.PShape;
 
+
 public class TommyVisuals extends Visual{
 
     float angle;
@@ -24,11 +25,16 @@ public class TommyVisuals extends Visual{
     float roosterY = 1.4f;
     float roosterX = 1200 / 4;
     ResponsiveShape responsiveShape;
+    HyperCube hyperCube;
+    float rotZ;
+    float rotY;
+    float rotX;
+    float cubeAngle;
 
 
     public TommyVisuals() {  
-         
-    }
+        
+    } 
 
     public void cloud(CallSet e, float cloudX, float cloudY) {
         
@@ -68,11 +74,11 @@ public class TommyVisuals extends Visual{
         e.stroke(map(e.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
 
         e.noStroke();
-        if (e.getSmoothedAmplitude() > 0.05) {
+        /* if (e.getSmoothedAmplitude() > 0.05) {
             e.fill(e.random(0,360), 250, 250);
-        }
+        } */
         
-        float sphereSize = 25 + (200 * e.getSmoothedAmplitude()); 
+        float sphereSize = 10 + (200 * e.getSmoothedAmplitude()); 
         e.sphere(sphereSize);
 
     }
@@ -89,27 +95,96 @@ public class TommyVisuals extends Visual{
     public void draw(CallSet e) {
         
         e.colorMode(HSB, 360, 100, 100);
-        e.background(0);
+        e.background(0, 0, 0);
         e.calculateAverageAmplitude();
-
-        responsiveShape = new ResponsiveShape();
         
-        e.background(0);
 
+        hyperCube = new HyperCube();
+
+        e.pushMatrix();
+        e.translate(e.width / 2 - 4, e.height / 2);
+        cubeAngle = e.frameCount * 0.01f; 
+        e.rotateY(cubeAngle);
+        //e.stroke(0, 100, 50);
+        e.stroke(240, 100, 50);
+        hyperCube.render(e);
+        e.popMatrix();
+
+        e.pushMatrix();
+        e.translate(e.width / 2 + 4, e.height / 2 - 8);
+        cubeAngle = e.frameCount * 0.01f; 
+        e.rotateY(cubeAngle);
+        e.stroke(0, 100, 50);
+        //e.stroke(240, 100, 50);
+        hyperCube.render(e);
+        e.popMatrix();
+
+        /* responsiveShape = new ResponsiveShape();
+        
+        e.pushMatrix();
         e.translate(e.width / 2, e.height / 2);
-        e.stroke(180, 50, 80);
+        e.rotateX(rotX);
+        //e.stroke(0, 100, 20);
+        //e.stroke(240, 100, 20);
+        //e.stroke(0, 100, 20);
+        e.stroke(240, 100, 50);
         responsiveShape.render(e);
+        e.popMatrix();
 
-        e.translate(4, 3);
-        e.stroke(10, 50, 80);
+        
+        e.pushMatrix();
+        e.translate(e.width / 2 + 8, e.height / 2);
+        e.rotateX(rotX);
+        e.stroke(0, 100, 50);
+        //e.stroke(240, 100, 20);
+        //e.stroke(0, 100, 20);
+        //e.stroke(240, 100, 50);
         responsiveShape.render(e);
+        e.popMatrix();
+ */
 
-        e.translate(-4, -3);
+        /* e.pushMatrix();
+        e.translate(e.width / 2 - 4, e.height / 2);
+        e.rotateY(rotY);
         e.stroke(0, 0, 50);
         responsiveShape.render(e);
+        e.popMatrix(); */
 
 
+        /* e.pushMatrix();
+        e.translate(e.width / 2 + 4, e.height / 2 - 3);
+        e.rotateY(-rotY);
+        e.stroke(10, 50, 80);
+        responsiveShape.render(e);
+        e.popMatrix(); */
 
+        /* rotZ += .001;
+        rotY += .001;
+        rotX += .001; */
+       
+        /* e.pushMatrix();
+        //e.translate(e.width / 2 - 10, e.height / 2);
+        //e.stroke(0, 100, 50);
+        e.fill(0, 100, 20);
+        e.circle(e.width / 2 - 60, e.height / 2, 200);
+        e.popMatrix(); */
+
+        /* e.pushMatrix();
+        e.translate(e.width / 2 + 10, e.height / 2);
+        e.noStroke();
+        e.fill(0, 100, 50);
+        //e.circle(e.width / 2 - 30, e.height / 2, 200);
+        showSphere(e);
+        e.popMatrix();
+
+    
+        e.pushMatrix();
+        e.translate(e.width / 2 - 10, e.height / 2);
+        e.noStroke();
+        e.fill(240, 100, 50);
+        showSphere(e);
+        //e.circle(e.width / 2, e.height / 2, 200);
+        e.popMatrix(); */
 
         /* if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 2000 && e.paused == false) {
 

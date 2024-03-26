@@ -4,7 +4,7 @@ import ie.tudublin.Visual;
 
 public class ResponsiveShape {
 
-    int vert = 50;
+    int vert = 11;
 
     public ResponsiveShape() {
         
@@ -18,10 +18,10 @@ public class ResponsiveShape {
         for(int i = 0; i < vert; i++) {
             for(int j = 0; j < vert; j++) {
                 for(int k = 0; k < vert; k++) {
-                    float x = Visual.map(i, 0, vert, -250, 250);
-                    float y = Visual.map(j, 0, vert, -400, 400);
-                    float z = Visual.map(k, 0, vert, -100, 100);
-                    //e.stroke(180, 50, 80);
+                    float x = Visual.map(i, 0, vert, -300, 300);
+                    float y = Visual.map(j, 0, vert, -300, 300);
+                    float z = Visual.map(k, 0, vert, -300, 300);
+                    e.strokeWeight(8);
                     e.point(x, y, z);
                     //e.triangle(x, y, x / 2, y / 2, x / 4, y / 4); 
                 }
