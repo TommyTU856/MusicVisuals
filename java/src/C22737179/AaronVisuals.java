@@ -21,12 +21,24 @@ public class AaronVisuals extends Visual {
     float y;
     float z;
     Drop[] d;
-    
+    int cloudNumber = 10;
+    Cloud[] clouds;
+    float cloudSpeed = 1.5f;
     
     
     public AaronVisuals() {
         // Initialize any required variables or objects here
        // rain = new Rain(this); // Initialize Rain object
+       clouds = new Cloud[cloudNumber];
+
+       for (int i = 0; i < cloudNumber; i++) {
+
+        float x = random(width); // Random x-coordinate
+        float y = random(height); // Random y-coordinate
+        float radius = random(20, 50); // Random radius for cloud size
+        clouds[i] = new Cloud(x, y, radius);
+
+        }
     }
 
     void drawCloud(int x, int y){
@@ -115,6 +127,20 @@ public class AaronVisuals extends Visual {
         rain(e);
         cloudObject(1500,500,10,10);
         drawCloud(mouseX,mouseY);
+
+
+        
+
+
+
+
+        for (int i = 0; i < cloudNumber; i++) {
+            // Update the x-coordinate of each cloud
+            clouds[i].move(cloudSpeed);
+            // Draw the cloud at its updated position
+            clouds[i].display();
+        }
+
     
         // Generating and drawing small random ellipses
         for (int i = 0; i < numEllipses; i++) {
@@ -123,13 +149,35 @@ public class AaronVisuals extends Visual {
     
             ellipse(x2, y2, 10, 10); // Draw ellipse at random location
             
-        }
-
-        
-
-       
+        }  
     }
 
+    class Cloud {
+        float x, y; // Position of the cloud
+        float radius; // Size of the cloud
 
-    
+        Cloud(float x, float y, float radius) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+        }
+
+        // Method to update the x-coordinate of the cloud
+        void move(float speed) {
+            x += speed; // Move the cloud horizontally
+            // If the cloud goes off-screen, reset its position to the left side
+            if (x > width + radius) {
+                x = -radius;
+                y = random(height);
+            }
+        }
+
+        // Method to display the cloud
+        void display() {
+            fill(255);
+            ellipse(x, y, radius * 2, radius * 2);
+        }
+
+
+    }   
 }
