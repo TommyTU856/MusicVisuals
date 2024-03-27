@@ -224,7 +224,7 @@ public class TommyVisuals extends Visual{
         //lyrics.render(e);
         
 
-        /* if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 2000 && e.paused == false) {
+        if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 2000 && e.paused == false) {
 
             //float elapsedTime = millis() - startTime;
             //* scale = 50.0f;
@@ -392,9 +392,9 @@ public class TommyVisuals extends Visual{
 
             randomClouds(e);
             
-        } */
+        }
 
-        if(e.getAudioPlayer().position() > 0 && e.getAudioPlayer().position() < 15000 && e.paused == false) {
+        if(e.getAudioPlayer().position() > 46000 && e.getAudioPlayer().position() < 74400 && e.paused == false) {
 
             e.calculateAverageAmplitude();
 
@@ -427,21 +427,112 @@ public class TommyVisuals extends Visual{
             hyperCube.render(e);
             e.popMatrix();
 
-            
+        }
 
-            /* e.pushMatrix();
+        if(e.getAudioPlayer().position() > 74400 && e.getAudioPlayer().position() < 84000 && e.paused == false) {
+
+
+            e.pushMatrix();
+            e.translate(e.width / 2 - 4, e.height / 2);
+            cubeAngleY = e.frameCount * 0.01f;
+            cubeAngleZ = e.frameCount * 0.01f; 
+            e.rotateZ(cubeAngleZ);
+            totalRotationZ += cubeAngleZ;
+            e.rotateY(cubeAngleY);
+            e.rotateZ(PI / 4);
+            //e.rotateY(cubeAngleY);
+            e.stroke(0, 100, 50);
+            //e.stroke(240, 100, 50);
+            hyperCube.render(e);
+            e.popMatrix();
+
+
+
+            e.pushMatrix();
+            e.translate(e.width / 2 + 4, e.height / 2 - 8);
+            cubeAngleY = e.frameCount * 0.01f;
+            cubeAngleZ = e.frameCount * 0.01f; 
+            e.rotateZ(cubeAngleZ);
+            totalRotationZ += cubeAngleZ;
+            e.rotateY(cubeAngleY);
+            e.rotateZ(PI / 4);
+            //e.stroke(0, 100, 50);
+            e.stroke(240, 100, 50);
+            hyperCube.render(e);
+            e.popMatrix();
+
+            e.pushMatrix();
             e.noFill();
             e.stroke(0, 100, 50);
             e.translate(e.width / 2, e.height / 2);
-            e.sphere(200);
+            e.sphere(100 + (1000 * e.getAmplitude()));
             e.popMatrix(); 
 
             e.pushMatrix();
             e.noFill();
             e.stroke(240, 100, 50);
             e.translate(e.width / 2 + 4, e.height / 2);
-            e.sphere(200);
-            e.popMatrix(); */
+            e.sphere(100 + (1000 * e.getAmplitude()));
+            e.popMatrix();
+ 
+        }
+
+
+        if(e.getAudioPlayer().position() > 84000 && e.getAudioPlayer().position() < 100000 && e.paused == false) {
+
+
+            e.pushMatrix();
+            e.translate(e.width / 2 - 4, e.height / 2);
+            cubeAngleY = e.frameCount * 0.01f;
+            cubeAngleZ = e.frameCount * 0.01f; 
+            e.rotateZ(cubeAngleZ);
+            totalRotationZ += cubeAngleZ;
+            e.rotateY(cubeAngleY);
+            e.rotateZ(PI / 4);
+            //e.rotateY(cubeAngleY);
+            e.stroke(0, 100, 50);
+            //e.stroke(240, 100, 50);
+            hyperCube.render(e);
+            e.popMatrix();
+
+
+
+            e.pushMatrix();
+            e.translate(e.width / 2 + 4, e.height / 2 - 8);
+            cubeAngleY = e.frameCount * 0.01f;
+            cubeAngleZ = e.frameCount * 0.01f; 
+            e.rotateZ(cubeAngleZ);
+            totalRotationZ += cubeAngleZ;
+            e.rotateY(cubeAngleY);
+            e.rotateZ(PI / 4);
+            //e.stroke(0, 100, 50);
+            e.stroke(240, 100, 50);
+            hyperCube.render(e);
+            e.popMatrix();
+
+            e.pushMatrix();
+            e.noFill();
+            e.stroke(0, 100, 50);
+            e.translate(e.width / 2, e.height / 2);
+            e.sphere(100);
+            e.popMatrix(); 
+
+            e.pushMatrix();
+            e.noFill();
+            e.stroke(240, 100, 50);
+            e.translate(e.width / 2 + 4, e.height / 2);
+            e.sphere(100);
+            e.popMatrix();
+
+            e.pushMatrix();
+            e.circle(e.width / 6, e.height / 2, 100);
+            e.popMatrix();
+ 
+        }
+
+         
+
+        
 
             /* sphereX1 = e.width / 8;
             sphereX2 = e.width / 8;
@@ -504,43 +595,7 @@ public class TommyVisuals extends Visual{
 
 
             //print(sphereMoveZ);
-        }
 
-        if(e.getAudioPlayer().position() > 15000 && e.getAudioPlayer().position() < 100000 && e.paused == false) {
-
-
-            e.pushMatrix();
-            e.translate(e.width / 2 - 4, e.height / 2);
-            cubeAngleY = e.frameCount * 0.01f;
-            cubeAngleZ = e.frameCount * 0.01f; 
-            e.rotateZ(cubeAngleZ);
-            totalRotationZ += cubeAngleZ;
-            e.rotateY(cubeAngleY);
-            e.rotateZ(PI / 4);
-            //e.rotateY(cubeAngleY);
-            e.stroke(0, 100, 50);
-            //e.stroke(240, 100, 50);
-            hyperCube.render(e);
-            e.popMatrix();
-
-
-
-            e.pushMatrix();
-            e.translate(e.width / 2 + 4, e.height / 2 - 8);
-            cubeAngleY = e.frameCount * 0.01f;
-            cubeAngleZ = e.frameCount * 0.01f; 
-            e.rotateZ(cubeAngleZ);
-            totalRotationZ += cubeAngleZ;
-            e.rotateY(cubeAngleY);
-            e.rotateZ(PI / 4);
-            //e.stroke(0, 100, 50);
-            e.stroke(240, 100, 50);
-            hyperCube.render(e);
-            e.popMatrix();
- 
-        }
-
-         
         /* float angleIncrement = TWO_PI / 10;
             float radius = 100;
 
