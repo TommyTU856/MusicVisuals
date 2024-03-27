@@ -1,12 +1,14 @@
 package C22737179;
 
 import ie.tudublin.*;
+import processing.core.PVector;
 
 public class AaronVisuals extends Visual 
 {
     DrawGrid grid;
     TimeClock timeClock;
     Fade fade;
+    RainCloud rainCloud; // Declare RainCloud object
 
     float angle = 0.5f;
     float offset = 0;
@@ -22,14 +24,14 @@ public class AaronVisuals extends Visual
         grid = new DrawGrid(this);
         timeClock = new TimeClock(this);
         fade = new Fade(100, 100, 1000, this); // Initialize Fade object with specific values
-
+        
         colorMode(RGB);
         background(color(130, 230, 330)); // Use color() function for background color
-       
+        
         fade.update();
         fade.display();
         timeClock.drawTimeClock();
-
+        
         stroke(255);
         fill(255, 255, 0);
         translate(g.width / 2, g.height / 2); // Center the shapes
@@ -56,7 +58,6 @@ public class AaronVisuals extends Visual
             
             fill(r, g, b);
             ellipse(x2, y2, 10, 10); // Draw ellipse at random location
-            
         }
 
         float x1 = 110f;
@@ -88,26 +89,26 @@ public class AaronVisuals extends Visual
         fill(20, 255, 20); 
         rect(400, -400, 150, 150); // Draw a rectangle at the new origin
        
-        angle += speed;
-        scalar += speed;    
-      }
+        angle += speed; 
+        drawGrid(g.width / 3, g.height / 3, g.width, g.height); // Draw grid
 
-      void drawShape(){
-        pushMatrix();
-        float x2 = random(g.width); // Generate random x-coordinate
-        float y2 = random(g.height); // Generate random y-coordinate
-        ellipse(x2, y2, 10, 10); // Draw ellipse at random location
-        smooth();
-        ellipse(mouseX, mouseY, mouseX, mouseX);
-        sphere(10);
-        popMatrix();
-      }
+        // Draw Rain Cloud if it exists
+        if (rainCloud != null) {
+            rainCloud.draw();
+        }
+    }
 
-      void drawGrid(int x, int y, int width, int height) {
+    void startRainCloud() {
+        if (rainCloud == null) {
+            rainCloud = new RainCloud(this, new PVector(g.width/2, 50)); // Initialize RainCloud object with g.width
+        }
+    }
+
+    void drawGrid(int x, int y, int width, int height) {
         for (int gridY = 0; gridY < height; gridY += height / 10){
             for (int gridX = 0; gridX < width; gridX += width / 10){
-                line(gridX, gridY, gridX + width / 10, gridY + height / 10);
-                line(gridX + width / 10, gridY, gridX, gridY + height / 10);
+                this.line(gridX, gridY, gridX + width / 10, gridY + height / 10);
+                this.line(gridX + width / 10, gridY, gridX, gridY + height / 10);
             }
         }
     }
