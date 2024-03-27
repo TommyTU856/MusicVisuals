@@ -6,6 +6,8 @@ import processing.core.PApplet;
 public class AaronVisuals extends Visual {
     DrawGrid grid;
     Fade fade;
+    Rain rain; // Declare Rain object
+    
 
     float angle = 0.5f;
     float offset = 0;
@@ -16,9 +18,10 @@ public class AaronVisuals extends Visual {
     boolean clearScreen = true;
     int shapeColor;
 
+    
     public AaronVisuals() {
         // Initialize any required variables or objects here
-        // Example: timeClock = new TimeClock(this);
+        rain = new Rain(this); // Initialize Rain object
     }
 
     public void draw(CallSet e) {
@@ -29,13 +32,11 @@ public class AaronVisuals extends Visual {
         colorMode(RGB);
         if (clearScreen) {
             background(0); // Use color() function for background color (black)
-            clearScreen = false;
             shapeColor = color(random(255), random(255), random(255));
         }
 
-        //fade.update();
-        //fade.display();
-       
+        fade.update();
+        fade.display();
 
         stroke(255);
         fill(200); // Set fill color to light gray
@@ -58,7 +59,8 @@ public class AaronVisuals extends Visual {
             ellipse(x2, y2, 10, 10); // Draw ellipse at random location
         }
 
-        // Other drawing code goes here
+        // Render rain
+        rain.render();
     }
 
     // Method to get the volume
@@ -68,5 +70,5 @@ public class AaronVisuals extends Visual {
         return 0.5f; // Return a constant value for demonstration
     }
 
-    // Other methods, if any, go here
+    // Other methods to go here
 }
