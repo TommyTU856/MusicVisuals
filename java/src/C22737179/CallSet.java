@@ -81,9 +81,9 @@ public class CallSet extends Visual {
             System.out.println("Unsupported operating system");
         }
 
-        rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
+        //rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
         //getAudioPlayer().setGain(-25);
-        cloud = loadShape("cloud1.svg");
+        //cloud = loadShape("cloud1.svg");
     }
 
     AaronVisuals Aaron = new AaronVisuals();
