@@ -10,13 +10,10 @@ class TimeClock {
     }
 
     public void drawTimeClock() {
-        //pa.background(pa.color(142, 228, 175)); // Use color() function for background color
-        
-        pa.translate(pa.width/2, pa.height/2);
-        pa.pushMatrix();
-        // rotate coordinate system so that 0 is located at the top
-        pa.rotate(-pa.HALF_PI);
-        
+        pa.pushMatrix(); // Push the current transformation matrix onto the stack
+        pa.translate(pa.width/2, pa.height/2); // Translate to the center of the screen
+        pa.rotate(-pa.HALF_PI); // Rotate coordinate system so that 0 is located at the top
+    
         // Arc display for hour
         float H_a = pa.map(pa.hour(), 0, 23, 0, pa.TWO_PI);
         pa.noFill();
@@ -35,13 +32,14 @@ class TimeClock {
         pa.stroke(pa.color(92, 219, 149)); // Use color() function for stroke color
         pa.strokeWeight(15);
         pa.arc(20, 0, 150, 150, 0, S_a);
-        pa.popMatrix();
-        
+    
+        pa.popMatrix(); // Restore the previous transformation matrix
+    
         // Display time of day as text
         pa.fill(pa.color(237, 245, 225)); // Use color() function for text color
         pa.textSize(30);
         pa.textAlign(pa.CENTER, pa.CENTER);
         String time = pa.hour() + ":" + pa.minute() + ":" + pa.second(); // join time values into a string
-        pa.text(time, 0, 0);
+        pa.text(time, pa.width/2, pa.height/2); // Center the text on the screen
     }
 }
