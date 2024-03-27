@@ -1,14 +1,13 @@
 package C22737179;
 
 import ie.tudublin.*;
-import processing.core.PVector;
+
 
 public class AaronVisuals extends Visual 
 {
     DrawGrid grid;
     TimeClock timeClock;
     Fade fade;
-    RainCloud rainCloud; // Declare RainCloud object
 
     float angle = 0.5f;
     float offset = 0;
@@ -90,20 +89,9 @@ public class AaronVisuals extends Visual
         rect(400, -400, 150, 150); // Draw a rectangle at the new origin
        
         angle += speed; 
-        drawGrid(g.width / 3, g.height / 3, g.width, g.height); // Draw grid
-
-        // Draw Rain Cloud if it exists
-        if (rainCloud != null) {
-            rainCloud.draw();
-        }
+        drawGrid(g.width / 3, g.height / 3, g.width, g.height); // Draw grid   
     }
-
-    void startRainCloud() {
-        if (rainCloud == null) {
-            rainCloud = new RainCloud(this, new PVector(g.width/2, 50)); // Initialize RainCloud object with g.width
-        }
-    }
-
+    
     void drawGrid(int x, int y, int width, int height) {
         for (int gridY = 0; gridY < height; gridY += height / 10){
             for (int gridX = 0; gridX < width; gridX += width / 10){
