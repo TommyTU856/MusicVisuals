@@ -24,16 +24,21 @@ public class AaronVisuals extends Visual {
     int cloudNumber = 20;
     Cloud[] clouds;
     float cloudSpeed = 1.5f;
-    
-    
+    String[] words = {"Clouds", "World", "Fluffy", "Little", "Cloud", "Everwhere", "Floating"};
+    int numWords = 7;
+    float[] xPositions, yPositions;
+    float[] xSpeeds, ySpeeds;
+
     public AaronVisuals() {
         // Initialize any required variables or objects here
        // rain = new Rain(this); // Initialize Rain object
        clouds = new Cloud[cloudNumber];
+       
 
        for (int i = 0; i < cloudNumber; i++) {
-        float a = random(10, 50);
+        float a = random(20, 80);
         float x;
+
         // Randomize between left and right sides of the screen
         if (random(1) > 0.5) {
             x = random(width / 2) - a; // Random x-coordinate on the left half of the screen
@@ -41,10 +46,27 @@ public class AaronVisuals extends Visual {
             x = random(width / 2, width - a); // Random x-coordinate on the right half of the screen
         }
         float y = random(height); // Random y-coordinate
-        float radius = random(20, 50); // Random radius for cloud size   
-        float b = random(5, 30);
+        float radius = random(40, 100); // Random radius for cloud size   
+        float b = random(10, 60);
         clouds[i] = new Cloud(x, y, radius, a, b);
+
+
+
         }
+
+        xPositions = new float[numWords];
+        yPositions = new float[numWords];
+        xSpeeds = new float[numWords];
+        ySpeeds = new float[numWords];
+
+        for (int i = 0; i < numWords; i++) {
+            xPositions[i] = random(width);
+            yPositions[i] = random(height);
+            xSpeeds[i] = random(-2, 2);
+            ySpeeds[i] = random(-2, 2);
+        }
+
+        
     }
 
     // void drawCloud(int x, int y){
@@ -139,13 +161,30 @@ public class AaronVisuals extends Visual {
         //drawCloud(mouseX,mouseY);
 
 
+        
+
+        for (int i = 0; i < numWords; i++) {
+            textSize(30);
+            fill(255);
+            text(words[i], xPositions[i], yPositions[i]);
+
+            xPositions[i] += xSpeeds[i];
+            yPositions[i] += ySpeeds[i];
+
+            if (xPositions[i] > width || xPositions[i] < 0) {
+                xSpeeds[i] *= -1;
+            }
+            if (yPositions[i] > height || yPositions[i] < 0) {
+                ySpeeds[i] *= -1;
+            }
+        }
+
         for (int i = 0; i < cloudNumber; i++) {
             // Update the x-coordinate of each cloud
             clouds[i].move(cloudSpeed);
             // Draw the cloud at its updated position
             clouds[i].display(e);
         }
-
     
         // Generating and drawing small random ellipses
         for (int i = 0; i < numEllipses; i++) {
