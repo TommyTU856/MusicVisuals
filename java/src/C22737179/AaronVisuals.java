@@ -33,12 +33,17 @@ public class AaronVisuals extends Visual {
 
        for (int i = 0; i < cloudNumber; i++) {
         float a = random(10, 50);
-        float x = random(width - a * 2) + a;  // Random x-coordinate
+        float x;
+        // Randomize between left and right sides of the screen
+        if (random(1) > 0.5) {
+            x = random(width / 2) - a; // Random x-coordinate on the left half of the screen
+        } else {
+            x = random(width / 2, width - a); // Random x-coordinate on the right half of the screen
+        }
         float y = random(height); // Random y-coordinate
         float radius = random(20, 50); // Random radius for cloud size   
         float b = random(5, 30);
         clouds[i] = new Cloud(x, y, radius, a, b);
-
         }
     }
 
@@ -167,9 +172,9 @@ public class AaronVisuals extends Visual {
 
         void move(float cloudSpeed) {
             x += cloudSpeed; // Move the cloud horizontally
-            if (x > width + radius) {
-                x = -radius;
-                y = random(g.height);
+            if (x < -radius) {
+                x = width + radius;
+                y = random(height);
             }
         }
 
