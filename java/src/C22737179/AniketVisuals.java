@@ -4,7 +4,7 @@ import ie.tudublin.*;
 import processing.core.PShape;
 
 public class AniketVisuals extends Visual {
-
+    CallSet e;
     PShape c;
     int cloudNum = 4;
     float cloudWidth = 560;
@@ -57,30 +57,42 @@ public class AniketVisuals extends Visual {
     }
 
     public void draw(CallSet e) {
-        c = e.cloud;
-        e.colorMode(HSB, 360, 100, 100);
-        e.background(360);
-
-        if(e.frameCount % 60 == 0)
+        if(e.paused == false)
         {
-            changeColour();
+            c = e.cloud;
+            e.colorMode(HSB, 360, 100, 100);
+            e.background(0, 0, 0);
+
+            e.calculateAverageAmplitude();
             
-            if(cloudWidth == 560 && cloudHeight == 300)
+            if(e.getAudioPlayer().left.level() > 0.14 && e.frameCount % 60 == 0)
             {
-                decreaseSize();
-            }
-            else
-            {
-                increaseSize();
-            }
-        }
+                // value printed is the RMS (root mean square)
+                println(e.getAudioPlayer().left.level());
 
-        for(int i = 0; i < cloudNum; i++)
-        {
-            e.shape(c, cloudX[i], cloudY[i], cloudWidth, cloudHeight);
+                if(cloudWidth == 560 && cloudHeight == 300)
+                {
+                    decreaseSize();
+                }
+                else
+                {
+                    increaseSize();
+                }
+            }
+
+            if(e.getAudioPlayer().left.level() > 0.16)
+            {
+                changeColour();
+            }
+
+            for(int i = 0; i < cloudNum; i++)
+            {
+                e.shape(c, cloudX[i], cloudY[i], cloudWidth, cloudHeight);
+            }
+    
+            moveCloud();
         }
-  
-        moveCloud();
+          
     }
 
 }
