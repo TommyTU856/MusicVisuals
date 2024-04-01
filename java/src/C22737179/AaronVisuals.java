@@ -1,8 +1,12 @@
 package C22737179;
 
+import ddf.minim.AudioPlayer;
+import ddf.minim.Minim;
 import ie.tudublin.Visual;
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PShape;
+import processing.core.PVector;
 
 public class AaronVisuals extends Visual {
 
@@ -228,3 +232,89 @@ public class AaronVisuals extends Visual {
 
 
 
+
+
+// Minim minim;
+//     AudioPlayer player;
+//     PVector[] particles;
+//     int numParticles = 100;
+//     PVector[] particleVelocities;
+//     PVector gravity;
+//     float[] fft;
+//     float[] bands;
+//     int numBands = 512;
+
+
+
+// size(800, 600);
+//         minim = new Minim(this);
+//         player = minim.loadFile("music.mp3");
+//         player.play();
+
+//         particles = new PVector[numParticles];
+//         particleVelocities = new PVector[numParticles];
+//         for (int i = 0; i < numParticles; i++) {
+//             particles[i] = new PVector(random(width), random(height));
+//             particleVelocities[i] = new PVector(random(-2, 2), random(-2, 2));
+//         }
+
+//         gravity = new PVector(0, 0.1);
+
+//         fft = new float[numBands];
+//         bands = new float[numBands];
+//     }
+
+
+
+// fft.forward(player.mix);
+//         for (int i = 0; i < numBands; i++) {
+//             bands[i] = fft.getBand(i);
+//         }
+
+
+// for (int i = 0; i < numParticles; i++) {
+//     particleVelocities[i].add(gravity);
+//     particles[i].add(particleVelocities[i]);
+//     particles[i].x = constrain(particles[i].x, 0, width);
+//     particles[i].y = constrain(particles[i].y, 0, height);
+
+//     float radius = map(bands[i], 0, 1, 1, 10);
+//     fill(map(bands[i], 0, 1, 0, 255));
+//     ellipse(particles[i].x, particles[i].y, radius, radius);
+// }
+
+
+// size(800, 600);
+//         kinect = new SimpleOpenNI(this);
+//         kinect.enableDepth();
+
+//         leap = new Controller();
+//         leap.addListener(new LeapMotionListener());
+
+//         handPositions = new PVector[2];
+    
+
+//         background(0);
+
+//         // Kinect
+//         if (kinect.isInit()) {
+//             PImage depthImage = kinect.depthImage();
+//             image(depthImage, 0, 0);
+//         }
+// for (int i = 0; i < handPositions.length; i++) {
+//             if (handPositions[i] != null) {
+//                 fill(255, 0, 0);
+//                 ellipse(handPositions[i].x, handPositions[i].y, 50, 50);
+
+
+//                 class LeapMotionListener extends Listener {
+//                     public void onFrame(Controller controller) {
+//                         Frame frame = controller.frame();
+//                         HandList hands = frame.hands();
+//                         for (int i = 0; i < hands.count(); i++) {
+//                             Hand hand = hands.get(i);
+//                             Vector position = hand.palmPosition();
+//                             float x = map(position.getX(), -200, 200, 0, width);
+//                             float y = map(position.getY(), 0, 600, 0, height);
+//                             handPositions[i] = new PVector(x, y);
+//                         }
