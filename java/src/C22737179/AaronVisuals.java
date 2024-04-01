@@ -122,7 +122,7 @@ public class AaronVisuals extends Visual {
 
     public void show(CallSet e) {
         float t = map(z, 0, 5, 10, 2);
-        strokeWeight(t);
+        e.strokeWeight(t);
         line(x, y, x, y + t * 2);
         
         }
@@ -132,7 +132,7 @@ public class AaronVisuals extends Visual {
     
             if (y > e.height + 10) {
                 y = -10;
-                x = random(e.width); // Start the drop from a random x-position again
+                x = e.random(e.width); // Start the drop from a random x-position again
             }
         }
 
