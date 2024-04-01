@@ -83,7 +83,8 @@ public class CallSet extends Visual {
 
         //rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
         //getAudioPlayer().setGain(-25);
-        cloud = loadShape("cloud1.svg");
+        //cloud = loadShape("cloud1.svg");
+        
     }
 
     AaronVisuals Aaron = new AaronVisuals();
@@ -95,9 +96,9 @@ public class CallSet extends Visual {
     public void draw()
     {
         //Tommy.draw(this);
-        Aniket.draw(this);
+        //Aniket.draw(this);
         //Basak.draw(this);
-        //Aaron.draw(this);
+        Aaron.draw(this);
     }
 
 }
