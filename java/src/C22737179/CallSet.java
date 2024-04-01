@@ -9,7 +9,6 @@ public class CallSet extends Visual {
     {
         size(1500, 950, P3D);
         
-        
         println("CWD: " + System.getProperty("user.dir"));
     }
 
@@ -54,6 +53,7 @@ public class CallSet extends Visual {
             {
                 getAudioPlayer().cue(0);
                 getAudioPlayer().play();
+                break;
             }
         }
     }
@@ -83,7 +83,7 @@ public class CallSet extends Visual {
 
         //rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
         //getAudioPlayer().setGain(-25);
-        //cloud = loadShape("cloud1.svg");
+        cloud = loadShape("cloud1.svg");
     }
 
     AaronVisuals Aaron = new AaronVisuals();
@@ -95,12 +95,9 @@ public class CallSet extends Visual {
     public void draw()
     {
         //Tommy.draw(this);
-        //Aniket.draw(this);
+        Aniket.draw(this);
         //Basak.draw(this);
-        Aaron.draw(this);
-        
+        //Aaron.draw(this);
     }
-
-
 
 }
