@@ -105,7 +105,7 @@ public class AaronVisuals extends Visual {
     
 
     public void rain(CallSet e) {
-        
+        translate(0, e.height);
         d = new Drop[100];
         for (int i = 0; i < d.length; i++) {
             // Start each drop at a random position along the x-axis
@@ -121,20 +121,21 @@ public class AaronVisuals extends Visual {
 
 
     public void show(CallSet e) {
+        
         float t = map(z, 0, 5, 10, 2);
         e.strokeWeight(t);
         line(x, y, x, y + t * 2);
         
-        }
+    }
 
     public void update(CallSet e){
             y = y + 4;
-    
+
             if (y > e.height + 10) {
                 y = -10;
                 x = e.random(e.width); // Start the drop from a random x-position again
             }
-        }
+    }
 
         void cloudObject(float a, float b, float c, float d){
             noStroke();
@@ -165,7 +166,7 @@ public class AaronVisuals extends Visual {
         fill(200); // Set fill color to light gray
 
         // Center the shapes and rotate them
-        translate(e.width / 2 , e.height /2 ); // Center the shapes
+        //translate(e.width / 2 , e.height /2 ); // Center the shapes
         smooth();
 
 
@@ -176,19 +177,12 @@ public class AaronVisuals extends Visual {
     
         // Drawing the large ellipse
         //ellipse(centerX, centerY, 150, 150);
-        
+        pushMatrix();
         rain(e);
+        popMatrix();
     
 
-        pushMatrix();
-        noStroke();
-        fill(200);
-        ellipse ( - 20, 20, 50, 100); // Adjusting the x-coordinate to center the cloud
-        fill(200);
-        ellipse (20, 20, 60, 100); // Adjusting the x-coordinate to center the cloud
-        fill(200);
-        ellipse (40,  - 10, -20, 180); // Adjusting the y-coordinate to slightly raise the cloud
-        popMatrix();
+        
 
 
 
@@ -206,7 +200,8 @@ public class AaronVisuals extends Visual {
 
 
         
-
+        pushMatrix();
+        
         for (int i = 0; i < numWords; i++) {
             textSize(100);
             fill(255);
@@ -222,7 +217,10 @@ public class AaronVisuals extends Visual {
                 ySpeeds[i] *= -1;
             }
         }
-
+        popMatrix();
+        
+        pushMatrix();
+        translate(e.width / 2, e.height / 2);
         for (int i = 0; i < cloudNumber; i++) {
             // Update the x-coordinate of each cloud
             clouds[i].move(cloudSpeed);
@@ -231,13 +229,33 @@ public class AaronVisuals extends Visual {
         }
     
         // Generating and drawing small random ellipses
-        for (int i = 0; i < numEllipses; i++) {
-            float x2 = random(e.width); // Generate random x-coordinate
-            float y2 = random(e.height); // Generate random y-coordinate
+        // for (int i = 0; i < numEllipses; i++) {
+        //     float x2 = random(e.width); // Generate random x-coordinate
+        //     float y2 = random(e.height); // Generate random y-coordinate
     
-            ellipse(x2, y2, 10, 10); // Draw ellipse at random location
+        //     ellipse(x2, y2, 10, 10); // Draw ellipse at random location
             
-        }  
+        // }  
+        popMatrix();
+
+        pushMatrix();
+        translate(e.width / 2, e.height / 4);
+        for (int i = 0; i < cloudNumber; i++) {
+            // Update the x-coordinate of each cloud
+            clouds[i].move(cloudSpeed);
+            // Draw the cloud at its updated position
+            clouds[i].display(e);
+        }
+    
+        // Generating and drawing small random ellipses
+        // for (int i = 0; i < numEllipses; i++) {
+        //     float x2 = random(e.width); // Generate random x-coordinate
+        //     float y2 = random(e.height); // Generate random y-coordinate
+    
+        //     ellipse(x2, y2, 10, 10); // Draw ellipse at random location
+            
+        // }  
+        popMatrix();
     }
 
     class Cloud {
