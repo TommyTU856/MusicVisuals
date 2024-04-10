@@ -200,8 +200,13 @@ public class AaronVisuals extends Visual {
         // }
         // popMatrix();
 
-
-
+        pushMatrix();
+        
+        // Draw the shape if it's not null
+        if (p != null) {
+            p.display(e);
+        }
+        popMatrix();
 
         // Draw clouds
         pushMatrix();
