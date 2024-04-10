@@ -45,6 +45,7 @@ public class AaronVisuals extends Visual {
     float xSpeed = 7;
     float ySpeed = 7;
     Shape p;
+    int cloudColor;
     
     
 
@@ -72,7 +73,8 @@ public class AaronVisuals extends Visual {
             float y = random(height); // Random y-coordinate
             float radius = random(40, 100); // Random radius for cloud size   
             float b = random(10, 60);
-            clouds[i] = new Cloud(x, y, radius, a, b);
+            int cloudColor = color(random(200, 255), random(200, 255), random(200, 255)); // Generate random bright cloud color
+            clouds[i] = new Cloud(x, y, radius, a, b, cloudColor);
         }
 
         // Initialize arrays for word positions and speeds
@@ -92,6 +94,7 @@ public class AaronVisuals extends Visual {
 
     // Method to simulate rain
     public void rain(CallSet e) {
+
         translate(0, e.height);
         d = new Drop[100];
         for (int i = 0; i < d.length; i++) {
@@ -124,6 +127,8 @@ public class AaronVisuals extends Visual {
 
     // Method to draw a cloud shape
     void cloudObject(float a, float b, float c, float d) {
+        pushMatrix();
+        
         noStroke();
         fill(200);
 
@@ -134,6 +139,19 @@ public class AaronVisuals extends Visual {
         ellipse(x - 150, y, c, d); // Adjusting the x-coordinate to center the cloud
         ellipse(x + 150, y, c, d); // Adjusting the x-coordinate to center the cloud
         ellipse(x, y - 130, c, d); // Adjusting the y-coordinate to slightly raise the cloud
+
+        ellipse(x - 120, y, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(x + 120, y, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(x, y - 110, c, d); // Adjusting the y-coordinate to slightly raise the cloud
+
+        ellipse(x - 220, y, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(x + 220, y, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(x, y - 210, c, d); // Adjusting the y-coordinate to slightly raise the cloud
+
+        ellipse(x - 10, y, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(x + 10, y, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(x, y - 50, c, d); // Adjusting the y-coordinate to slightly raise the cloud
+        popMatrix();
     }
 
     public void mouseDragged(){
@@ -151,8 +169,10 @@ public class AaronVisuals extends Visual {
     public void draw(CallSet e) {
         this.g = e.getGraphics(); // Initialize the "g" variable
 
+
+
         colorMode(RGB);
-        background(0);
+        background(100);
         shapeColor = color(random(255), random(255), random(255));
         stroke(255);
         fill(200); // Set fill color to light gray
@@ -161,6 +181,9 @@ public class AaronVisuals extends Visual {
         pushMatrix();
         rain(e);
         popMatrix();
+
+
+
 
         // Draw words
         pushMatrix();
@@ -285,13 +308,15 @@ public class AaronVisuals extends Visual {
         float x, y; // Position of the cloud
         float radius; // Size of the cloud
         float a, b; // Shape parameters for the cloud
+        int cloudColor; // Color of the cloud
 
-        Cloud(float x, float y, float radius, float a, float b) {
+        Cloud(float x, float y, float radius, float a, float b, int cloudColor) {
             this.x = x;
             this.y = y;
             this.radius = radius;
             this.a = a;
             this.b = b;
+            this.cloudColor = cloudColor; // Assign color to the cloud
         }
 
         // Method to move the cloud
@@ -305,11 +330,13 @@ public class AaronVisuals extends Visual {
 
         // Method to display the cloud
         void display(CallSet e) {
-            fill(255);
+            fill(cloudColor);
+            noStroke();
             //e.calculateAverageAmplitude();
             ellipse(x - 20, y, a, b);
             ellipse(x + 20, y, a, b);
             ellipse(x, y - 10, a, b);
+            
             //e.noStroke();
         }
     }

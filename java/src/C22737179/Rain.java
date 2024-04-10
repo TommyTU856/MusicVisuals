@@ -11,6 +11,7 @@ public class Rain {
         d = new Drop[100];
         for (int i = 0; i < d.length; i++) {
             // Start each drop at a random position along the x-axis
+            
             d[i] = new Drop(e.random(e.width), e.random(-e.height, 0), e.random(5), e);
         }
     }
@@ -28,12 +29,14 @@ public class Rain {
 class Drop {
     float x, y, z;
     PApplet e;
+    int dropColor; // Color of the drop
 
     Drop(float x, float y, float z, PApplet e) {
         this.x = x;
         this.y = y;
         this.z = z;
         this.e = e;
+        this.dropColor = e.color(e.random(200, 255), e.random(200, 255), e.random(200, 255)); // Generate random bright drop color
     }
 
     void update() {
@@ -48,6 +51,7 @@ class Drop {
 
     void show() {
         float t = e.map(z, 0, 5, 10, 2);
+        e.stroke(dropColor); // Set stroke color to the assigned drop color
         e.strokeWeight(t);
         e.line(x, y, x, y + t * 2);
     }
