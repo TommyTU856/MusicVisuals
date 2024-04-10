@@ -42,13 +42,21 @@ public class AaronVisuals extends Visual {
     int inside = color(204, 102, 0);
     int middle = color(204, 153, 0);
     int outside = color(153, 51, 0);
+    float xSpeed = 7;
+    float ySpeed = 7;
+    Shape p;
+    
+    
 
     // Constructor
     public AaronVisuals() {
         // Initialize variables and objects
         clouds = new Cloud[cloudNumber];
         grid = new DrawGrid(this);
+       
 
+        getSmoothedAmplitude();
+        
         // Initialize clouds
         for (int i = 0; i < cloudNumber; i++) {
             float a = random(20, 80);
@@ -128,6 +136,17 @@ public class AaronVisuals extends Visual {
         ellipse(x, y - 130, c, d); // Adjusting the y-coordinate to slightly raise the cloud
     }
 
+    public void mouseDragged(){
+       
+
+        if(random(1)<0.5){
+            p = new Ring(mouseX, mouseY, (random(10, 50)), (random(10, 100)), (random(10, 100)));
+        }else{
+            p = new Cross(mouseX, mouseY, (random(10, 50)), random(10, 100),(random(10, 100)));
+        }
+
+    }
+
     // Method to draw all visual elements
     public void draw(CallSet e) {
         this.g = e.getGraphics(); // Initialize the "g" variable
@@ -162,6 +181,28 @@ public class AaronVisuals extends Visual {
         }
         popMatrix();
 
+        //Circles
+        // pushMatrix();
+        // noStroke();
+        // fill(255);
+        // circle(x, y, 50);
+       
+        // x = x + xSpeed;
+        // y = y + ySpeed;
+
+        // if(x >= width || x <= 0){
+
+        //      xSpeeds = xSpeed * -1;
+        // }
+        // if(y >= width || y <= 0){
+
+        //     ySpeeds =  ySpeed * -1;
+        // }
+        // popMatrix();
+
+
+
+
         // Draw clouds
         pushMatrix();
         translate(e.width / 2, e.height / 2);
@@ -182,6 +223,56 @@ public class AaronVisuals extends Visual {
             clouds[i].display(e);
         }
         popMatrix();
+
+      
+    }
+
+    interface Shape {
+        // Define methods for both Ring and Cross here
+        void display(PApplet e);
+    }
+
+    class Ring implements Shape {
+        float x, y;
+        float radius;
+        float a,b;
+
+        Ring(float x, float y, float radius, float a, float b){
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.a = a;
+            this.b = b;
+
+        }
+        public void display(PApplet e) {
+            fill(255);
+            //e.calculateAverageAmplitude();
+            ellipse(x - 20, y, a, b);
+            ellipse(x + 20, y, a, b);
+            ellipse(x, y - 10, a, b);
+            //e.noStroke();
+        }
+    }
+
+    class Cross implements Shape {
+        float x, y;
+        float radius;
+        float a,b;
+
+        Cross(float x, float y, float radius, float a, float b){
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.a = a;
+            this.b = b;
+        }
+
+        public void display(PApplet e) {
+            fill(255);
+            line(x - 20, y, x + 20, y);
+            line(x, y - 20, x, y + 20);
+        }
     }
 
     // Inner class to represent a cloud
@@ -210,9 +301,11 @@ public class AaronVisuals extends Visual {
         // Method to display the cloud
         void display(CallSet e) {
             fill(255);
+            //e.calculateAverageAmplitude();
             ellipse(x - 20, y, a, b);
             ellipse(x + 20, y, a, b);
             ellipse(x, y - 10, a, b);
+            //e.noStroke();
         }
     }
 }
