@@ -12,6 +12,8 @@ import processing.core.PVector;
 import processing.*;
 import processing.core.PGraphics; // Import the PGraphics class
 
+
+
 public class AaronVisuals extends Visual {
 
     // Declare variables and objects
@@ -54,7 +56,9 @@ public class AaronVisuals extends Visual {
         // Initialize variables and objects
         clouds = new Cloud[cloudNumber];
         grid = new DrawGrid(this);
-       
+        Word word1 = new Word("example");
+        Follow follow = new Follow("followingWord");
+        word1.follows.add(follow);
 
         getSmoothedAmplitude();
         
@@ -183,7 +187,22 @@ public class AaronVisuals extends Visual {
         popMatrix();
 
 
+        pushMatrix();
+        // Example usage of Word and Follow classes
+        Word word1 = new Word("example");
+        Follow follow1 = new Follow("followingWord");
+        word1.follows.add(follow1);
 
+        // Draw the word
+        fill(255);
+        text(word1.getWord(), 100, 100);
+
+        // Draw the follows
+        for (int i = 0; i < word1.follows.size(); i++) {
+            Follow follow = word1.follows.get(i);
+            text(follow.getWord(), 100, 120 + i * 20); // Adjust y-position to avoid overlap
+        }
+        popMatrix();
 
         // Draw words
         pushMatrix();
