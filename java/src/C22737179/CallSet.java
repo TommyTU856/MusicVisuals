@@ -16,6 +16,7 @@ public class CallSet extends Visual {
     boolean paused = true;
     PShape rooster;
     PShape cloud;
+    PShape mountainClouds;
 
     public void keyPressed()
     {
@@ -84,6 +85,7 @@ public class CallSet extends Visual {
         //rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
         //getAudioPlayer().setGain(-25);
         //cloud = loadShape("cloud1.svg");
+        //mountainClouds = loadShape("java/data/cloudssssssssssssssss13.obj");
         
     }
 

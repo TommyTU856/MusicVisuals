@@ -48,8 +48,15 @@ public class AaronVisuals extends Visual {
     float ySpeed = 7;
     Shape p;
     int cloudColor;
+    //PShape mountainClouds;
     
-    
+
+    // public void mountainClouds(CallSet e) {
+    //     pushMatrix();
+    //     mountainClouds = e.loadShape("java/data/cloudssssssssssssssss13.obj");
+    //     shape(e.mountainClouds);
+    //     popMatrix();
+    // }
 
     // Constructor
     public AaronVisuals() {
@@ -171,9 +178,10 @@ public class AaronVisuals extends Visual {
 
     // Method to draw all visual elements
     public void draw(CallSet e) {
+
         this.g = e.getGraphics(); // Initialize the "g" variable
 
-
+        //shape(mountainClouds);
 
         colorMode(RGB);
         background(100);
