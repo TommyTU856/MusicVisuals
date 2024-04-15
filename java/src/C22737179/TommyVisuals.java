@@ -224,7 +224,7 @@ public class TommyVisuals extends Visual{
         //lyrics.render(e);
         
 
-        if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 2000 && e.paused == false) {
+        /* if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 2000 && e.paused == false) {
 
             //float elapsedTime = millis() - startTime;
             //* scale = 50.0f;
@@ -475,10 +475,10 @@ public class TommyVisuals extends Visual{
             e.sphere(100 + (1000 * e.getAmplitude()));
             e.popMatrix();
  
-        }
+        } */
 
 
-        if(e.getAudioPlayer().position() > 83800 && e.getAudioPlayer().position() < 100000 && e.paused == false) {
+        if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 92000 && e.paused == false) {
 
 
             e.pushMatrix();
@@ -514,20 +514,24 @@ public class TommyVisuals extends Visual{
             e.noFill();
             e.stroke(0, 100, 50);
             e.translate(e.width / 2, e.height / 2);
-            e.sphere(100);
+            e.sphere(10000);
             e.popMatrix(); 
 
             e.pushMatrix();
             e.noFill();
             e.stroke(240, 100, 50);
             e.translate(e.width / 2 + 4, e.height / 2);
-            e.sphere(100);
+            e.sphere(10000);
             e.popMatrix();
 
             e.pushMatrix();
             e.circle(e.width / 6, e.height / 2, 100);
             e.popMatrix();
  
+        }
+
+        if(e.getAudioPlayer().position() > 92000 && e.getAudioPlayer().position() < 920000 && e.paused == false) {
+
         }
 
         //print(e.width, e.height);
