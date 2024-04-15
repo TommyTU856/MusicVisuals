@@ -113,40 +113,7 @@ public class TommyVisuals extends Visual{
         e.calculateAverageAmplitude();
         
 
-        /* hyperCube = new HyperCube();
-
-        e.pushMatrix();
-        e.translate(e.width / 2 - 4, e.height / 2);
-        cubeAngleY = e.frameCount * 0.01f; 
-        //e.rotateY(cubeAngleY);
-        //e.stroke(0, 100, 50);
-        e.stroke(240, 100, 50);
-        hyperCube.render(e);
-        e.popMatrix();
-
-        e.pushMatrix();
-        e.translate(e.width / 2 + 4, e.height / 2 - 8);
-        cubeAngleY = e.frameCount * 0.01f;
-        
-        
-
-        if(totalRotationZ < 30) {
-            cubeAngleZ = e.frameCount * 0.01f; 
-            e.rotateZ(cubeAngleZ);
-            totalRotationZ += cubeAngleZ;
-        } else {
-            
-            e.rotateY(cubeAngleY);
-            e.rotateZ(PI / 4);
-        }
-        
-        
-        e.stroke(0, 100, 50);
-        //e.stroke(240, 100, 50);
-        hyperCube.render(e);
-        e.popMatrix(); */
-
-        /* responsiveShape = new ResponsiveShape();
+        responsiveShape = new ResponsiveShape();
         
         e.pushMatrix();
         e.translate(e.width / 2, e.height / 2);
@@ -168,54 +135,10 @@ public class TommyVisuals extends Visual{
         //e.stroke(240, 100, 50);
         responsiveShape.render(e);
         e.popMatrix();
- */
 
-        /* e.pushMatrix();
-        e.translate(e.width / 2 - 4, e.height / 2);
-        e.rotateY(rotY);
-        e.stroke(0, 0, 50);
-        responsiveShape.render(e);
-        e.popMatrix(); */
-
-
-        /* e.pushMatrix();
-        e.translate(e.width / 2 + 4, e.height / 2 - 3);
-        e.rotateY(-rotY);
-        e.stroke(10, 50, 80);
-        responsiveShape.render(e);
-        e.popMatrix(); */
-
-        /* rotZ += .001;
+        rotZ += .001;
         rotY += .001;
-        rotX += .001; */
-       
-        /* e.pushMatrix();
-        //e.translate(e.width / 2 - 10, e.height / 2);
-        //e.stroke(0, 100, 50);
-        e.fill(0, 100, 20);
-        e.circle(e.width / 2 - 60, e.height / 2, 200);
-        e.popMatrix(); */
-
-        /* e.pushMatrix();
-        e.translate(e.width / 2 + 10, e.height / 2);
-        e.noStroke();
-        e.fill(0, 100, 50);
-        //e.circle(e.width / 2 - 30, e.height / 2, 200);
-        showSphere(e);
-        e.popMatrix();
-
-    
-        e.pushMatrix();
-        e.translate(e.width / 2 - 10, e.height / 2);
-        e.noStroke();
-        e.fill(240, 100, 50);
-        showSphere(e);
-        //e.circle(e.width / 2, e.height / 2, 200);
-        e.popMatrix(); */
-
-
-
-
+        rotX += .001;
 
 //                          ------------START OF TIMED CODE--------------
 
@@ -475,7 +398,7 @@ public class TommyVisuals extends Visual{
             e.sphere(100 + (1000 * e.getAmplitude()));
             e.popMatrix();
  
-        } */
+        }
 
 
         if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 92000 && e.paused == false) {
@@ -509,26 +432,8 @@ public class TommyVisuals extends Visual{
             e.stroke(240, 100, 50);
             hyperCube.render(e);
             e.popMatrix();
-
-            e.pushMatrix();
-            e.noFill();
-            e.stroke(0, 100, 50);
-            e.translate(e.width / 2, e.height / 2);
-            e.sphere(10000);
-            e.popMatrix(); 
-
-            e.pushMatrix();
-            e.noFill();
-            e.stroke(240, 100, 50);
-            e.translate(e.width / 2 + 4, e.height / 2);
-            e.sphere(10000);
-            e.popMatrix();
-
-            e.pushMatrix();
-            e.circle(e.width / 6, e.height / 2, 100);
-            e.popMatrix();
  
-        }
+        } */
 
         if(e.getAudioPlayer().position() > 92000 && e.getAudioPlayer().position() < 920000 && e.paused == false) {
 
