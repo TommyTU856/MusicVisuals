@@ -11,9 +11,6 @@ public class ResponsiveShape {
     }
 
     public void render(CallSet e) {
-
-        //e.background(0);
-        //e.translate(e.width / 2, e.height / 2);
         
         for(int i = 0; i < vert; i++) {
             for(int j = 0; j < vert; j++) {
@@ -22,8 +19,7 @@ public class ResponsiveShape {
                     float y = Visual.map(j, 0, vert, -300, 300);
                     float z = Visual.map(k, 0, vert, -300, 300);
                     e.strokeWeight(8);
-                    e.point(x, y, z);
-                    //e.triangle(x, y, x / 2, y / 2, x / 4, y / 4); 
+                    e.point(x, y, z); 
                 }
             }
         }
