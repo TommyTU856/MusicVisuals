@@ -82,7 +82,9 @@ public class CallSet extends Visual {
             System.out.println("Unsupported operating system");
         }
 
-        //rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
+        rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
+
+        
         //getAudioPlayer().setGain(-25);
         //cloud = loadShape("cloud1.svg");
         //mountainClouds = loadShape("java/data/cloudssssssssssssssss13.obj");
@@ -97,10 +99,10 @@ public class CallSet extends Visual {
 
     public void draw()
     {
-        //Tommy.draw(this);
+        Tommy.draw(this);
         //Aniket.draw(this);
         //Basak.draw(this);
-        Aaron.draw(this);
+        //Aaron.draw(this);
     }
 
 }
