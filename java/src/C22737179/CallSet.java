@@ -1,12 +1,14 @@
 package C22737179;
 
 import ie.tudublin.Visual;
+import processing.core.PShape;
 
 public class CallSet extends Visual {
     
     public void settings()
     {
-        size(1500, 1000, P3D);
+        size(1500, 950, P3D);
+        
         //fullScreen(1);
         
         println("CWD: " + System.getProperty("user.dir"));
@@ -14,6 +16,9 @@ public class CallSet extends Visual {
 
     int mode = 1;
     boolean paused = true;
+    PShape rooster;
+    PShape cloud;
+    PShape mountainClouds;
 
     public void keyPressed()
     {
@@ -51,6 +56,7 @@ public class CallSet extends Visual {
             {
                 getAudioPlayer().cue(0);
                 getAudioPlayer().play();
+                break;
             }
         }
     }
@@ -60,7 +66,7 @@ public class CallSet extends Visual {
         
         colorMode(HSB);
         // noCursor();
-        
+        windowMove(0, 0);
         setFrameSize(1024);
         frameRate(60);
 
@@ -78,9 +84,13 @@ public class CallSet extends Visual {
             System.out.println("Unsupported operating system");
         }
 
-        
+        rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
 
+        
         //getAudioPlayer().setGain(-25);
+        //cloud = loadShape("cloud1.svg");
+        //mountainClouds = loadShape("java/data/cloudssssssssssssssss13.obj");
+        
     }
 
     AaronVisuals Aaron = new AaronVisuals();
@@ -91,12 +101,10 @@ public class CallSet extends Visual {
 
     public void draw()
     {
-        //Tommy.draw(this);
+        Tommy.draw(this);
         //Aniket.draw(this);
-        Basak.draw(this);
+        //Basak.draw(this);
         //Aaron.draw(this);
     }
-
-
 
 }
