@@ -1,114 +1,370 @@
 package C22737179;
 
-import ie.tudublin.*;
+import ddf.minim.AudioBuffer;
+import ddf.minim.AudioInput;
+import ddf.minim.AudioPlayer;
+import ddf.minim.Minim;
+import ie.tudublin.Visual;
+import processing.core.PApplet;
+import processing.core.PImage;
+import processing.core.PShape;
+import processing.core.PVector;
+import processing.*;
+import processing.core.PGraphics; // Import the PGraphics class
 
-public class AaronVisuals extends Visual 
-{
+
+
+public class AaronVisuals extends Visual {
+
+    // Declare variables and objects
     DrawGrid grid;
-    TimeClock timeClock;
     Fade fade;
-
     float angle = 0.5f;
     float offset = 0;
     float scalar = 1;
     float speed = 0.02f;
-
-    int numEllipses = 70; // Number of ellipses
-    float[][] ellipses = new float[numEllipses][4]; // Array to store ellipse coordinates and color
+    int numEllipses = 5;
+    boolean clearScreen = true;
+    int shapeColor;
+    float cloudX, cloudY = -50;
+    float x;
+    float y;
+    float z;
+    Drop[] d;
+    int cloudNumber = 40;
+    Cloud[] clouds;
+    float cloudSpeed = 1.5f;
+    String[] words = {"Clouds", "World", "Fluffy", "Little", "Cloud", "Everwhere", "Floating", "And", "skies", "always", "little", "fluffy", "clouds", "They", "were", "long", "clear"};
+    int numWords = words.length;
+    float[] xPositions, yPositions;
+    float[] xSpeeds, ySpeeds;
+    float[] lerpedBuffer;
+    float smoothedY = 0;
+    float smoothedAmplitude = 0;
+    int inside = color(204, 102, 0);
+    int middle = color(204, 153, 0);
+    int outside = color(153, 51, 0);
+    float xSpeed = 7;
+    float ySpeed = 7;
+    Shape p;
+    int cloudColor;
+    //PShape mountainClouds;
     
-    public void draw(CallSet e) 
-    {
-        this.g = e.getGraphics(); // Initialize the "g" variable
+
+    // public void mountainClouds(CallSet e) {
+    //     pushMatrix();
+    //     mountainClouds = e.loadShape("java/data/cloudssssssssssssssss13.obj");
+    //     shape(e.mountainClouds);
+    //     popMatrix();
+    // }
+
+    // Constructor
+    public AaronVisuals() {
+        // Initialize variables and objects
+        clouds = new Cloud[cloudNumber];
         grid = new DrawGrid(this);
-        timeClock = new TimeClock(this);
-        fade = new Fade(100, 100, 1000, this); // Initialize Fade object with specific values
+        Word word1 = new Word("example");
+        Follow follow = new Follow("followingWord");
+        word1.follows.add(follow);
 
-        colorMode(RGB);
-        background(color(130, 230, 330)); // Use color() function for background color
-       
-        fade.update();
-        fade.display();
-        timeClock.drawTimeClock();
+        getSmoothedAmplitude();
+        
+        // Initialize clouds
+        for (int i = 0; i < cloudNumber; i++) {
+            float a = random(20, 80);
+            float x;
 
-        stroke(255);
-        fill(255, 255, 0);
-        translate(g.width / 2, g.height / 2); // Center the shapes
-        smooth();
-        rotate(angle);
+            // Randomize between left and right sides of the screen
+            if (random(1) > 0.5) {
+                x = random(width / 2) - a; // Random x-coordinate on the left half of the screen
+            } else {
+                x = random(width / 2, width - a); // Random x-coordinate on the right half of the screen
+            }
 
-        float centerX = g.width / 2;
-        float centerY = g.height / 2;
-        float x = centerX;
-        float y = centerY;
-
-        // Drawing the large ellipse
-        ellipse(x, y, 50, 50);
-
-        // Generating and drawing small random ellipses
-        for (int i = 0; i < numEllipses; i++) 
-        {
-            float x2 = random(g.width); // Generate random x-coordinate
-            float y2 = random(g.height); // Generate random y-coordinate
-            
-            int r = (int)(random(255)); // Generate random red component
-            int g = (int)(random(255)); // Generate random green component
-            int b = (int)(random(255)); // Generate random blue component
-            
-            fill(r, g, b);
-            ellipse(x2, y2, 10, 10); // Draw ellipse at random location
-            
+            float y = random(height); // Random y-coordinate
+            float radius = random(40, 100); // Random radius for cloud size   
+            float b = random(10, 60);
+            int cloudColor = color(random(200, 255), random(200, 255), random(200, 255)); // Generate random bright cloud color
+            clouds[i] = new Cloud(x, y, radius, a, b, cloudColor);
         }
 
-        float x1 = 110f;
-        float y1 = 110f;
+        // Initialize arrays for word positions and speeds
+        xPositions = new float[numWords];
+        yPositions = new float[numWords];
+        xSpeeds = new float[numWords];
+        ySpeeds = new float[numWords];
 
-        x1 += speed * 2;
-        y1 += speed * 2;
+        // Initialize word positions and speeds
+        for (int i = 0; i < numWords; i++) {
+            xPositions[i] = random(0, width);
+            yPositions[i] = random(0, height);
+            xSpeeds[i] = random(-5, 5);
+            ySpeeds[i] = random(-5, 5);
+        }
+    }
 
-        triangle(x1, y1, x, y, x, y);
-        ellipse(250, -250, 100, 100);
-        float circleX = x + 10;
-        float circleY = y + 10;
+    // Method to simulate rain
+    public void rain(CallSet e) {
 
-        fill(105, 0, 105);
-        ellipse(150, -150, 200, 200);
-        fill(105, 205, 170);
-        circle(300, -300, x1);
-        ellipse(circleX, -circleY, 250, 250);
+        translate(0, e.height);
+        d = new Drop[100];
+        for (int i = 0; i < d.length; i++) {
+            // Start each drop at a random position along the x-axis
+            d[i] = new Drop(e.random(e.width), e.random(-e.height, 0), e.random(5), e);
+        }
 
-        float circleX1 = x1;
-        float circleY1 = y1;
+        for (int i = 0; i < d.length; i++) {
+            d[i].show();
+            d[i].update();
+        }
+    }
 
-        fill(205, 205, 0);
-        circle(circleX1, -circleY1, 220); 
-        angle += speed;
-        scalar += speed;
-       
-        translate(-g.width / 3, -g.height / 3); // Move origin to a different location
-        fill(20, 255, 20); 
-        rect(400, -400, 150, 150); // Draw a rectangle at the new origin
-       
-        angle += speed;
-        scalar += speed;    
-      }
+    // Method to show a line
+    public void show(CallSet e) {
+        float t = map(z, 0, 5, 10, 2);
+        e.strokeWeight(t);
+        line(x, y, x, y + t * 2);
+    }
 
-      void drawShape(){
+    // Method to update the line position
+    public void update(CallSet e) {
+        y = y + 4;
+
+        if (y > e.height + 10) {
+            y = -10;
+            x = e.random(e.width); // Start the drop from a random x-position again
+        }
+    }
+
+    // Method to draw a cloud shape
+    void cloudObject(float a, float b, float c, float d) {
         pushMatrix();
-        float x2 = random(g.width); // Generate random x-coordinate
-        float y2 = random(g.height); // Generate random y-coordinate
-        ellipse(x2, y2, 10, 10); // Draw ellipse at random location
-        smooth();
-        ellipse(mouseX, mouseY, mouseX, mouseX);
-        sphere(10);
-        popMatrix();
-      }
+        
+        noStroke();
+        fill(200);
 
-      void drawGrid(int x, int y, int width, int height) {
-        for (int gridY = 0; gridY < height; gridY += height / 10){
-            for (int gridX = 0; gridX < width; gridX += width / 10){
-                line(gridX, gridY, gridX + width / 10, gridY + height / 10);
-                line(gridX + width / 10, gridY, gridX, gridY + height / 10);
+        ellipse(x - 20, y, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(x + 20, y, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(x, y - 10, c, d); // Adjusting the y-coordinate to slightly raise the cloud
+
+        ellipse(x - 150, y, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(x + 150, y, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(x, y - 130, c, d); // Adjusting the y-coordinate to slightly raise the cloud
+
+        ellipse(x - 120, y, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(x + 120, y, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(x, y - 110, c, d); // Adjusting the y-coordinate to slightly raise the cloud
+
+        ellipse(x - 220, y, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(x + 220, y, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(x, y - 210, c, d); // Adjusting the y-coordinate to slightly raise the cloud
+
+        ellipse(x - 10, y, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(x + 10, y, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(x, y - 50, c, d); // Adjusting the y-coordinate to slightly raise the cloud
+        popMatrix();
+    }
+
+    public void mouseDragged(){
+       
+
+        if(random(1)<0.5){
+            p = new Ring(mouseX, mouseY, (random(10, 50)), (random(10, 100)), (random(10, 100)));
+        }else{
+            p = new Cross(mouseX, mouseY, (random(10, 50)), random(10, 100),(random(10, 100)));
+        }
+
+    }
+
+    // Method to draw all visual elements
+    public void draw(CallSet e) {
+
+        this.g = e.getGraphics(); // Initialize the "g" variable
+
+        //shape(mountainClouds);
+
+        colorMode(RGB);
+        background(100);
+        shapeColor = color(random(255), random(255), random(255));
+        stroke(255);
+        fill(200); // Set fill color to light gray
+
+        // Draw rain
+        pushMatrix();
+        rain(e);
+        popMatrix();
+
+
+        pushMatrix();
+        // Example usage of Word and Follow classes
+        Word word1 = new Word("example");
+        Follow follow1 = new Follow("followingWord");
+        word1.follows.add(follow1);
+
+        // Draw the word
+        fill(255);
+        text(word1.getWord(), 100, 100);
+
+        // Draw the follows
+        for (int i = 0; i < word1.follows.size(); i++) {
+            Follow follow = word1.follows.get(i);
+            text(follow.getWord(), 100, 120 + i * 20); // Adjust y-position to avoid overlap
+        }
+        popMatrix();
+
+        // Draw words
+        pushMatrix();
+        for (int i = 0; i < numWords; i++) {
+            textSize(100);
+            fill(255);
+            text(words[i], xPositions[i], yPositions[i]);
+
+            xPositions[i] += xSpeeds[i];
+            yPositions[i] += ySpeeds[i];
+
+            if (xPositions[i] > e.width || xPositions[i] < 0) {
+                xSpeeds[i] *= -1;
             }
+            if (yPositions[i] > e.height || yPositions[i] < 0) {
+                ySpeeds[i] *= -1;
+            }
+        }
+        popMatrix();
+
+        //Circles
+        // pushMatrix();
+        // noStroke();
+        // fill(255);
+        // circle(x, y, 50);
+       
+        // x = x + xSpeed;
+        // y = y + ySpeed;
+
+        // if(x >= width || x <= 0){
+
+        //      xSpeeds = xSpeed * -1;
+        // }
+        // if(y >= width || y <= 0){
+
+        //     ySpeeds =  ySpeed * -1;
+        // }
+        // popMatrix();
+
+        pushMatrix();
+        
+        // Draw the shape if it's not null
+        if (p != null) {
+            p.display(e);
+        }
+        popMatrix();
+
+        // Draw clouds
+        pushMatrix();
+        translate(e.width / 2, e.height / 2);
+        for (int i = 0; i < cloudNumber; i++) {
+            // Update the x-coordinate of each cloud
+            clouds[i].move(cloudSpeed);
+            // Draw the cloud at its updated position
+            clouds[i].display(e);
+        }
+        popMatrix();
+
+        pushMatrix();
+        translate(e.width / 5, e.height / 3);
+        for (int i = 0; i < cloudNumber; i++) {
+            // Update the x-coordinate of each cloud
+            clouds[i].move(cloudSpeed);
+            // Draw the cloud at its updated position
+            clouds[i].display(e);
+        }
+        popMatrix();
+
+      
+    }
+
+    interface Shape {
+        // Define methods for both Ring and Cross here
+        void display(PApplet e);
+    }
+
+    class Ring implements Shape {
+        float x, y;
+        float radius;
+        float a,b;
+
+        Ring(float x, float y, float radius, float a, float b){
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.a = a;
+            this.b = b;
+
+        }
+        public void display(PApplet e) {
+            fill(255);
+            //e.calculateAverageAmplitude();
+            ellipse(x - 20, y, a, b);
+            ellipse(x + 20, y, a, b);
+            ellipse(x, y - 10, a, b);
+            //e.noStroke();
+        }
+    }
+
+    class Cross implements Shape {
+        float x, y;
+        float radius;
+        float a,b;
+
+        Cross(float x, float y, float radius, float a, float b){
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.a = a;
+            this.b = b;
+        }
+
+        public void display(PApplet e) {
+            fill(255);
+            line(x - 20, y, x + 20, y);
+            line(x, y - 20, x, y + 20);
+        }
+    }
+
+    // Inner class to represent a cloud
+    class Cloud {
+        float x, y; // Position of the cloud
+        float radius; // Size of the cloud
+        float a, b; // Shape parameters for the cloud
+        int cloudColor; // Color of the cloud
+
+        Cloud(float x, float y, float radius, float a, float b, int cloudColor) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.a = a;
+            this.b = b;
+            this.cloudColor = cloudColor; // Assign color to the cloud
+        }
+
+        // Method to move the cloud
+        void move(float cloudSpeed) {
+            x += cloudSpeed; // Move the cloud horizontally
+            if (x > width + radius) {
+                x = -radius;
+                y = random(height);
+            }
+        }
+
+        // Method to display the cloud
+        void display(CallSet e) {
+            fill(cloudColor);
+            noStroke();
+            //e.calculateAverageAmplitude();
+            ellipse(x - 20, y, a, b);
+            ellipse(x + 20, y, a, b);
+            ellipse(x, y - 10, a, b);
+            
+            //e.noStroke();
         }
     }
 }
