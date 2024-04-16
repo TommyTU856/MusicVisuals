@@ -7,6 +7,7 @@ public class CallSet extends Visual {
     public void settings()
     {
         size(1500, 1000, P3D);
+        //fullScreen(1);
         
         println("CWD: " + System.getProperty("user.dir"));
     }
@@ -76,6 +77,8 @@ public class CallSet extends Visual {
         } else {
             System.out.println("Unsupported operating system");
         }
+
+        
 
         //getAudioPlayer().setGain(-25);
     }

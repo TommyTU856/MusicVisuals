@@ -1,21 +1,38 @@
 package C22737179;
 import ie.tudublin.*;
+import processing.core.PImage;
 
 public class EllipseDrawer extends Visual {
     private EllipseProperties properties;
     private float smoothedEllipseSize = 0;
     //private float previousVolume = 10;
     private float strokeWeightMapped;
+    private int startTime;
+   
 
     public EllipseDrawer(EllipseProperties properties) {
         this.properties = properties;
+        startTime = millis(); 
+        
     }
+
+    public void setup() {
+        size(1020, 683); // Set the canvas size
+        
+       
+        
+    }
+
+    
 
     
   
     //float hueOffset = 0;
     
     public void draw(CallSet e) {
+        
+
+    
         e.calculateAverageAmplitude();
         
 
@@ -37,6 +54,14 @@ public class EllipseDrawer extends Visual {
             e.stroke(map(a, 0, 360, 0, 255), 255, 255);
             strokeWeightMapped = map(e.getAmplitude(), 0, 1, 1, 5);
             e.strokeWeight(strokeWeightMapped * 2);
+
+            //int elapsedTime = millis() - startTime;
+
+            // Check if 10 seconds have passed
+           // if (elapsedTime >= 10000) {
+                //e.strokeWeight(strokeWeightMapped*4);
+            // Perform changes here after 10 seconds
+          // }
 
             e.line(properties.x * sin(radians(properties.angle)), 0, 0, properties.y);
             e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), 0, 5, 5);
