@@ -14,7 +14,7 @@ public class BasakVisuals extends Visual {
     CandleSticks candleSticks;
 
 
-    //PImage backgroundImage; // Declare a variable to hold the background image
+    PImage backgroundImage; // Declare a variable to hold the background image
 
    
 
@@ -45,14 +45,14 @@ public class BasakVisuals extends Visual {
        
         this.g = e.getGraphics();
         //background(0);
-        //backgroundImage.resize(g.width/2, g.height/2);
-        //background(backgroundImage);
+        e.backgroundImage.resize(g.width, g.height);
+        e.background(e.backgroundImage);
 
         //image(backgroundImage, 0, 0);
         //print(backgroundImage);
         //System.out.println("Image width: " + backgroundImage.width);
         //System.out.println("Image height: " + backgroundImage.height);
-        translate(g.width/2,g.height/2+50);
+        translate(g.width/2,g.height/2);
 
         colorMode(HSB);
         //candleSticks.draw(e);

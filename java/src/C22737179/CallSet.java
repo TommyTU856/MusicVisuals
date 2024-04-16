@@ -2,6 +2,7 @@ package C22737179;
 
 import ie.tudublin.Visual;
 import processing.core.PShape;
+import processing.core.PImage;
 
 public class CallSet extends Visual {
     
@@ -19,6 +20,7 @@ public class CallSet extends Visual {
     PShape rooster;
     PShape cloud;
     PShape mountainClouds;
+    PImage backgroundImage;
 
     public void keyPressed()
     {
@@ -85,6 +87,7 @@ public class CallSet extends Visual {
         }
 
         rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
+        backgroundImage = loadImage("sky.jpg");
 
         
         //getAudioPlayer().setGain(-25);
@@ -101,9 +104,9 @@ public class CallSet extends Visual {
 
     public void draw()
     {
-        Tommy.draw(this);
+        //Tommy.draw(this);
         //Aniket.draw(this);
-        //Basak.draw(this);
+        Basak.draw(this);
         //Aaron.draw(this);
     }
 

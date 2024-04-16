@@ -103,7 +103,7 @@ public class EllipseDrawer extends Visual {
 
             e.popMatrix();
 
-            println(getAmplitude());
+            //println(getAmplitude());
         }
 
         properties.angle += 1;
