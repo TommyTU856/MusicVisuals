@@ -43,7 +43,9 @@ public class AaronVisuals extends Visual {
     int cloudNumber = 40;
     Cloud[] clouds;
     float cloudSpeed = 1.5f;
-    String[] words = {"Clouds", "World", "Fluffy", "Little", "Cloud", "Everwhere", "Floating", "And", "skies", "always", "little", "fluffy", "clouds", "They", "were", "long", "clear"};
+    String[] words = {"Clouds", "World", "Fluffy", "Little", "Cloud", "Everwhere", "Floating", "And", "skies", "always", "little",
+     "fluffy", "clouds", "They", "were", "long", "clear","Over the past few years","What were the skies like when you were young?",
+     "And, er, when it would rain it would all turn, it, they were beautiful","They went on forever and they, when I, we lived in Arizona"};
     int numWords = words.length;
     float[] xPositions, yPositions;
     float[] xSpeeds, ySpeeds;
@@ -60,6 +62,24 @@ public class AaronVisuals extends Visual {
     PShape mountainClouds;
     PImage img; // Declare a variable to hold the background image
     int OFF_MAX = 300;
+
+    String[][] lyrics = {
+        {"Over the past few years"},
+        {"To the traditional sounds of the English summer"},
+        {"The drone of lawnmowers"},
+        {"The smack of leather on willow"},
+        {"Has been added a new noise"},
+        {"What were the skies like when you were young?"},
+        {"They went on forever and they, when I, we lived in Arizona"},
+        {"And the skies always had little fluffy clouds in them and, er"},
+        {"They were long and clear and"},
+        {"There were lots of stars at night"},
+        {"And, er, when it would rain it would all turn, it, they were beautiful"},
+        {"The most beautiful skies, as a matter of fact"},
+        {"Uh, the sunsets were"},
+        {"Purple and red and yellow and on fire"},
+        {"And the clouds would catch the colors everywhere"}
+    };
 
 
     public void mountainClouds(CallSet e) {
@@ -194,7 +214,7 @@ public class AaronVisuals extends Visual {
         mountainClouds(e);
 
         colorMode(RGB);
-        e.background(colorChange += (30 * getSmoothedAmplitude()),0,0);
+        e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
         shapeColor = color(random(255), random(255), random(255));
         stroke(255);
         fill(200); // Set fill color to light gray
@@ -220,10 +240,33 @@ public class AaronVisuals extends Visual {
           }
         }
 
+
+        // pushMatrix();
+        // translate(width / 2, height / 2); // Center the text
+        // textAlign(100);
+        // textSize(34);
+        // for (int i = 0; i < lyrics.length; i++) {
+        //     for (int j = 0; j < lyrics[i].length; j++) {
+        //         String line = lyrics[i][j];
+        //         for (int k = 0; k < line.length(); k++) {
+        //             char character = line.charAt(k);
+        //             text(character, 0, i * 30); // Adjust position and spacing as needed
+        //             // Increment the x-coordinate for the next character
+        //             translate(textWidth(character), 0);
+        //         }
+        //         // Move to the next line
+        //         translate(-textWidth(line), 30);
+        //     }
+        // }
+        // popMatrix();
+
+
         // Draw rain
         pushMatrix();
         rain(e);
         popMatrix();
+
+
 
 
         pushMatrix();
@@ -249,7 +292,7 @@ public class AaronVisuals extends Visual {
             float angle1 = radians(45);
             translate(100, 180);
             rotate(angle1);
-            textSize(100);
+            textSize(80);
             fill(255);
             text(words[i], xPositions[i], yPositions[i]);
 
@@ -265,12 +308,17 @@ public class AaronVisuals extends Visual {
         }
         popMatrix();
 
+        
+
         // Draw clouds
         pushMatrix();
         translate(e.width / 2, e.height / 2);
         for (int i = 0; i < cloudNumber; i++) {
+            rotate(angle);
+            rotateX(1.0f);
             // Update the x-coordinate of each cloud
             clouds[i].move(cloudSpeed);
+            rotateY(1.0f);
             // Draw the cloud at its updated position
             clouds[i].display(e);
         }
