@@ -87,7 +87,7 @@ public class CallSet extends Visual {
         
         //getAudioPlayer().setGain(-25);
         //cloud = loadShape("cloud1.svg");
-        //mountainClouds = loadShape("java/data/cloudssssssssssssssss13.obj");
+        //mountainClouds = loadShape("cloudssssssssssssssss13.obj");
         
     }
 
@@ -99,10 +99,10 @@ public class CallSet extends Visual {
 
     public void draw()
     {
-        Tommy.draw(this);
+        //Tommy.draw(this);
         //Aniket.draw(this);
         //Basak.draw(this);
-        //Aaron.draw(this);
+        Aaron.draw(this);
     }
 
 }
