@@ -4,6 +4,7 @@ import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
+import ddf.minim.analysis.FFT;
 import ie.tudublin.Visual;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -15,6 +16,8 @@ import processing.core.PGraphics; // Import the PGraphics class
 
 
 public class AaronVisuals extends Visual {
+
+    
 
     // Declare variables and objects
     DrawGrid grid;
@@ -46,18 +49,25 @@ public class AaronVisuals extends Visual {
     int outside = color(153, 51, 0);
     float xSpeed = 7;
     float ySpeed = 7;
-    Shape p;
+    //Shape p;
     int cloudColor;
     PShape mountainClouds;
+    PImage img; // Declare a variable to hold the background image
+    int OFF_MAX = 300;
+
+    
+    
+    
     
     
 
     public void mountainClouds(CallSet e) {
-        pushMatrix();
-        
+        pushMatrix();    
         shape(e.mountainClouds);
         popMatrix();
     }
+
+
 
     // Constructor
     public AaronVisuals() {
@@ -66,12 +76,13 @@ public class AaronVisuals extends Visual {
         grid = new DrawGrid(this);
         Word word1 = new Word("example");
         Follow follow = new Follow("followingWord");
-        
+ 
         word1.follows.add(follow);
-        
-
-       
+          
         getSmoothedAmplitude();
+
+        
+	    
         
         
         // Initialize clouds
@@ -170,29 +181,46 @@ public class AaronVisuals extends Visual {
         popMatrix();
     }
 
-    public void mouseDragged(){
-       
-
-        if(random(1)<0.5){
-            p = new Ring(mouseX, mouseY, (random(10, 50)), (random(10, 100)), (random(10, 100)));
-        }else{
-            p = new Cross(mouseX, mouseY, (random(10, 50)), random(10, 100),(random(10, 100)));
-        }
-
-    }
+    
 
     // Method to draw all visual elements
     public void draw(CallSet e) {
 
+       
         this.g = e.getGraphics(); // Initialize the "g" variable
-
+        float colorChange = 0;
         mountainClouds(e);
 
         colorMode(RGB);
-        background(100);
+        background(colorChange += (10 * getSmoothedAmplitude()),0,0);
         shapeColor = color(random(255), random(255), random(255));
         stroke(255);
         fill(200); // Set fill color to light gray
+
+        e.background(0);
+        e.translate(e.width / 2, e.height / 2, -OFF_MAX);
+        e.rotateX(e.frameCount * .01f);
+        e.rotateY(e.frameCount * .01f);
+        e.rotateZ(e.frameCount * .01f);
+       
+        for (int xo = -OFF_MAX; xo <= OFF_MAX; xo += 50) {
+            for (int yo = -OFF_MAX; yo <= OFF_MAX; yo += 50) {
+                for (int zo = -OFF_MAX; zo <= OFF_MAX; zo += 50) {
+                    e.pushMatrix();
+                    e.translate(xo, yo, zo);
+                    e.rotateX(e.frameCount * .02f);
+                    e.rotateY(e.frameCount * .02f);
+                    e.rotateZ(e.frameCount * .02f);
+                    e.fill(colorFromOffset(xo), colorFromOffset(yo), colorFromOffset(zo));
+                    e.box((float) (20 + (Math.sin(e.frameCount / 20.0)) * 15));
+                    e.popMatrix();
+                }
+          }
+        }
+
+    
+       
+       
 
 
 
@@ -222,6 +250,9 @@ public class AaronVisuals extends Visual {
         // Draw words
         pushMatrix();
         for (int i = 0; i < numWords; i++) {
+            float angle1 = radians(45);
+            translate(100, 180);
+            rotate(angle1);
             textSize(100);
             fill(255);
             text(words[i], xPositions[i], yPositions[i]);
@@ -237,16 +268,11 @@ public class AaronVisuals extends Visual {
             }
         }
         popMatrix();
+
         
        
 
-        pushMatrix();
-        
-        // Draw the shape if it's not null
-        if (p != null) {
-            p.display(e);
-        }
-        popMatrix();
+       
 
         // Draw clouds
         pushMatrix();
@@ -268,57 +294,41 @@ public class AaronVisuals extends Visual {
             clouds[i].display(e);
         }
         popMatrix();
-
-      
     }
 
-    interface Shape {
-        // Define methods for both Ring and Cross here
-        void display(PApplet e);
-    }
+   
+        // public void display(PApplet e) {
+        //     fill(255);
+        //     //e.calculateAverageAmplitude();
+        //     ellipse(x - 20, y, a, b);
+        //     ellipse(x + 20, y, a, b);
+        //     ellipse(x, y - 10, a, b);
+        //     //e.noStroke();
+        // }
+    
 
-    class Ring implements Shape {
-        float x, y;
-        float radius;
-        float a,b;
+    // class Cross implements Shape {
+    //     float x, y;
+    //     float radius;
+    //     float a,b;
 
-        Ring(float x, float y, float radius, float a, float b){
-            this.x = x;
-            this.y = y;
-            this.radius = radius;
-            this.a = a;
-            this.b = b;
+    //     Cross(float x, float y, float radius, float a, float b){
+    //         this.x = x;
+    //         this.y = y;
+    //         this.radius = radius;
+    //         this.a = a;
+    //         this.b = b;
+    //     }
 
-        }
-        public void display(PApplet e) {
-            fill(255);
-            //e.calculateAverageAmplitude();
-            ellipse(x - 20, y, a, b);
-            ellipse(x + 20, y, a, b);
-            ellipse(x, y - 10, a, b);
-            //e.noStroke();
-        }
-    }
+    //     public void display(PApplet e) {
+    //         fill(255);
+    //         line(x - 20, y, x + 20, y);
+    //         line(x, y - 20, x, y + 20);
+    //     }
+    // }
 
-    class Cross implements Shape {
-        float x, y;
-        float radius;
-        float a,b;
 
-        Cross(float x, float y, float radius, float a, float b){
-            this.x = x;
-            this.y = y;
-            this.radius = radius;
-            this.a = a;
-            this.b = b;
-        }
 
-        public void display(PApplet e) {
-            fill(255);
-            line(x - 20, y, x + 20, y);
-            line(x, y - 20, x, y + 20);
-        }
-    }
 
     // Inner class to represent a cloud
     class Cloud {
@@ -357,4 +367,10 @@ public class AaronVisuals extends Visual {
             //e.noStroke();
         }
     }
+
+    int colorFromOffset(int offset) {
+        return (int) ((offset + OFF_MAX) / (2.0 * OFF_MAX) * 255);
+        }
 }
+
+

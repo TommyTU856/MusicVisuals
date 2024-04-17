@@ -21,6 +21,7 @@ public class CallSet extends Visual {
     PShape cloud;
     PShape mountainClouds;
     PImage backgroundImage;
+    PImage img;
 
     public void keyPressed()
     {
@@ -89,7 +90,7 @@ public class CallSet extends Visual {
         rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
         backgroundImage = loadImage("sky.jpg");
         mountainClouds = loadShape("/Users/aaronbaggot/GroupCA/MusicVisuals/data/cloudssssssssssssssss13.obj");
-        
+        img = loadImage("data/feature_clouds.jpg");
         //getAudioPlayer().setGain(-25);
         //cloud = loadShape("cloud1.svg");
        
