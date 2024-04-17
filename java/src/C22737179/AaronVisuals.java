@@ -48,15 +48,15 @@ public class AaronVisuals extends Visual {
     float ySpeed = 7;
     Shape p;
     int cloudColor;
-    //PShape mountainClouds;
+    PShape mountainClouds;
     
 
-    // public void mountainClouds(CallSet e) {
-    //     pushMatrix();
-    //     mountainClouds = e.loadShape("java/data/cloudssssssssssssssss13.obj");
-    //     shape(e.mountainClouds);
-    //     popMatrix();
-    // }
+    public void mountainClouds(CallSet e) {
+        pushMatrix();
+        
+        shape(e.mountainClouds);
+        popMatrix();
+    }
 
     // Constructor
     public AaronVisuals() {
@@ -67,6 +67,7 @@ public class AaronVisuals extends Visual {
         Follow follow = new Follow("followingWord");
         word1.follows.add(follow);
 
+       
         getSmoothedAmplitude();
         
         
@@ -182,13 +183,17 @@ public class AaronVisuals extends Visual {
 
         this.g = e.getGraphics(); // Initialize the "g" variable
 
-        //shape(mountainClouds);
+        mountainClouds(e);
 
         colorMode(RGB);
         background(100);
         shapeColor = color(random(255), random(255), random(255));
         stroke(255);
         fill(200); // Set fill color to light gray
+
+
+       
+
 
         // Draw rain
         pushMatrix();

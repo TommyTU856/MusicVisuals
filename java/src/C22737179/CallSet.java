@@ -88,11 +88,11 @@ public class CallSet extends Visual {
 
         rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
         backgroundImage = loadImage("sky.jpg");
-
+        mountainClouds = loadShape("/Users/aaronbaggot/GroupCA/MusicVisuals/data/cloudssssssssssssssss13.obj");
         
         //getAudioPlayer().setGain(-25);
         //cloud = loadShape("cloud1.svg");
-        //mountainClouds = loadShape("cloudssssssssssssssss13.obj");
+       
         
     }
 
@@ -106,8 +106,8 @@ public class CallSet extends Visual {
     {
         //Tommy.draw(this);
         //Aniket.draw(this);
-        Basak.draw(this);
-        //Aaron.draw(this);
+        //Basak.draw(this);
+        Aaron.draw(this);
     }
 
 }
