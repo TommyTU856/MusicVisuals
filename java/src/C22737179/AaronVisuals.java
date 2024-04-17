@@ -79,11 +79,7 @@ public class AaronVisuals extends Visual {
  
         word1.follows.add(follow);
           
-        getSmoothedAmplitude();
-
-        
-	    
-        
+        getSmoothedAmplitude(); 
         
         // Initialize clouds
         for (int i = 0; i < cloudNumber; i++) {
@@ -192,12 +188,12 @@ public class AaronVisuals extends Visual {
         mountainClouds(e);
 
         colorMode(RGB);
-        background(colorChange += (10 * getSmoothedAmplitude()),0,0);
+        e.background(colorChange += (10 * getSmoothedAmplitude()),0,0);
         shapeColor = color(random(255), random(255), random(255));
         stroke(255);
         fill(200); // Set fill color to light gray
 
-        e.background(0);
+        //e.background(0);
         e.translate(e.width / 2, e.height / 2, -OFF_MAX);
         e.rotateX(e.frameCount * .01f);
         e.rotateY(e.frameCount * .01f);
@@ -217,12 +213,6 @@ public class AaronVisuals extends Visual {
                 }
           }
         }
-
-    
-       
-       
-
-
 
         // Draw rain
         pushMatrix();
@@ -269,11 +259,6 @@ public class AaronVisuals extends Visual {
         }
         popMatrix();
 
-        
-       
-
-       
-
         // Draw clouds
         pushMatrix();
         translate(e.width / 2, e.height / 2);
@@ -297,39 +282,6 @@ public class AaronVisuals extends Visual {
     }
 
    
-        // public void display(PApplet e) {
-        //     fill(255);
-        //     //e.calculateAverageAmplitude();
-        //     ellipse(x - 20, y, a, b);
-        //     ellipse(x + 20, y, a, b);
-        //     ellipse(x, y - 10, a, b);
-        //     //e.noStroke();
-        // }
-    
-
-    // class Cross implements Shape {
-    //     float x, y;
-    //     float radius;
-    //     float a,b;
-
-    //     Cross(float x, float y, float radius, float a, float b){
-    //         this.x = x;
-    //         this.y = y;
-    //         this.radius = radius;
-    //         this.a = a;
-    //         this.b = b;
-    //     }
-
-    //     public void display(PApplet e) {
-    //         fill(255);
-    //         line(x - 20, y, x + 20, y);
-    //         line(x, y - 20, x, y + 20);
-    //     }
-    // }
-
-
-
-
     // Inner class to represent a cloud
     class Cloud {
         float x, y; // Position of the cloud
@@ -359,12 +311,12 @@ public class AaronVisuals extends Visual {
         void display(CallSet e) {
             fill(cloudColor);
             noStroke();
-            //e.calculateAverageAmplitude();
+            e.calculateAverageAmplitude();
             ellipse(x - 20, y, a, b);
             ellipse(x + 20, y, a, b);
             ellipse(x, y - 10, a, b);
             
-            //e.noStroke();
+            e.noStroke();
         }
     }
 
