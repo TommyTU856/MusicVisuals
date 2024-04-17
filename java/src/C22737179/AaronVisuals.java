@@ -210,21 +210,21 @@ public class AaronVisuals extends Visual {
 
        
         this.g = e.getGraphics(); // Initialize the "g" variable
-        float colorChange = 0;
+        float colorChange = 10;
         mountainClouds(e);
 
         colorMode(RGB);
         e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
         shapeColor = color(random(255), random(255), random(255));
         stroke(255);
-        fill(200); // Set fill color to light gray
+       //fill(200); // Set fill color to light gray
 
         //e.background(0);
         e.translate(e.width / 2, e.height / 2, -OFF_MAX);
         e.rotateX(e.frameCount * .01f);
         e.rotateY(e.frameCount * .01f);
         e.rotateZ(e.frameCount * .01f);
-       
+        
         for (int xo = -OFF_MAX; xo <= OFF_MAX; xo += 50) {
             for (int yo = -OFF_MAX; yo <= OFF_MAX; yo += 50) {
                 for (int zo = -OFF_MAX; zo <= OFF_MAX; zo += 50) {
@@ -283,6 +283,7 @@ public class AaronVisuals extends Visual {
         for (int i = 0; i < word1.follows.size(); i++) {
             Follow follow = word1.follows.get(i);
             text(follow.getWord(), 100, 120 + i * 20); // Adjust y-position to avoid overlap
+            lerp(10,20,5);
         }
         popMatrix();
 
@@ -314,8 +315,8 @@ public class AaronVisuals extends Visual {
         pushMatrix();
         translate(e.width / 2, e.height / 2);
         for (int i = 0; i < cloudNumber; i++) {
-            rotate(angle);
-            rotateX(1.0f);
+            rotate(20);
+            rotateX(0.5f);
             // Update the x-coordinate of each cloud
             clouds[i].move(cloudSpeed);
             rotateY(1.0f);
@@ -323,9 +324,10 @@ public class AaronVisuals extends Visual {
             clouds[i].display(e);
         }
         popMatrix();
-
+        e.calculateAverageAmplitude();
         pushMatrix();
         translate(e.width / 5, e.height / 3);
+        
         for (int i = 0; i < cloudNumber; i++) {
             // Update the x-coordinate of each cloud
             clouds[i].move(cloudSpeed);
@@ -354,6 +356,7 @@ public class AaronVisuals extends Visual {
 
         // Method to move the cloud
         void move(float cloudSpeed) {
+           
             x += cloudSpeed; // Move the cloud horizontally
             if (x > width + radius) {
                 x = -radius;
