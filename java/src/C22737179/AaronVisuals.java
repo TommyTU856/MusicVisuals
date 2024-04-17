@@ -17,9 +17,15 @@ import processing.core.PGraphics; // Import the PGraphics class
 
 public class AaronVisuals extends Visual {
 
+
     
 
     // Declare variables and objects
+
+    Minim minim;
+    AudioInput in;
+    FFT fft;
+
     DrawGrid grid;
     Fade fade;
     float angle = 0.5f;
@@ -55,11 +61,6 @@ public class AaronVisuals extends Visual {
     PImage img; // Declare a variable to hold the background image
     int OFF_MAX = 300;
 
-    
-    
-    
-    
-    
 
     public void mountainClouds(CallSet e) {
         pushMatrix();    
@@ -67,10 +68,14 @@ public class AaronVisuals extends Visual {
         popMatrix();
     }
 
-
-
     // Constructor
     public AaronVisuals() {
+
+
+        minim = new Minim(this);
+        in = minim.getLineIn();
+        fft = new FFT(in.bufferSize(), in.sampleRate());
+
         // Initialize variables and objects
         clouds = new Cloud[cloudNumber];
         grid = new DrawGrid(this);
@@ -155,9 +160,9 @@ public class AaronVisuals extends Visual {
         noStroke();
         fill(200);
 
-        ellipse(x - 20, y, c, d); // Adjusting the x-coordinate to center the cloud
-        ellipse(x + 20, y, c, d); // Adjusting the x-coordinate to center the cloud
-        ellipse(x, y - 10, c, d); // Adjusting the y-coordinate to slightly raise the cloud
+        ellipse(50 - 20, 100, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(20 + 20, 120, c, d); // Adjusting the x-coordinate to center the cloud
+        ellipse(10, y - 10, c, d); // Adjusting the y-coordinate to slightly raise the cloud
 
         ellipse(x - 150, y, c, d); // Adjusting the x-coordinate to center the cloud
         ellipse(x + 150, y, c, d); // Adjusting the x-coordinate to center the cloud
@@ -175,12 +180,13 @@ public class AaronVisuals extends Visual {
         ellipse(x + 10, y, c, d); // Adjusting the x-coordinate to center the cloud
         ellipse(x, y - 50, c, d); // Adjusting the y-coordinate to slightly raise the cloud
         popMatrix();
-    }
-
-    
+    } 
 
     // Method to draw all visual elements
     public void draw(CallSet e) {
+
+        // Perform FFT analysis
+        fft.forward(in.mix);
 
        
         this.g = e.getGraphics(); // Initialize the "g" variable
@@ -188,7 +194,7 @@ public class AaronVisuals extends Visual {
         mountainClouds(e);
 
         colorMode(RGB);
-        e.background(colorChange += (10 * getSmoothedAmplitude()),0,0);
+        e.background(colorChange += (30 * getSmoothedAmplitude()),0,0);
         shapeColor = color(random(255), random(255), random(255));
         stroke(255);
         fill(200); // Set fill color to light gray
