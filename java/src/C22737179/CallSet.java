@@ -2,12 +2,15 @@ package C22737179;
 
 import ie.tudublin.Visual;
 import processing.core.PShape;
+import processing.core.PImage;
 
 public class CallSet extends Visual {
     
     public void settings()
     {
         size(1500, 950, P3D);
+        
+        //fullScreen(1);
         
         println("CWD: " + System.getProperty("user.dir"));
     }
@@ -17,6 +20,7 @@ public class CallSet extends Visual {
     PShape rooster;
     PShape cloud;
     PShape mountainClouds;
+    PImage backgroundImage;
 
     public void keyPressed()
     {
@@ -83,6 +87,7 @@ public class CallSet extends Visual {
         }
 
         rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
+        backgroundImage = loadImage("sky.jpg");
 
         
         //getAudioPlayer().setGain(-25);
@@ -101,8 +106,8 @@ public class CallSet extends Visual {
     {
         //Tommy.draw(this);
         //Aniket.draw(this);
-        //Basak.draw(this);
-        Aaron.draw(this);
+        Basak.draw(this);
+        //Aaron.draw(this);
     }
 
 }
