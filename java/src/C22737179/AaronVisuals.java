@@ -69,6 +69,7 @@ public class AaronVisuals extends Visual {
 
         getSmoothedAmplitude();
         
+        
         // Initialize clouds
         for (int i = 0; i < cloudNumber; i++) {
             float a = random(20, 80);
@@ -197,8 +198,8 @@ public class AaronVisuals extends Visual {
 
         pushMatrix();
         // Example usage of Word and Follow classes
-        Word word1 = new Word("example");
-        Follow follow1 = new Follow("followingWord");
+        Word word1 = new Word("LITTLE FLUFFY CLOUDS");
+        Follow follow1 = new Follow("\n\n\nLIVE LIFE ");
         word1.follows.add(follow1);
 
         // Draw the word
@@ -230,7 +231,7 @@ public class AaronVisuals extends Visual {
             }
         }
         popMatrix();
-
+        
         //Circles
         // pushMatrix();
         // noStroke();
