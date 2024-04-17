@@ -50,6 +50,7 @@ public class AaronVisuals extends Visual {
     int cloudColor;
     PShape mountainClouds;
     
+    
 
     public void mountainClouds(CallSet e) {
         pushMatrix();
@@ -65,7 +66,9 @@ public class AaronVisuals extends Visual {
         grid = new DrawGrid(this);
         Word word1 = new Word("example");
         Follow follow = new Follow("followingWord");
+        
         word1.follows.add(follow);
+        
 
        
         getSmoothedAmplitude();
@@ -192,8 +195,6 @@ public class AaronVisuals extends Visual {
         fill(200); // Set fill color to light gray
 
 
-       
-
 
         // Draw rain
         pushMatrix();
@@ -237,24 +238,7 @@ public class AaronVisuals extends Visual {
         }
         popMatrix();
         
-        //Circles
-        // pushMatrix();
-        // noStroke();
-        // fill(255);
-        // circle(x, y, 50);
        
-        // x = x + xSpeed;
-        // y = y + ySpeed;
-
-        // if(x >= width || x <= 0){
-
-        //      xSpeeds = xSpeed * -1;
-        // }
-        // if(y >= width || y <= 0){
-
-        //     ySpeeds =  ySpeed * -1;
-        // }
-        // popMatrix();
 
         pushMatrix();
         
