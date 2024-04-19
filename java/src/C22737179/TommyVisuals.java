@@ -43,11 +43,19 @@ public class TommyVisuals extends Visual{
     float sphereX1, sphereX2, sphereX3, sphereX4, sphereX5, sphereX6;
     float sphereY1, sphereY2, sphereY3, sphereY4, sphereY5, sphereY6;
 
+    Lollipop[] lollipops;
+    int numLollipops = 100;
+
     public TommyVisuals() {  
         lyrics1 = new Lyrics();
         lyrics2 = new Lyrics();
         hyperCube = new HyperCube();
         drawSphere = new DrawSphere();
+
+        lollipops = new Lollipop[numLollipops];
+        for (int i = 0; i < numLollipops; i++) {
+            lollipops[i] = new Lollipop(i);
+        }
     } 
 
     public void cloud(CallSet e, float cloudX, float cloudY) {
@@ -113,7 +121,7 @@ public class TommyVisuals extends Visual{
         e.calculateAverageAmplitude();
         
 
-        responsiveShape = new ResponsiveShape();
+        /* responsiveShape = new ResponsiveShape();
         
         e.pushMatrix();
         e.translate(e.width / 2, e.height / 2);
@@ -138,7 +146,7 @@ public class TommyVisuals extends Visual{
 
         rotZ += .001;
         rotY += .001;
-        rotX += .001;
+        rotX += .001; */
 
 //                          ------------START OF TIMED CODE--------------
 
@@ -401,7 +409,7 @@ public class TommyVisuals extends Visual{
         }
 
 
-        if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 92000 && e.paused == false) {
+        if(e.getAudioPlayer().position() > 83800  && e.getAudioPlayer().position() < 92000 && e.paused == false) {
 
 
             e.pushMatrix();
@@ -435,7 +443,18 @@ public class TommyVisuals extends Visual{
  
         } */
 
-        if(e.getAudioPlayer().position() > 92000 && e.getAudioPlayer().position() < 920000 && e.paused == false) {
+        if(e.getAudioPlayer().position() > 1 && e.paused == false) {
+
+            e.translate(e.width/2, e.height/2);
+        
+            for(int i = 0; i < numLollipops; i++) {
+                e.pushMatrix();
+                lollipops[i].display(e);
+                lollipops[i].update(); 
+                e.popMatrix();       
+            }
+
+
 
         }
 
