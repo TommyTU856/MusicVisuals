@@ -454,12 +454,38 @@ public class TommyVisuals extends Visual{
                 e.popMatrix();       
             }
 
+            /* e.pushMatrix();
+            e.translate(-4, 0);
+            cubeAngleY = e.frameCount * 0.01f;
+            cubeAngleZ = e.frameCount * 0.01f; 
+            //e.rotateZ(cubeAngleZ);
+            totalRotationZ += cubeAngleZ;
+            //e.rotateY(cubeAngleY);
+            //e.rotateZ(PI / 4);
+            //e.rotateY(cubeAngleY);
+            e.stroke(0, 0, 100);
+            //e.stroke(240, 100, 50);
+            hyperCube.render(e);
+            e.popMatrix();
 
+
+            e.pushMatrix();
+            e.translate(4, -8);
+            cubeAngleY = e.frameCount * 0.01f;
+            cubeAngleZ = e.frameCount * 0.01f; 
+            //e.rotateZ(cubeAngleZ);
+            totalRotationZ += cubeAngleZ;
+            //e.rotateY(cubeAngleY);
+            //e.rotateZ(PI / 4);
+            //e.stroke(0, 100, 50);
+            e.stroke(360, 0, 100);
+            hyperCube.render(e);
+            e.popMatrix(); */
 
         }
 
         //print(e.width, e.height);
-        print(e.getAudioPlayer().position() + "\n");
+        //print(e.getAudioPlayer().position() + "\n");
         //print(e.getSmoothedAmplitude() + "\n");
     }
 
