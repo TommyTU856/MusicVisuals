@@ -4,16 +4,14 @@ import ie.tudublin.*;
 
 public class Lollipop extends Visual {
 
-
     float angle;
     float angleSpeed;
     float radius;
 
-    public Lollipop(int n, float radius){
+    public Lollipop(int n){
         this.angle = 0;
         this.angleSpeed = 0.01f + n * 0.001f;
         this.radius = 30 + n * 6;
-        
     }
 
     void update() {
@@ -24,7 +22,7 @@ public class Lollipop extends Visual {
         
         e.lights();
         e.calculateAverageAmplitude();
-        e.stroke(map(e.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+        //e.stroke(map(e.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
 
         float x = radius * cos(angle);
         float y = radius * sin(angle);
