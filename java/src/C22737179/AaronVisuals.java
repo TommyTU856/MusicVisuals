@@ -17,9 +17,6 @@ import processing.core.PGraphics; // Import the PGraphics class
 
 public class AaronVisuals extends Visual {
 
-
-    
-
     // Declare variables and objects
 
     Minim minim;
@@ -63,6 +60,10 @@ public class AaronVisuals extends Visual {
     PImage img; // Declare a variable to hold the background image
     int OFF_MAX = 300;
 
+    int currentImageIndex = 0; // Index to keep track of the current image or visual element
+    int frameCountThreshold = 60 * 10; // Change the image every 10 seconds (60 frames per second)
+    VisualElement[] visualElements = new VisualElement[] { this::circles, this::rain, this::mountainClouds }; // Define your visual elements
+
     String[][] lyrics = {
         {"Over the past few years"},
         {"To the traditional sounds of the English summer"},
@@ -81,8 +82,14 @@ public class AaronVisuals extends Visual {
         {"And the clouds would catch the colors everywhere"}
     };
 
+    // Functional interface for visual elements
+    interface VisualElement {
+        void draw(CallSet e);
+    }
+
 
     public void mountainClouds(CallSet e) {
+        e.calculateAverageAmplitude();
         pushMatrix();    
         shape(e.mountainClouds);
         popMatrix();
@@ -101,11 +108,10 @@ public class AaronVisuals extends Visual {
         grid = new DrawGrid(this);
         Word word1 = new Word("example");
         Follow follow = new Follow("followingWord");
- 
         word1.follows.add(follow);
           
-        getSmoothedAmplitude(); 
         
+       
         // Initialize clouds
         for (int i = 0; i < cloudNumber; i++) {
             float a = random(20, 80);
@@ -142,6 +148,7 @@ public class AaronVisuals extends Visual {
 
     // Method to simulate rain
     public void rain(CallSet e) {
+        e.calculateAverageAmplitude();
 
         translate(0, e.height);
         d = new Drop[100];
@@ -156,8 +163,20 @@ public class AaronVisuals extends Visual {
         }
     }
 
+    public void circles(CallSet e){
+        float x = random(width);
+        float y = random(height);
+        for (float ring = 150; ring >= 0; ring -= random(2, 10)) {
+            //rotate(angle * 145);
+            fill(random(256), random(256), random(256));
+            translate(e.width / 6, e.height / 3);
+            ellipse(x, y, ring, ring);
+          }
+    }
+
     // Method to show a line
     public void show(CallSet e) {
+        e.calculateAverageAmplitude();
         float t = map(z, 0, 5, 10, 2);
         e.strokeWeight(t);
         line(x, y, x, y + t * 2);
@@ -165,6 +184,7 @@ public class AaronVisuals extends Visual {
 
     // Method to update the line position
     public void update(CallSet e) {
+        e.calculateAverageAmplitude();
         y = y + 4;
 
         if (y > e.height + 10) {
@@ -175,6 +195,8 @@ public class AaronVisuals extends Visual {
 
     // Method to draw a cloud shape
     void cloudObject(float a, float b, float c, float d) {
+        calculateAverageAmplitude();
+        stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
         pushMatrix();
         
         noStroke();
@@ -204,6 +226,7 @@ public class AaronVisuals extends Visual {
 
     // Method to draw all visual elements
     public void draw(CallSet e) {
+        e.calculateAverageAmplitude();
 
         // Perform FFT analysis
         fft.forward(in.mix);
@@ -219,26 +242,82 @@ public class AaronVisuals extends Visual {
         stroke(255);
        //fill(200); // Set fill color to light gray
 
+        // Check if it's time to switch to the next image
+        if (e.frameCount % frameCountThreshold == 0) {
+            // Increment the current image index
+            currentImageIndex++;
+            // Reset the index if it exceeds the number of images
+            if (currentImageIndex >= visualElements.length) {
+                currentImageIndex = 0;
+            }
+        }
+
+        // Draw the current visual element
+        visualElements[currentImageIndex].draw(e);
+
         //e.background(0);
         e.translate(e.width / 2, e.height / 2, -OFF_MAX);
+        pushMatrix();
+        stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
         e.rotateX(e.frameCount * .01f);
         e.rotateY(e.frameCount * .01f);
         e.rotateZ(e.frameCount * .01f);
         
+        //float boxSize = 50 + (getAmplitude() * 300);//map(average, 0, 1, 100, 400); 
+        //frameCount = (int) lerp(frameCount, boxSize, 0.2f);       
         for (int xo = -OFF_MAX; xo <= OFF_MAX; xo += 50) {
             for (int yo = -OFF_MAX; yo <= OFF_MAX; yo += 50) {
                 for (int zo = -OFF_MAX; zo <= OFF_MAX; zo += 50) {
                     e.pushMatrix();
                     e.translate(xo, yo, zo);
+                    e.box(frameCount);
                     e.rotateX(e.frameCount * .02f);
                     e.rotateY(e.frameCount * .02f);
                     e.rotateZ(e.frameCount * .02f);
                     e.fill(colorFromOffset(xo), colorFromOffset(yo), colorFromOffset(zo));
                     e.box((float) (20 + (Math.sin(e.frameCount / 20.0)) * 15));
                     e.popMatrix();
+
+
+                    
                 }
+                // pushMatrix();
+                    
+                //     translate(xo, yo, 0);
+                //     rotateY(angle);
+                //     rotateX(angle);
+                //     e.rotateX(e.frameCount * .01f);
+                //     e.rotateY(e.frameCount * .01f);
+                //     e.rotateZ(e.frameCount * .01f);
+                //     e.translate(100, 100, 50);
+                //     e.fill(colorFromOffset(xo), colorFromOffset(yo), colorFromOffset(xo));
+                //     e.box((float) (10 + (Math.sin(e.frameCount / 10.0)) * 15));
+                //     strokeWeight(5); 
+                //     box(e.frameCount);
+                //     popMatrix();
+               
           }
+
+                    
+          
         }
+        popMatrix();
+
+        pushMatrix();
+        int cols = mouseX;
+                noStroke();
+                
+                float x = random(width);
+                float y = random(height);
+                
+                for (float size = random(25, 100); size >= 0; size -= random(2, 10)) {
+                    fill(random(345), random(358), random(360));
+                    ellipse(x, y, size, size);
+                }
+        popMatrix();
+
+       
+
 
 
         // pushMatrix();
@@ -266,6 +345,11 @@ public class AaronVisuals extends Visual {
         rain(e);
         popMatrix();
 
+        pushMatrix();
+        
+        circles(e);
+        
+        popMatrix();
 
 
 
@@ -283,14 +367,14 @@ public class AaronVisuals extends Visual {
         for (int i = 0; i < word1.follows.size(); i++) {
             Follow follow = word1.follows.get(i);
             text(follow.getWord(), 100, 120 + i * 20); // Adjust y-position to avoid overlap
-            lerp(10,20,5);
+            //lerp(10,20,5);
         }
         popMatrix();
 
         // Draw words
         pushMatrix();
         for (int i = 0; i < numWords; i++) {
-            float angle1 = radians(45);
+            float angle1 = radians(100);
             translate(100, 180);
             rotate(angle1);
             textSize(80);

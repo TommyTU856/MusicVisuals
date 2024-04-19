@@ -101,7 +101,7 @@ public class CallSet extends Visual {
     AniketVisuals Aniket = new AniketVisuals();
     BasakVisuals Basak = new BasakVisuals();
     TommyVisuals Tommy = new TommyVisuals();
-    //AaronVisuals_2 AaronNew = new AaronVisuals_2();
+    
     
 
     public void draw()
@@ -110,7 +110,7 @@ public class CallSet extends Visual {
         //Aniket.draw(this);
         //Basak.draw(this);
         Aaron.draw(this);
-        //AaronNew.draw(this);
+        
     }
 
 }
