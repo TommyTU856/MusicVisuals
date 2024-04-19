@@ -1,5 +1,8 @@
 package C22737179;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import C22737179.AaronVisuals.Cloud;
 import ddf.minim.AudioInput;
 import ddf.minim.Minim;
@@ -177,7 +180,7 @@ public class AaronVisuals extends Visual {
          outside = color(153, 51, 0);
 
          //Initialise visual elements array
-         visualElements = new VisualElement[] {this::rain, this::spiralShape, this::formCloud,this::boxes, this::rain, this::boxes, this::visualCube, this::drawWords, this::mountainClouds, this::circles  }; // Define your visual elements
+         visualElements = new VisualElement[] { this::drawWords, this::rain, this::spiralShape, this::formCloud,this::boxes, this::rain, this::boxes, this::visualCube, this::drawWords, this::mountainClouds, this::circles  }; // Define your visual elements
 
 
     }
@@ -200,7 +203,23 @@ public class AaronVisuals extends Visual {
             // Perform FFT analysis
             fft.forward(in.mix);
     
-           
+            // background(0);
+            // lights();
+            
+            noStroke();
+            pushMatrix();
+            translate(130, height/2, 0);
+            rotateY(1.25f);
+            rotateX(-0.4f);
+            box(100);
+            popMatrix();
+            
+            noFill();
+            stroke(255);
+            pushMatrix();
+            translate(500, height*0.35f, -200);
+            sphere(280);
+            popMatrix();
             
             
             pushMatrix();
@@ -295,12 +314,12 @@ public class AaronVisuals extends Visual {
             //     // Draw the cloud at its updated position
             //     clouds[i].display(e);
             // }
-            // popMatrix();
-
-
-
-           
+            // popMatrix();   
         }
+
+
+
+        
 
         public void spiralShape(CallSet e) {
             int num = 40;
@@ -384,11 +403,12 @@ public class AaronVisuals extends Visual {
         pushMatrix();
         for (int i = 0; i < numWords; i++) {
             float angle1 = radians(100);
-            translate(100, 180);
-            rotate(angle1);
-            textSize(80);
-            fill(255);
-            text(words[i], xPositions[i], yPositions[i]);
+            e.translate(100, 180);
+            e.rotate(angle1);
+        
+            e.textSize(80);
+            e.fill(255);
+            e.text(words[i], xPositions[i], yPositions[i]);
 
             xPositions[i] += xSpeeds[i];
             yPositions[i] += ySpeeds[i];
@@ -427,63 +447,63 @@ public class AaronVisuals extends Visual {
     //Method to simulate Boxes
     public void boxes(CallSet e){
 
-        // e.pushMatrix();
-        //     e.translate(e.random(e.width), e.random(e.height)); 
-        //     e.rotateX(e.frameCount * 0.06f);
-        //     e.rotateY(e.frameCount * 0.06f);
-        //     e.rotateZ(e.frameCount * 0.06f);
-        //     float boxSize = 6 + (e.sin(e.frameCount / 0.07f) * 0.02f);
-        //     float r = e.random(255);
-        //     float g = e.random(255);
-        //     float b = e.random(255);
-        //     e.fill(r, g, b);
-        //     e.box(boxSize);
-
-        //     e.translate(100, 100, 50);
-        //     boxSize = 2 + (e.sin(e.frameCount / 0.05f) * 0.01f);
-        //     r = e.random(255);
-        //     g = e.random(255);
-        //     b = e.random(255);
-        //     e.fill(r, g, b);
-        //     e.box(boxSize);
-
-        //     boxSize = 8 + (e.sin(e.frameCount / 0.09f) * 0.05f);
-        //     r = e.random(255);
-        //     g = e.random(255);
-        //     b = e.random(255);
-        //     e.fill(r, g, b);
-        //     e.box(boxSize);
-
-        //     e.strokeWeight(2); 
-        //     e.box(e.frameCount);
-        //     e.popMatrix();
-
-            e.pushMatrix(); 
-                
-            e.translate(random(width), random(height)); 
-            //e.rotateY(angle);
-            //e.rotateX(angle);
-            e.rotateX(e.frameCount * .06f);
-            e.box((float) (6 + (Math.sin(e.frameCount / 0.07f)) * .02f));
-            e.rotateY(e.frameCount * .06f);
-            e.box((float) (6 + (Math.sin(e.frameCount / 0.07f)) * .02f));
-            
-            e.translate(100, 100, 50);
-            e.rotateZ(e.frameCount * .06f);
-            e.box((float) (6 + (Math.sin(e.frameCount / 0.07f)) * .02f));
-            
-            // Generate random values for red, green, and blue components
+        e.pushMatrix();
+            e.translate(e.random(e.width), e.random(e.height)); 
+            e.rotateX(e.frameCount * 0.06f);
+            e.rotateY(e.frameCount * 0.06f);
+            e.rotateZ(e.frameCount * 0.06f);
+            float boxSize = 6 + (e.sin(e.frameCount / 0.07f) * 0.02f);
             float r = e.random(255);
             float g = e.random(255);
             float b = e.random(255);
-            
-            e.fill(r,g,b);
-            e.box((float) (2 + (Math.sin(e.frameCount / 0.05f)) * .01f));
-            
-            e.box((float) (8 + (Math.sin(e.frameCount / 0.09f)) * .05f));
+            e.fill(r, g, b);
+            e.box(boxSize);
+
+            e.translate(100, 100, 50);
+            boxSize = 2 + (e.sin(e.frameCount / 0.05f) * 0.01f);
+            r = e.random(255);
+            g = e.random(255);
+            b = e.random(255);
+            e.fill(r, g, b);
+            e.box(boxSize);
+
+            boxSize = 8 + (e.sin(e.frameCount / 0.09f) * 0.05f);
+            r = e.random(255);
+            g = e.random(255);
+            b = e.random(255);
+            e.fill(r, g, b);
+            e.box(boxSize);
+
             e.strokeWeight(2); 
             e.box(e.frameCount);
-        popMatrix();
+            e.popMatrix();
+
+        //     e.pushMatrix(); 
+                
+        //     e.translate(random(width), random(height)); 
+        //     //e.rotateY(angle);
+        //     //e.rotateX(angle);
+        //     e.rotateX(e.frameCount * .06f);
+        //     e.box((float) (6 + (Math.sin(e.frameCount / 0.07f)) * .02f));
+        //     e.rotateY(e.frameCount * .06f);
+        //     e.box((float) (6 + (Math.sin(e.frameCount / 0.07f)) * .02f));
+            
+        //     e.translate(100, 100, 50);
+        //     e.rotateZ(e.frameCount * .06f);
+        //     e.box((float) (6 + (Math.sin(e.frameCount / 0.07f)) * .02f));
+            
+        //     // Generate random values for red, green, and blue components
+        //     float r = e.random(255);
+        //     float g = e.random(255);
+        //     float b = e.random(255);
+            
+        //     e.fill(r,g,b);
+        //     e.box((float) (2 + (Math.sin(e.frameCount / 0.05f)) * .01f));
+            
+        //     e.box((float) (8 + (Math.sin(e.frameCount / 0.09f)) * .05f));
+        //     e.strokeWeight(2); 
+        //     e.box(e.frameCount);
+        // popMatrix();
 
     }
 
@@ -632,6 +652,8 @@ public class AaronVisuals extends Visual {
             }
         }
 
+    
+
         // Method to display the cloud
         void display(CallSet e) {
             //fill(cloudColor);
@@ -649,10 +671,12 @@ public class AaronVisuals extends Visual {
             e.popMatrix();
         }
     }
+    
 
     int colorFromOffset(int offset) {
         return (int) ((offset + OFF_MAX) / (2.0 * OFF_MAX) * 255);
         }
-}
 
 
+    }
+    
