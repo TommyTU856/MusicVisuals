@@ -6,6 +6,7 @@ import ddf.minim.Minim;
 import ddf.minim.analysis.FFT;
 import ie.tudublin.Visual;
 import processing.core.PApplet;
+import processing.core.PFont;
 import processing.core.PImage;
 import processing.core.PShape;
 import processing.core.PVector;
@@ -53,7 +54,7 @@ public class AaronVisuals extends Visual {
     int OFF_MAX = 300;
     
 
-
+    PShape clouds_obj;
     float angle = 0.5f;
     float offset = 0;
     float scalar = 1;
@@ -79,6 +80,8 @@ public class AaronVisuals extends Visual {
     int cloudColor;
     
 
+    final int N_FRAMES = 200;
+    PFont jgs5;
     
     
 
@@ -174,7 +177,7 @@ public class AaronVisuals extends Visual {
          outside = color(153, 51, 0);
 
          //Initialise visual elements array
-         visualElements = new VisualElement[] {this::formCloud, this::boxes, this::visualCube, this::drawWords, this::mountainClouds, this::circles, this::rain,  }; // Define your visual elements
+         visualElements = new VisualElement[] {this::rain, this::spiralShape, this::formCloud,this::boxes, this::rain, this::boxes, this::visualCube, this::drawWords, this::mountainClouds, this::circles  }; // Define your visual elements
 
 
     }
@@ -182,25 +185,29 @@ public class AaronVisuals extends Visual {
 
         // Draw Method
         public void draw(CallSet e) {
-            e.calculateAverageAmplitude();
 
-            
-    
+            this.g = e.getGraphics(); // Initialize the "g" variable
+            float colorChange = 10;
+            e.colorMode(RGB);
+            e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
+            shapeColor = color(random(255), random(255), random(255));
+            e.stroke(255);
+            //e.colorMode(HSB, 360, 100, 100);
+            //e.background(0, 0, 0);
+            e.calculateAverageAmplitude();
+           
+
             // Perform FFT analysis
             fft.forward(in.mix);
     
            
-            this.g = e.getGraphics(); // Initialize the "g" variable
-            float colorChange = 10;
             
-            // pushMatrix();
-            // mountainClouds(e);
-            // popMatrix();
+            
+            pushMatrix();
+            spiralShape(e);
+            popMatrix();
     
-            colorMode(RGB);
-            e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
-            shapeColor = color(random(255), random(255), random(255));
-            stroke(255);
+            
            //fill(200); // Set fill color to light gray
     
             // Check if it's time to switch to the next image
@@ -216,7 +223,9 @@ public class AaronVisuals extends Visual {
             // Draw the current visual element
             visualElements[currentImageIndex].draw(e);
     
-           
+            
+
+            
             // pushMatrix();
             // int cols = mouseX;
             //         noStroke();
@@ -292,6 +301,42 @@ public class AaronVisuals extends Visual {
 
            
         }
+
+        public void spiralShape(CallSet e) {
+            int num = 40;
+            int circles = 20;
+            float theta = 0; // Initialize theta
+            background(20);
+            fill(255, 50);
+            stroke(0, 150);
+            strokeWeight(2);
+            for (int i = 0; i < circles; i++) {
+                spiralShape(e, 180 - i * 5, PI / circles * i);
+            }
+            theta += 0.0523;
+        }
+        
+        void spiralShape(CallSet e, float radius, float offSet) {
+            int num = 40; // Move num variable inside drawWobble
+            float theta = e.frameCount * 0.01f; // Adjust theta calculation
+            beginShape();
+            for (int i = 0; i < num; i++) {
+                float x = (float) (e.width / 2 + cos(TWO_PI / num * i + offSet) * radius * 1.2);
+                float y = e.height / 2 + sin(TWO_PI / num * i + offSet) * radius;
+                float xp = map(sin(theta + (TWO_PI / num * i)), -1, 1, -20, 60);
+                float yp = map(cos(theta + (TWO_PI / num * i) * 2), -1, 1, -30, 0);
+                if (i == 0) {
+                    e.curveVertex(x + xp, y + yp);
+                }
+                e.curveVertex(x + xp, y + yp);
+                if (i == num - 1) {
+                    e.curveVertex(x + xp, y + yp);
+                }
+            }
+            endShape(CLOSE);
+        }
+        
+
 
     public void visualCube(CallSet e){
 
@@ -382,26 +427,73 @@ public class AaronVisuals extends Visual {
     //Method to simulate Boxes
     public void boxes(CallSet e){
 
-        pushMatrix();
-                    
-            translate(x, y, z);
-            rotateY(angle);
-            rotateX(angle);
-            e.rotateX(e.frameCount * .01f);
-            e.rotateY(e.frameCount * .01f);
-            e.rotateZ(e.frameCount * .01f);
+        // e.pushMatrix();
+        //     e.translate(e.random(e.width), e.random(e.height)); 
+        //     e.rotateX(e.frameCount * 0.06f);
+        //     e.rotateY(e.frameCount * 0.06f);
+        //     e.rotateZ(e.frameCount * 0.06f);
+        //     float boxSize = 6 + (e.sin(e.frameCount / 0.07f) * 0.02f);
+        //     float r = e.random(255);
+        //     float g = e.random(255);
+        //     float b = e.random(255);
+        //     e.fill(r, g, b);
+        //     e.box(boxSize);
+
+        //     e.translate(100, 100, 50);
+        //     boxSize = 2 + (e.sin(e.frameCount / 0.05f) * 0.01f);
+        //     r = e.random(255);
+        //     g = e.random(255);
+        //     b = e.random(255);
+        //     e.fill(r, g, b);
+        //     e.box(boxSize);
+
+        //     boxSize = 8 + (e.sin(e.frameCount / 0.09f) * 0.05f);
+        //     r = e.random(255);
+        //     g = e.random(255);
+        //     b = e.random(255);
+        //     e.fill(r, g, b);
+        //     e.box(boxSize);
+
+        //     e.strokeWeight(2); 
+        //     e.box(e.frameCount);
+        //     e.popMatrix();
+
+            e.pushMatrix(); 
+                
+            e.translate(random(width), random(height)); 
+            //e.rotateY(angle);
+            //e.rotateX(angle);
+            e.rotateX(e.frameCount * .06f);
+            e.box((float) (6 + (Math.sin(e.frameCount / 0.07f)) * .02f));
+            e.rotateY(e.frameCount * .06f);
+            e.box((float) (6 + (Math.sin(e.frameCount / 0.07f)) * .02f));
+            
             e.translate(100, 100, 50);
-            e.fill(colorFromOffset((int) x), colorFromOffset((int) y), colorFromOffset((int) z));
-            e.box((float) (10 + (Math.sin(e.frameCount / 10.0)) * 15));
-            strokeWeight(5); 
-            box(e.frameCount);
+            e.rotateZ(e.frameCount * .06f);
+            e.box((float) (6 + (Math.sin(e.frameCount / 0.07f)) * .02f));
+            
+            // Generate random values for red, green, and blue components
+            float r = e.random(255);
+            float g = e.random(255);
+            float b = e.random(255);
+            
+            e.fill(r,g,b);
+            e.box((float) (2 + (Math.sin(e.frameCount / 0.05f)) * .01f));
+            
+            e.box((float) (8 + (Math.sin(e.frameCount / 0.09f)) * .05f));
+            e.strokeWeight(2); 
+            e.box(e.frameCount);
         popMatrix();
 
     }
 
     // Method to simulate rain
     public void rain(CallSet e) {
+
+        e.pushMatrix();
         e.calculateAverageAmplitude();
+
+
 
         translate(0, e.height);
         d = new Drop[100];
@@ -414,6 +506,7 @@ public class AaronVisuals extends Visual {
             d[i].show();
             d[i].update();
         }
+        e.popMatrix();
     }
 
     public void circles(CallSet e){
@@ -428,12 +521,12 @@ public class AaronVisuals extends Visual {
     }
 
     // Method to show a line
-    public void show(CallSet e) {
-        e.calculateAverageAmplitude();
-        float t = map(z, 0, 5, 10, 2);
-        e.strokeWeight(t);
-        line(x, y, x, y + t * 2);
-    }
+    // public void show(CallSet e) {
+    //     e.calculateAverageAmplitude();
+    //     float t = map(z, 0, 5, 10, 2);
+    //     e.strokeWeight(t);
+    //     line(x, y, x, y + t * 2);
+    // }
 
     // Method to update the line position
     public void update(CallSet e) {
@@ -446,12 +539,15 @@ public class AaronVisuals extends Visual {
         }
     }
 
-        // Method to simulate cloud formation
+    // Method to simulate cloud formation
     public void formCloud(CallSet e) {
+
+        e.translate(e.width / 3, e.height / 4);
 
         e.calculateAverageAmplitude();
         pushMatrix();
-        translate(e.width / 5, e.height / 3);
+        e.fill(255);
+        e.translate(e.width  / 10 , e.height / 20);
         
         for (int i = 0; i < cloudNumber; i++) {
             // Update the x-coordinate of each cloud
@@ -462,6 +558,10 @@ public class AaronVisuals extends Visual {
         popMatrix();
         // Incrementally draw cloud-like shapes
         for (int i = 0; i < cloudNumber; i++) {
+
+            x = random(e.width);
+            y = random(e.height);
+
             // Update the transparency or size of each cloud shape
             // This could involve gradually increasing opacity, size, or density
             // Draw cloud shape at updated properties
@@ -469,6 +569,10 @@ public class AaronVisuals extends Visual {
         }
     }
 
+        
+
+
+    
 
     // Method to draw a cloud shape
     public void cloudObject(float a, float b, float c, float d) {
@@ -531,6 +635,10 @@ public class AaronVisuals extends Visual {
         // Method to display the cloud
         void display(CallSet e) {
             //fill(cloudColor);
+
+            e.pushMatrix();
+            e.translate(x,y);
+
             noStroke();
             e.calculateAverageAmplitude();
             ellipse(x - 20, y, a, b);
@@ -538,6 +646,7 @@ public class AaronVisuals extends Visual {
             ellipse(x, y - 10, a, b);
             
             e.noStroke();
+            e.popMatrix();
         }
     }
 

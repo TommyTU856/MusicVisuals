@@ -19,9 +19,11 @@ public class CallSet extends Visual {
     boolean paused = true;
     PShape rooster;
     PShape cloud;
+    PShape clouds_obj;
     PShape mountainClouds;
     PImage backgroundImage;
     PImage img;
+    
 
     public void keyPressed()
     {
@@ -89,7 +91,7 @@ public class CallSet extends Visual {
 
         rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
         backgroundImage = loadImage("sky.jpg");
-        mountainClouds = loadShape("/Users/aaronbaggot/GroupCA/MusicVisuals/data/cloudssssssssssssssss13.obj");
+        clouds_obj = loadShape("../Users/aaronbaggot/GroupCA/MusicVisuals/data/Cloud_Polygon_Blender_1.obj");
         img = loadImage("data/feature_clouds.jpg");
         //getAudioPlayer().setGain(-25);
         //cloud = loadShape("cloud1.svg");
@@ -111,6 +113,11 @@ public class CallSet extends Visual {
         //Basak.draw(this);
         Aaron.draw(this);
         
+    }
+
+    public void creativeTwirl(int i, float f) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'creativeTwirl'");
     }
 
 }
