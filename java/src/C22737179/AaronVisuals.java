@@ -131,8 +131,8 @@ public class AaronVisuals extends Visual {
         clouds = new Cloud[cloudNumber];
         grid = new DrawGrid(this);
         Word word1 = new Word("example");
-        Follow follow = new Follow("followingWord");
-        word1.follows.add(follow);
+        //Follow follow = new Follow("followingWord");
+        //word1.follows.add(follow);
           
         
        
@@ -160,6 +160,7 @@ public class AaronVisuals extends Visual {
             "fluffy", "clouds", "They", "were", "long", "clear","Over the past few years","What were the skies like when you were young?",
             "And, er, when it would rain it would all turn, it, they were beautiful","They went on forever and they, when I, we lived in Arizona"};
         numWords = words.length;
+
         // Initialize arrays for word positions and speeds
         xPositions = new float[numWords];
         yPositions = new float[numWords];
@@ -180,7 +181,7 @@ public class AaronVisuals extends Visual {
          outside = color(153, 51, 0);
 
          //Initialise visual elements array
-         visualElements = new VisualElement[] { this::drawWords, this::rain, this::spiralShape, this::formCloud,this::boxes, this::rain, this::boxes, this::visualCube, this::drawWords, this::mountainClouds, this::circles  }; // Define your visual elements
+         //visualElements = new VisualElement[] { this::drawWords, this::rain, this::spiralShape, this::formCloud,this::boxes, this::rain, this::boxes, this::visualCube, this::drawWords, this::mountainClouds, this::circles  }; // Define your visual elements
 
 
     }
@@ -190,11 +191,15 @@ public class AaronVisuals extends Visual {
         public void draw(CallSet e) {
 
             this.g = e.getGraphics(); // Initialize the "g" variable
+
             float colorChange = 10;
             e.colorMode(RGB);
             e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
             shapeColor = color(random(255), random(255), random(255));
-            e.stroke(255);
+            // e.stroke(255);
+
+
+
             //e.colorMode(HSB, 360, 100, 100);
             //e.background(0, 0, 0);
             e.calculateAverageAmplitude();
@@ -206,41 +211,183 @@ public class AaronVisuals extends Visual {
             // background(0);
             // lights();
             
-            noStroke();
-            pushMatrix();
-            translate(130, height/2, 0);
-            rotateY(1.25f);
-            rotateX(-0.4f);
-            box(100);
-            popMatrix();
+            // noStroke();
+            // pushMatrix();
+            // translate(130, height/2, 0);
+            // rotateY(1.25f);
+            // rotateX(-0.4f);
+            // box(100);
+            // popMatrix();
             
-            noFill();
-            stroke(255);
-            pushMatrix();
-            translate(500, height*0.35f, -200);
-            sphere(280);
-            popMatrix();
+            // noFill();
+            // stroke(255);
+            // pushMatrix();
+            // translate(500, height*0.35f, -200);
+            // sphere(280);
+            // popMatrix();
             
             
-            pushMatrix();
-            spiralShape(e);
-            popMatrix();
+            // pushMatrix();
+            // spiralShape(e);
+            // popMatrix();
     
             
            //fill(200); // Set fill color to light gray
     
             // Check if it's time to switch to the next image
-            if (e.frameCount % frameCountThreshold == 0) {
-                // Increment the current image index
-                currentImageIndex++;
-                // Reset the index if it exceeds the number of images
-                if (currentImageIndex >= visualElements.length) {
-                    currentImageIndex = 0;
-                }
-            }
+            // if (e.frameCount % frameCountThreshold == 0) {
+            //     // Increment the current image index
+            //     currentImageIndex++;
+            //     // Reset the index if it exceeds the number of images
+            //     if (currentImageIndex >= visualElements.length) {
+            //         currentImageIndex = 0;
+            //     }
+            // }
+
+
+        //Audio code 
+        if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 20000 && !e.paused) {
+
+            // Calculate the amplitude of the audio
+            float amplitude = getSmoothedAmplitude();
+            
+            // Map the amplitude to the background color
+            colorChange = map(amplitude, 0, 1, 0, 255);
+            
+            // Set the background color based on the mapped value
+            e.background(colorChange, 0, 255 - colorChange);
+
+            pushMatrix();
+            e.background(colorChange += (255 * getSmoothedAmplitude()),1,0);
+            lyricsStart(e);
+            
+            
+            popMatrix();
+            
+            
+            
+            
+        }
+
+        if(e.getAudioPlayer().position() > 20000 && e.getAudioPlayer().position() < 40000 && !e.paused) {
+            pushMatrix();
+            drawWords(e);
+            e.background(colorChange, 0, 255 - colorChange);
+            e.background(colorChange, 0, 255 - colorChange);
+            e.background(colorChange, 0, 255 - colorChange);
+            popMatrix();
+
+        }
+
+        if(e.getAudioPlayer().position() > 40000 && e.getAudioPlayer().position() < 60000 && e.paused == false) {
+
+            pushMatrix();
+            formCloud(e);
+            e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
+            visualCube(e);
+            popMatrix();
+
+            noStroke();
+            pushMatrix();
+            spiralShape(e);
+            popMatrix();
+            
+            
+    
+
+        }
+
+        if(e.getAudioPlayer().position() > 60000 && e.getAudioPlayer().position() < 80000 && e.paused == false) {
+
+            pushMatrix();
+            visualCube(e);
+            popMatrix();
+
+        }
+
+        if(e.getAudioPlayer().position() > 80000 && e.getAudioPlayer().position() < 90000 && e.paused == false) {
+            pushMatrix();
+            rain(e);
+            popMatrix();
+
+        }
+
+        if(e.getAudioPlayer().position() > 90000 && e.getAudioPlayer().position() < 100000 && e.paused == false) {
+
+            
+            pushMatrix();
+            rain(e);
+            popMatrix();
+    
+            pushMatrix();
+            circles(e);
+            popMatrix();
+
+            pushMatrix();
+            visualCube(e);
+            popMatrix();
+            
+            
+        }
+
+        if(e.getAudioPlayer().position() > 42000 && e.getAudioPlayer().position() < 43000 && e.paused == false) {
+            pushMatrix();
+            rain(e);
+            popMatrix();
+            
+        }
+
+        if(e.getAudioPlayer().position() > 43000 && e.getAudioPlayer().position() < 44000 && e.paused == false) {
+            
+            pushMatrix();
+            visualCube(e);
+            popMatrix();
+        }
+
+        if(e.getAudioPlayer().position() > 44000 && e.getAudioPlayer().position() < 46000 && e.paused == false) {
+            pushMatrix();
+            drawWords(e);
+            rain(e);
+            popMatrix();
+        }
+
+        if(e.getAudioPlayer().position() > 46000 && e.getAudioPlayer().position() < 74400 && e.paused == false) {
+
+            pushMatrix();
+            visualCube(e);
+            popMatrix();
+
+        }
+
+        if(e.getAudioPlayer().position() > 74400 && e.getAudioPlayer().position() < 83800 && e.paused == false) {
+
+            pushMatrix();
+            visualCube(e);
+            popMatrix();
+            
+ 
+        }
+
+
+        if(e.getAudioPlayer().position() > 83800  && e.getAudioPlayer().position() < 92000 && e.paused == false) {
+
+
+            
+            pushMatrix();
+            visualCube(e);
+            spiralShape(e);
+            popMatrix();
+
+
+            
+ 
+        } 
+
+
+
     
             // Draw the current visual element
-            visualElements[currentImageIndex].draw(e);
+            //visualElements[currentImageIndex].draw(e);
     
             
 
@@ -262,46 +409,13 @@ public class AaronVisuals extends Visual {
     
     
     
-            // pushMatrix();
-            // translate(width / 2, height / 2); // Center the text
-            // textAlign(100);
-            // textSize(34);
-            // for (int i = 0; i < lyrics.length; i++) {
-            //     for (int j = 0; j < lyrics[i].length; j++) {
-            //         String line = lyrics[i][j];
-            //         for (int k = 0; k < line.length(); k++) {
-            //             char character = line.charAt(k);
-            //             text(character, 0, i * 30); // Adjust position and spacing as needed
-            //             // Increment the x-coordinate for the next character
-            //             translate(textWidth(character), 0);
-            //         }
-            //         // Move to the next line
-            //         translate(-textWidth(line), 30);
-            //     }
-            // }
-            // popMatrix();
+            
+    
+            
     
     
-            // Draw rain
-            // pushMatrix();
-            // rain(e);
-            // popMatrix();
     
-            // pushMatrix();
-            // circles(e);
-            // popMatrix();
 
-            // pushMatrix();
-            // visualCube(e);
-            // popMatrix();
-    
-    
-    
-            
-    
-            
-            
-    
             // // Draw clouds
             // pushMatrix();
             // translate(e.width / 2, e.height / 2);
@@ -317,6 +431,31 @@ public class AaronVisuals extends Visual {
             // popMatrix();   
         }
 
+
+        public void lyricsStart(CallSet e){
+        pushMatrix();
+            translate(width / 2, height / 2); // Center the text
+            
+            textAlign(CENTER);
+            textSize(34);
+            for (int i = 0; i < lyrics.length; i++) {
+                for (int j = 0; j < lyrics[i].length; j++) {
+                    String line = lyrics[i][j];
+                    for (int k = 0; k < line.length(); k++) {
+                        char character = line.charAt(k);
+                          
+                        text(character, 0, i * 30); // Adjust position and spacing as needed
+                        // Increment the x-coordinate for the next character
+                        translate(textWidth(character), 0);
+                    }
+                    // Move to the next line
+                    translate(-textWidth(line), 30);
+                }
+            }
+            popMatrix();
+
+        }
+    
 
 
         
@@ -423,23 +562,23 @@ public class AaronVisuals extends Visual {
         popMatrix();
 
 
-        pushMatrix();
-            // Example usage of Word and Follow classes
-            Word word1 = new Word("LITTLE FLUFFY CLOUDS");
-            Follow follow1 = new Follow("\n\n\nLIVE LIFE ");
-            word1.follows.add(follow1);
+        // pushMatrix();
+        //     // Example usage of Word and Follow classes
+        //     Word word1 = new Word("LITTLE FLUFFY CLOUDS");
+        //     Follow follow1 = new Follow("\n\n\nLIVE LIFE ");
+        //     word1.follows.add(follow1);
     
-            // Draw the word
-            fill(255);
-            text(word1.getWord(), 100, 100);
+        //     // Draw the word
+        //     fill(255);
+        //     text(word1.getWord(), 100, 100);
     
-            // Draw the follows
-            for (int i = 0; i < word1.follows.size(); i++) {
-                Follow follow = word1.follows.get(i);
-                text(follow.getWord(), 100, 120 + i * 20); // Adjust y-position to avoid overlap
-                //lerp(10,20,5);
-            }
-        popMatrix();
+        //     // Draw the follows
+        //     for (int i = 0; i < word1.follows.size(); i++) {
+        //         Follow follow = word1.follows.get(i);
+        //         text(follow.getWord(), 100, 120 + i * 20); // Adjust y-position to avoid overlap
+        //         //lerp(10,20,5);
+        //     }
+        // popMatrix();
 
 
     }
@@ -478,6 +617,8 @@ public class AaronVisuals extends Visual {
             e.box(e.frameCount);
             e.popMatrix();
 
+            
+
         //     e.pushMatrix(); 
                 
         //     e.translate(random(width), random(height)); 
@@ -512,9 +653,6 @@ public class AaronVisuals extends Visual {
 
         e.pushMatrix();
         e.calculateAverageAmplitude();
-
-
-
         translate(0, e.height);
         d = new Drop[100];
         for (int i = 0; i < d.length; i++) {
@@ -540,14 +678,7 @@ public class AaronVisuals extends Visual {
           }
     }
 
-    // Method to show a line
-    // public void show(CallSet e) {
-    //     e.calculateAverageAmplitude();
-    //     float t = map(z, 0, 5, 10, 2);
-    //     e.strokeWeight(t);
-    //     line(x, y, x, y + t * 2);
-    // }
-
+    
     // Method to update the line position
     public void update(CallSet e) {
         e.calculateAverageAmplitude();
@@ -589,10 +720,7 @@ public class AaronVisuals extends Visual {
         }
     }
 
-        
 
-
-    
 
     // Method to draw a cloud shape
     public void cloudObject(float a, float b, float c, float d) {
@@ -679,4 +807,11 @@ public class AaronVisuals extends Visual {
 
 
     }
+
+
+
+
+
+
+
     
