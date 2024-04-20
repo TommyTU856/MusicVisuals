@@ -73,7 +73,6 @@ public class CallSet extends Visual {
         windowMove(0, 0);
         setFrameSize(1024);
         frameRate(60);
-
         startMinim();
         /* loadAudio("LittleFluffyClouds.mp3");
         loadAudio("/Users/aaronbaggot/GroupCA/MusicVisuals/data/LittleFluffyClouds.mp3"); */
