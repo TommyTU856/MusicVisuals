@@ -454,17 +454,17 @@ public class TommyVisuals extends Visual{
                 pit = 0;
                 yaw = 0;
                 rol = 0;
-            } else if (e.key == 'w') {
-                pit += 0.5f;
-            } else if (e.key == 's') {
-                pit -= 0.5f;
-            } else if (e.key == 'a') {
-                yaw += 0.5f;
-            } else if (e.key == 'd') {
-                yaw -= 0.5f;
             } else if (e.key == 'q') {
-                rol += 0.5f;
+                pit += 0.5f;
+            } else if (e.key == 'a') {
+                pit -= 0.5f;
+            } else if (e.key == 'w') {
+                yaw += 0.5f;
+            } else if (e.key == 's') {
+                yaw -= 0.5f;
             } else if (e.key == 'e') {
+                rol += 0.5f;
+            } else if (e.key == 'd') {
                 rol -= 0.5f;
             }
 
