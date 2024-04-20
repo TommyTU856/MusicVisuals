@@ -1,7 +1,6 @@
 package C22737179;
 
 import ie.tudublin.*;
-import processing.core.PApplet;
 import processing.core.PConstants;
 
 public class Lollipop extends Visual {
@@ -22,12 +21,8 @@ public class Lollipop extends Visual {
     }
 
     void update() {
-
         angle += angleSpeed * rotSpeed;
-        
     }
-
-    
 
     void display(CallSet e) {
         
@@ -61,6 +56,8 @@ public class Lollipop extends Visual {
                 c = 360; 
             } else if (e.key == 'i') {
                 c = 60; 
+            } else if (e.key == 'l') {
+                c = e.random(0, 360); 
             } else if (e.key == 't') {
                 alph += 0.5f;
             } else if (e.key == 'g') {
@@ -69,18 +66,13 @@ public class Lollipop extends Visual {
         }
         
         e.noStroke();
-        if (e.getSmoothedAmplitude() > 0.01) {
-            e.fill(e.random(0, 360), 80, 100, alph);
-        } else {
-            e.fill(c, 100, 100, alph);
-        }
-        //e.fill(c, 100, 100, alph);
+        e.fill(c, 100, 100, alph);
         e.pushMatrix();
         e.translate(x, y);
         e.sphereDetail(20);
         e.sphere(sphereSize);
         e.popMatrix();
-        System.out.println(e.getSmoothedAmplitude());
+        
     }
 
 }
