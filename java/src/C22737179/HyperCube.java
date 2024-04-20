@@ -12,7 +12,6 @@ public class HyperCube {
 
     public void render(CallSet e) {
 
-        
         e.calculateAverageAmplitude();
 
         e.pushMatrix();
@@ -23,7 +22,6 @@ public class HyperCube {
         e.box(300 + (100 * e.getAmplitude()));
         e.box(500 + (2000 * e.getAmplitude()));
         e.popMatrix();
-        
-        
+         
     }
 }
