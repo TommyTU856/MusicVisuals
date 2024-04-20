@@ -45,11 +45,16 @@ public class TommyVisuals extends Visual{
     float sphereY1, sphereY2, sphereY3, sphereY4, sphereY5, sphereY6;
 
     Lollipop[] lollipops;
-    int numLollipops = 100;
+    int numLollipops = 150;
 
     float pit = 0;
     float yaw = 0;
     float rol = 0;
+
+    float c1;
+    float c2;
+    float alpha = 0;
+
 
     public TommyVisuals() {  
         lyrics1 = new Lyrics();
@@ -456,6 +461,7 @@ public class TommyVisuals extends Visual{
                 rol = 0;
             } else if (e.key == 'q') {
                 pit += 0.5f;
+                yaw += 0.5f;
             } else if (e.key == 'a') {
                 pit -= 0.5f;
             } else if (e.key == 'w') {
@@ -466,6 +472,10 @@ public class TommyVisuals extends Visual{
                 rol += 0.5f;
             } else if (e.key == 'd') {
                 rol -= 0.5f;
+            } else if (e.key == 'z' && alpha < 100) {
+                alpha += 0.5f;
+            } else if (e.key == 'x' && alpha > 0) {
+                alpha -= 0.5f;
             }
 
             e.translate(e.width/2, e.height/2);
@@ -480,18 +490,18 @@ public class TommyVisuals extends Visual{
                 lollipops[i].update(); 
                 e.popMatrix();       
             }
+        
 
-            /* e.pushMatrix();
+            c1 = (e.frameCount % 360);
+            c2 = (e.frameCount % 360) / 2;
+
+            e.pushMatrix();
             e.translate(-4, 0);
             cubeAngleY = e.frameCount * 0.01f;
             cubeAngleZ = e.frameCount * 0.01f; 
-            //e.rotateZ(cubeAngleZ);
-            totalRotationZ += cubeAngleZ;
-            //e.rotateY(cubeAngleY);
-            //e.rotateZ(PI / 4);
-            //e.rotateY(cubeAngleY);
-            e.stroke(0, 0, 100);
-            //e.stroke(240, 100, 50);
+            e.rotateZ(cubeAngleZ);
+            e.rotateY(cubeAngleY);
+            e.stroke(c1, 100, 100, alpha);
             hyperCube.render(e);
             e.popMatrix();
 
@@ -500,18 +510,15 @@ public class TommyVisuals extends Visual{
             e.translate(4, -8);
             cubeAngleY = e.frameCount * 0.01f;
             cubeAngleZ = e.frameCount * 0.01f; 
-            //e.rotateZ(cubeAngleZ);
-            totalRotationZ += cubeAngleZ;
-            //e.rotateY(cubeAngleY);
-            //e.rotateZ(PI / 4);
-            //e.stroke(0, 100, 50);
-            e.stroke(360, 0, 100);
+            e.rotateZ(cubeAngleZ);
+            e.rotateY(cubeAngleY);
+            e.stroke(c2, 100, 100, alpha);
             hyperCube.render(e);
-            e.popMatrix(); */
+            e.popMatrix();
 
         }
 
-        //print(e.width, e.height);
+        //print(alpha);
         //print(e.getAudioPlayer().position() + "\n");
         //print(e.getSmoothedAmplitude() + "\n");
     }

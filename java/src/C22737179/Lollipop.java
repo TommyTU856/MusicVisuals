@@ -13,22 +13,18 @@ public class Lollipop extends Visual {
     float rotSpeed = 0.5f;
     float sphereBaseSize = 25;
     float alph = 255;
-    float translateZ = 0;
-    //float translateZ = 0;
-    /* float pit = 0;
-    float yaw = 0;
-    float rol = 0; */
-
+    
     public Lollipop(int n){
         this.angle = 0;
         this.angleSpeed = 0.01f + n * 0.001f;
-        this.radius = 30 + n * 10;
+        this.radius = 50 + n * 10;
         this.count = 0;
     }
 
     void update() {
 
         angle += angleSpeed * rotSpeed;
+        
     }
 
     
@@ -37,14 +33,13 @@ public class Lollipop extends Visual {
         
         e.lights();
         e.calculateAverageAmplitude();
-        //e.stroke(map(e.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+        
         float c = (e.frameCount % 360);
         
         float sphereSize = sphereBaseSize + (250 * e.getSmoothedAmplitude());
         float x = radius * cos(angle);
         float y = radius * sin(angle);
         
-
         if (e.keyPressed) {
             if (e.keyCode == PConstants.LEFT) {
                 rotSpeed -= 0.01f;
@@ -70,20 +65,22 @@ public class Lollipop extends Visual {
                 alph += 0.5f;
             } else if (e.key == 'g') {
                 alph -= 0.5f;
-            } else if (e.key == 'z') {
-                translateZ += 0.5f;
-            } else if (e.key == 'x') {
-                translateZ -= 0.5f;
-            }
+            } 
         }
         
         e.noStroke();
-        e.fill(c, 100, 100, alph);
+        if (e.getSmoothedAmplitude() > 0.01) {
+            e.fill(e.random(0, 360), 80, 100, alph);
+        } else {
+            e.fill(c, 100, 100, alph);
+        }
+        //e.fill(c, 100, 100, alph);
         e.pushMatrix();
-        e.translate(x, y, translateZ);
+        e.translate(x, y);
+        e.sphereDetail(20);
         e.sphere(sphereSize);
         e.popMatrix();
-        //System.out.println(alph);
+        System.out.println(e.getSmoothedAmplitude());
     }
 
 }
