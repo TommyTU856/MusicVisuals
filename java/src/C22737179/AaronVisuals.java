@@ -235,11 +235,13 @@ public class AaronVisuals extends Visual {
 
         if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 10000 && !e.paused) {
             e.calculateAverageAmplitude();
+        
             pushMatrix();
             e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
             timeClock.drawTimeClock();
             popMatrix();
 
+           
         }
         if(e.getAudioPlayer().position() > 10000 && e.getAudioPlayer().position() < 20000 && !e.paused) {
             e.calculateAverageAmplitude();
@@ -249,8 +251,12 @@ public class AaronVisuals extends Visual {
             e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
             drawWords(e);
             timeClock.drawTimeClock();
-            rain(e);
             popMatrix();
+
+            pushMatrix();
+            stars(e);
+            popMatrix();
+
 
             // Calculate the amplitude of the audio
             //float amplitude = getSmoothedAmplitude();
@@ -280,43 +286,51 @@ public class AaronVisuals extends Visual {
         if(e.getAudioPlayer().position() > 20000 && e.getAudioPlayer().position() < 40000 && !e.paused) {
 
             e.calculateAverageAmplitude();
-            pushMatrix();
             e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
+            e.background(60, 100, 100); // Yellow
+            e.background(120, 100, 100); // Green
+
+            pushMatrix();
             formCloud(e);
-            rain(e);
-            //spiralShape(e);
+            stars(e);
             popMatrix();
-
-            // pushMatrix();
-            // circles(e);
-            // lyricsStart(e);
-            // popMatrix();
-            
-            // pushMatrix();
-            // cloudyShapes(e);
-            // popMatrix();
-
 
         }
 
         if(e.getAudioPlayer().position() > 40000 && e.getAudioPlayer().position() < 47000 && !e.paused) {
+            e.calculateAverageAmplitude();
+            e.background(0, 87, 94);
+
+
+         
+            pushMatrix();
+            rain(e);
+            popMatrix();
 
             pushMatrix();
-            e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
             circles(e);
-            visualCube(e);
             popMatrix();
+
+            pushMatrix();
+            cloudyShapes(e);
+            popMatrix();
+
+            
     
 
         }
 
-        
-
         if(e.getAudioPlayer().position() > 47000 && e.getAudioPlayer().position() < 60000 && e.paused == false) {
+            e.calculateAverageAmplitude();
+            e.background(0, 87, 94);
 
             pushMatrix();
             formCloud(e);
             e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
+            visualCube(e);
+            popMatrix();
+
+            pushMatrix();
             visualCube(e);
             popMatrix();
 
@@ -326,10 +340,12 @@ public class AaronVisuals extends Visual {
             popMatrix();
 
             pushMatrix();
+            e.calculateAverageAmplitude();
             noStroke();
             translate(130, height/2, 0);
             rotateY(1.25f);
             rotateX(-0.4f);
+            fill(shapeColor);
             box(100);
             popMatrix();
             
@@ -337,7 +353,7 @@ public class AaronVisuals extends Visual {
         }
 
         if(e.getAudioPlayer().position() > 60000 && e.getAudioPlayer().position() < 80000 && e.paused == false) {
-
+            e.background(0, 87, 94);
             pushMatrix();
             visualCube(e);
             popMatrix();
@@ -419,10 +435,7 @@ public class AaronVisuals extends Visual {
         } 
 
                 
-       }
-
-
-    
+       }    
 
         public void lyricsStart(CallSet e){
         pushMatrix();
@@ -452,6 +465,7 @@ public class AaronVisuals extends Visual {
         public void cloudyShapes(CallSet e){
             // Draw clouds
             pushMatrix();
+            fill(random(255),random(255),random(255));
             e.calculateAverageAmplitude(); 
             translate(e.width / 2, e.height / 2);
             for (int i = 0; i < cloudNumber; i++) {
@@ -506,10 +520,42 @@ public class AaronVisuals extends Visual {
             }
             endShape(CLOSE);
         }
+
+        public void stars(CallSet e) {
+            
+            
+            for (int i = 0; i < 50; i++) {
+                float x = random(e.width); // Random x-coordinate within canvas width
+                float y = random(e.height); // Random y-coordinate within canvas height
+                float radius = random(1, 5); // Random radius between 1 and 5
+                fill(255);
+                drawStar(x, y, radius);
+            }
+        }
+        
+        void drawStar(float x, float y, float radius) {
+            beginShape();
+            fill(255);
+            
+            for (int i = 0; i < 10; i++) {
+                float angle = TWO_PI / 10 * i;
+                float x1 = x + cos(angle) * radius;
+                float y1 = y + sin(angle) * radius;
+                vertex(x1, y1);
+                
+                angle += TWO_PI / 20;
+                float x2 = x + cos(angle) * radius * 0.5f; // Make the inner radius smaller for the star tips
+                float y2 = y + sin(angle) * radius * 0.5f;
+                vertex(x2, y2);
+            }
+            endShape(CLOSE);
+        }
         
 
 
     public void visualCube(CallSet e){
+
+        
 
         //e.background(0);
         e.translate(e.width / 2, e.height / 2, -OFF_MAX);
@@ -790,8 +836,34 @@ public class AaronVisuals extends Visual {
         return (int) ((offset + OFF_MAX) / (2.0 * OFF_MAX) * 255);
         }
 
+        // class Red {
+        //     int[] getColor() {
+        //         return new int[]{0, 100, 100};
+        //     }
+        // }
+        
+        // class Yellow {
+        //     int[] getColor() {
+        //         return new int[]{60, 100, 100};
+        //     }
+        // }
+
+        // class Green {
+        //     int[] getColor() {
+        //         return new int[]{120, 100, 100};
+        //     }
+        // }
+        
+        // class Orange {
+        //     int[] getColor() {
+        //         return new int[]{255, 165, 0};
+        //     }
+        // }
+
 
     }
+    
+
 
 
 
