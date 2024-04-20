@@ -12,9 +12,9 @@ public class Lollipop extends Visual {
     float count;
     float rotSpeed = 0.5f;
     float sphereBaseSize = 25;
-    float pit = 0;
+    /* float pit = 0;
     float yaw = 0;
-    float rol = 0;
+    float rol = 0; */
 
     public Lollipop(int n){
         this.angle = 0;
@@ -55,7 +55,7 @@ public class Lollipop extends Visual {
                 sphereBaseSize -= .5f;
             } else if (e.keyCode == PConstants.ALT) {
                 sphereBaseSize += .5f;
-            } else if (e.keyCode == PConstants.BACKSPACE) {
+            } /* else if (e.keyCode == PConstants.BACKSPACE) {
                 pit = 0;
                 yaw = 0;
                 rol = 0;
@@ -71,25 +71,25 @@ public class Lollipop extends Visual {
                 rol += 1;
             } else if (e.key == 'e') {
                 rol -= 1;
-            }
+            } */
         }
         
         //println(getSmoothedAmplitude());
         //line(0, 0, x, y);
-        //e.noStroke();
-        //e.fill(c, 255, 255);
+        e.noStroke();
+        e.fill(c, 255, 255);
         e.pushMatrix();
         e.translate(x, y);
         //float sphereSize = 25 + (200 * e.getSmoothedAmplitude()); 
 
-        e.rotateX(radians(pit));
+        /* e.rotateX(radians(pit));
         e.rotateY(radians(yaw));
-        e.rotateZ(radians(rol));
+        e.rotateZ(radians(rol)); */
 
         e.sphere(sphereSize);
         //ellipse(x, y, 25 + getSmoothedAmplitude(), 25 + getSmoothedAmplitude());
         e.popMatrix();
-        System.out.println(rol + " " + yaw + " " + pit);
+        //System.out.println(rol + " " + yaw + " " + pit);
     }
 
 }

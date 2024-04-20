@@ -1,6 +1,7 @@
 package C22737179;
 
 import ie.tudublin.*;
+import processing.core.PConstants;
 import processing.core.PGraphics;
 import processing.core.PShape;
 
@@ -45,6 +46,10 @@ public class TommyVisuals extends Visual{
 
     Lollipop[] lollipops;
     int numLollipops = 100;
+
+    float pit = 0;
+    float yaw = 0;
+    float rol = 0;
 
     public TommyVisuals() {  
         lyrics1 = new Lyrics();
@@ -445,8 +450,30 @@ public class TommyVisuals extends Visual{
 
         if(e.getAudioPlayer().position() > 1 && e.paused == false) {
 
+            if (e.keyCode == PConstants.BACKSPACE) {
+                pit = 0;
+                yaw = 0;
+                rol = 0;
+            } else if (e.key == 'w') {
+                pit += 0.5f;
+            } else if (e.key == 's') {
+                pit -= 0.5f;
+            } else if (e.key == 'a') {
+                yaw += 0.5f;
+            } else if (e.key == 'd') {
+                yaw -= 0.5f;
+            } else if (e.key == 'q') {
+                rol += 0.5f;
+            } else if (e.key == 'e') {
+                rol -= 0.5f;
+            }
+
             e.translate(e.width/2, e.height/2);
-        
+
+            e.rotateX(radians(pit));
+            e.rotateY(radians(yaw));
+            e.rotateZ(radians(rol));
+            
             for(int i = 0; i < numLollipops; i++) {
                 e.pushMatrix();
                 lollipops[i].display(e);
