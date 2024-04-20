@@ -55,6 +55,7 @@ public class AaronVisuals extends Visual {
     //Colours
     int inside, middle, outside;
     int OFF_MAX = 300;
+    int c1, c2, c3, c4, c5, c6;
     
 
     PShape clouds_obj;
@@ -81,10 +82,15 @@ public class AaronVisuals extends Visual {
     float ySpeed = 7;
     //Shape p;
     int cloudColor;
+
     
+
+ 
 
     final int N_FRAMES = 200;
     PFont jgs5;
+
+    
     
     
 
@@ -133,6 +139,8 @@ public class AaronVisuals extends Visual {
         Word word1 = new Word("example");
         //Follow follow = new Follow("followingWord");
         //word1.follows.add(follow);
+
+        
           
         
        
@@ -192,64 +200,49 @@ public class AaronVisuals extends Visual {
 
             this.g = e.getGraphics(); // Initialize the "g" variable
 
-            float colorChange = 10;
-            e.colorMode(RGB);
+            // Calculate the amplitude of the audio
+            float amplitude = getSmoothedAmplitude();
+    
+            // Map the amplitude to the background color
+            float colorChange = map(amplitude, 0, 1, 0, 255);
+            e.background(colorChange, 0, 255 - colorChange);
+
+            //float colorChange = 10;
+            //e.colorMode(HSB, 360, 200, 300);
             e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
             shapeColor = color(random(255), random(255), random(255));
-            // e.stroke(255);
-
-
-
-            //e.colorMode(HSB, 360, 100, 100);
-            //e.background(0, 0, 0);
             e.calculateAverageAmplitude();
-           
 
+            
+            c1 = color(0, 100, 100); // Red
+            c2 = color(60, 100, 100); // Yellow
+            c3 = color(120, 100, 100); // Green
+            c4 = color(180, 100, 100); // Cyan
+            c5 = color(240, 100, 100); // Blue
+            c6 = color(300, 100, 100); // Magenta
+ 
             // Perform FFT analysis
             fft.forward(in.mix);
     
-            // background(0);
-            // lights();
-            
-            // noStroke();
-            // pushMatrix();
-            // translate(130, height/2, 0);
-            // rotateY(1.25f);
-            // rotateX(-0.4f);
-            // box(100);
-            // popMatrix();
-            
-            // noFill();
-            // stroke(255);
-            // pushMatrix();
-            // translate(500, height*0.35f, -200);
-            // sphere(280);
-            // popMatrix();
-            
-            
-            // pushMatrix();
-            // spiralShape(e);
-            // popMatrix();
-    
-            
-           //fill(200); // Set fill color to light gray
-    
-            // Check if it's time to switch to the next image
-            // if (e.frameCount % frameCountThreshold == 0) {
-            //     // Increment the current image index
-            //     currentImageIndex++;
-            //     // Reset the index if it exceeds the number of images
-            //     if (currentImageIndex >= visualElements.length) {
-            //         currentImageIndex = 0;
-            //     }
-            // }
-
-
         //Audio code 
         if(e.getAudioPlayer().position() > 1 && e.getAudioPlayer().position() < 20000 && !e.paused) {
 
+            
+            
+            
+            noStroke();
+            pushMatrix();
+            translate(130, height/2, 0);
+            rotateY(1.25f);
+            rotateX(-0.4f);
+            box(100);
+            popMatrix();
+
+            pushMatrix();
+
+            lyricsStart(e);
             // Calculate the amplitude of the audio
-            float amplitude = getSmoothedAmplitude();
+            //float amplitude = getSmoothedAmplitude();
             
             // Map the amplitude to the background color
             colorChange = map(amplitude, 0, 1, 0, 255);
@@ -257,164 +250,146 @@ public class AaronVisuals extends Visual {
             // Set the background color based on the mapped value
             e.background(colorChange, 0, 255 - colorChange);
 
-            pushMatrix();
             e.background(colorChange += (255 * getSmoothedAmplitude()),1,0);
-            lyricsStart(e);
             
             
+            e.background(colorChange, 0, 255 - colorChange);
             popMatrix();
-            
-            
             
             
         }
 
-        if(e.getAudioPlayer().position() > 20000 && e.getAudioPlayer().position() < 40000 && !e.paused) {
-            pushMatrix();
-            drawWords(e);
-            e.background(colorChange, 0, 255 - colorChange);
-            e.background(colorChange, 0, 255 - colorChange);
-            e.background(colorChange, 0, 255 - colorChange);
-            popMatrix();
+        // if(e.getAudioPlayer().position() > 36000 && e.getAudioPlayer().position() < 37000 && !e.paused) {
 
-        }
+        //     pushMatrix();
+        //     e.background(280, 75, 100);//purple
+        //     e.background(c1);//red
+        //     e.background(c3);//green
+        //     e.background(c2);//yellow
+        //     e.background(30, 100, 100);//orange
+        //     e.background(c5);//orange
+        //     popMatrix();
 
-        if(e.getAudioPlayer().position() > 40000 && e.getAudioPlayer().position() < 60000 && e.paused == false) {
-
-            pushMatrix();
-            formCloud(e);
-            e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
-            visualCube(e);
-            popMatrix();
-
-            noStroke();
-            pushMatrix();
-            spiralShape(e);
-            popMatrix();
+        //     pushMatrix();
+        //     boxes(e);
             
+
+        //     formCloud(e);
+        //     mountainClouds(e);
+        //     popMatrix();
+        
             
+
+        // }
+
+        // if(e.getAudioPlayer().position() > 20000 && e.getAudioPlayer().position() < 40000 && !e.paused) {
+        //     pushMatrix();
+            
+        //     e.background(colorChange, 0, 255 - colorChange);
+        //     drawWords(e);
+        //     popMatrix();
+
+        // }
+
+        // if(e.getAudioPlayer().position() > 40000 && e.getAudioPlayer().position() < 60000 && e.paused == false) {
+
+        //     pushMatrix();
+        //     formCloud(e);
+        //     e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
+        //     visualCube(e);
+        //     popMatrix();
+
+        //     noStroke();
+        //     pushMatrix();
+        //     spiralShape(e);
+        //     popMatrix();
+            
+
+        // }
+
+        // if(e.getAudioPlayer().position() > 60000 && e.getAudioPlayer().position() < 80000 && e.paused == false) {
+
+        //     pushMatrix();
+        //     visualCube(e);
+        //     popMatrix();
+
+        // }
+
+        // if(e.getAudioPlayer().position() > 80000 && e.getAudioPlayer().position() < 90000 && e.paused == false) {
+        //     pushMatrix();
+        //     rain(e);
+        //     popMatrix();
+
+        // }
+
+        // if(e.getAudioPlayer().position() > 90000 && e.getAudioPlayer().position() < 100000 && e.paused == false) {
+
+            
+        //     pushMatrix();
+        //     rain(e);
+        //     popMatrix();
     
+        //     pushMatrix();
+        //     circles(e);
+        //     popMatrix();
 
-        }
-
-        if(e.getAudioPlayer().position() > 60000 && e.getAudioPlayer().position() < 80000 && e.paused == false) {
-
-            pushMatrix();
-            visualCube(e);
-            popMatrix();
-
-        }
-
-        if(e.getAudioPlayer().position() > 80000 && e.getAudioPlayer().position() < 90000 && e.paused == false) {
-            pushMatrix();
-            rain(e);
-            popMatrix();
-
-        }
-
-        if(e.getAudioPlayer().position() > 90000 && e.getAudioPlayer().position() < 100000 && e.paused == false) {
-
-            
-            pushMatrix();
-            rain(e);
-            popMatrix();
-    
-            pushMatrix();
-            circles(e);
-            popMatrix();
-
-            pushMatrix();
-            visualCube(e);
-            popMatrix();
+        //     pushMatrix();
+        //     visualCube(e);
+        //     popMatrix();
             
             
-        }
+        // }
 
-        if(e.getAudioPlayer().position() > 42000 && e.getAudioPlayer().position() < 43000 && e.paused == false) {
-            pushMatrix();
-            rain(e);
-            popMatrix();
+        // if(e.getAudioPlayer().position() > 42000 && e.getAudioPlayer().position() < 43000 && e.paused == false) {
+        //     pushMatrix();
+        //     rain(e);
+        //     popMatrix();
             
-        }
+        // }
 
-        if(e.getAudioPlayer().position() > 43000 && e.getAudioPlayer().position() < 44000 && e.paused == false) {
+        // if(e.getAudioPlayer().position() > 43000 && e.getAudioPlayer().position() < 44000 && e.paused == false) {
             
-            pushMatrix();
-            visualCube(e);
-            popMatrix();
-        }
+        //     pushMatrix();
+        //     visualCube(e);
+        //     popMatrix();
+        // }
 
-        if(e.getAudioPlayer().position() > 44000 && e.getAudioPlayer().position() < 46000 && e.paused == false) {
-            pushMatrix();
-            drawWords(e);
-            rain(e);
-            popMatrix();
-        }
+        // if(e.getAudioPlayer().position() > 44000 && e.getAudioPlayer().position() < 46000 && e.paused == false) {
+        //     pushMatrix();
+        //     drawWords(e);
+        //     rain(e);
+        //     popMatrix();
+        // }
 
-        if(e.getAudioPlayer().position() > 46000 && e.getAudioPlayer().position() < 74400 && e.paused == false) {
+        // if(e.getAudioPlayer().position() > 46000 && e.getAudioPlayer().position() < 74400 && e.paused == false) {
 
-            pushMatrix();
-            visualCube(e);
-            popMatrix();
+        //     pushMatrix();
+        //     visualCube(e);
+        //     popMatrix();
 
-        }
+        // }
 
-        if(e.getAudioPlayer().position() > 74400 && e.getAudioPlayer().position() < 83800 && e.paused == false) {
+        // if(e.getAudioPlayer().position() > 74400 && e.getAudioPlayer().position() < 83800 && e.paused == false) {
 
-            pushMatrix();
-            visualCube(e);
-            popMatrix();
+        //     pushMatrix();
+        //     visualCube(e);
+        //     popMatrix();
             
  
-        }
+        // }
 
 
-        if(e.getAudioPlayer().position() > 83800  && e.getAudioPlayer().position() < 92000 && e.paused == false) {
-
-
+        // if(e.getAudioPlayer().position() > 83800  && e.getAudioPlayer().position() < 92000 && e.paused == false) {
             
-            pushMatrix();
-            visualCube(e);
-            spiralShape(e);
-            popMatrix();
-
-
-            
+        //     pushMatrix();
+        //     visualCube(e);
+        //     spiralShape(e);
+        //     popMatrix();
+    
  
-        } 
+        // } 
 
 
-
-    
-            // Draw the current visual element
-            //visualElements[currentImageIndex].draw(e);
-    
-            
-
-            
-            // pushMatrix();
-            // int cols = mouseX;
-            //         noStroke();
-                    
-            //         float x = random(width);
-            //         float y = random(height);
-                    
-            //         for (float size = random(25, 100); size >= 0; size -= random(2, 10)) {
-            //             fill(random(345), random(358), random(360));
-            //             ellipse(x, y, size, size);
-            //         }
-            // popMatrix();
-    
-           
-    
-    
-    
-            
-    
-            
-    
-    
-    
 
             // // Draw clouds
             // pushMatrix();
@@ -431,6 +406,8 @@ public class AaronVisuals extends Visual {
             // popMatrix();   
         }
 
+
+    
 
         public void lyricsStart(CallSet e){
         pushMatrix();
@@ -523,15 +500,9 @@ public class AaronVisuals extends Visual {
                     e.fill(colorFromOffset(xo), colorFromOffset(yo), colorFromOffset(zo));
                     e.box((float) (20 + (Math.sin(e.frameCount / 20.0)) * 15));
                     e.popMatrix();
-
-
-                    
-                }
-
-                
-               
-          }             
           
+                }
+          }                
         }
     popMatrix();
     }
@@ -560,26 +531,6 @@ public class AaronVisuals extends Visual {
             }
         }
         popMatrix();
-
-
-        // pushMatrix();
-        //     // Example usage of Word and Follow classes
-        //     Word word1 = new Word("LITTLE FLUFFY CLOUDS");
-        //     Follow follow1 = new Follow("\n\n\nLIVE LIFE ");
-        //     word1.follows.add(follow1);
-    
-        //     // Draw the word
-        //     fill(255);
-        //     text(word1.getWord(), 100, 100);
-    
-        //     // Draw the follows
-        //     for (int i = 0; i < word1.follows.size(); i++) {
-        //         Follow follow = word1.follows.get(i);
-        //         text(follow.getWord(), 100, 120 + i * 20); // Adjust y-position to avoid overlap
-        //         //lerp(10,20,5);
-        //     }
-        // popMatrix();
-
 
     }
 
@@ -619,32 +570,32 @@ public class AaronVisuals extends Visual {
 
             
 
-        //     e.pushMatrix(); 
+            e.pushMatrix(); 
                 
-        //     e.translate(random(width), random(height)); 
-        //     //e.rotateY(angle);
-        //     //e.rotateX(angle);
-        //     e.rotateX(e.frameCount * .06f);
-        //     e.box((float) (6 + (Math.sin(e.frameCount / 0.07f)) * .02f));
-        //     e.rotateY(e.frameCount * .06f);
-        //     e.box((float) (6 + (Math.sin(e.frameCount / 0.07f)) * .02f));
+            e.translate(random(width), random(height)); 
+            //e.rotateY(angle);
+            //e.rotateX(angle);
+            e.rotateX(e.frameCount * .06f);
+            e.box((float) (6 + (Math.sin(e.frameCount / 0.07f)) * .02f));
+            e.rotateY(e.frameCount * .06f);
+            e.box((float) (6 + (Math.sin(e.frameCount / 0.07f)) * .02f));
             
-        //     e.translate(100, 100, 50);
-        //     e.rotateZ(e.frameCount * .06f);
-        //     e.box((float) (6 + (Math.sin(e.frameCount / 0.07f)) * .02f));
+            e.translate(100, 100, 50);
+            e.rotateZ(e.frameCount * .06f);
+            e.box((float) (6 + (Math.sin(e.frameCount / 0.07f)) * .02f));
             
-        //     // Generate random values for red, green, and blue components
-        //     float r = e.random(255);
-        //     float g = e.random(255);
-        //     float b = e.random(255);
+            // Generate random values for red, green, and blue components
+            // float r = e.random(255);
+            // float g = e.random(255);
+            // float b = e.random(255);
             
-        //     e.fill(r,g,b);
-        //     e.box((float) (2 + (Math.sin(e.frameCount / 0.05f)) * .01f));
+            e.fill(r,g,b);
+            e.box((float) (2 + (Math.sin(e.frameCount / 0.05f)) * .01f));
             
-        //     e.box((float) (8 + (Math.sin(e.frameCount / 0.09f)) * .05f));
-        //     e.strokeWeight(2); 
-        //     e.box(e.frameCount);
-        // popMatrix();
+            e.box((float) (8 + (Math.sin(e.frameCount / 0.09f)) * .05f));
+            e.strokeWeight(2); 
+            e.box(e.frameCount);
+        popMatrix();
 
     }
 
@@ -812,6 +763,89 @@ public class AaronVisuals extends Visual {
 
 
 
-
-
+    //background(0);
+            // lights();
+            
+            // noStroke();
+            // pushMatrix();
+            // translate(130, height/2, 0);
+            // rotateY(1.25f);
+            // rotateX(-0.4f);
+            // box(100);
+            // popMatrix();
+            
+            // noFill();
+            // stroke(255);
+            // pushMatrix();
+            // translate(500, height*0.35f, -200);
+            // sphere(280);
+            // popMatrix();
+            
+            
+            // pushMatrix();
+            // spiralShape(e);
+            // popMatrix();
     
+            //code for setting image timers
+           //fill(200); // Set fill color to light gray
+            // Check if it's time to switch to the next image
+            // if (e.frameCount % frameCountThreshold == 0) {
+            //     // Increment the current image index
+            //     currentImageIndex++;
+            //     // Reset the index if it exceeds the number of images
+            //     if (currentImageIndex >= visualElements.length) {
+            //         currentImageIndex = 0;
+            //     }
+            // }
+
+
+
+
+
+            // Draw the current visual element
+            //visualElements[currentImageIndex].draw(e);
+    
+            
+
+            
+            // pushMatrix();
+            // int cols = mouseX;
+            //         noStroke();
+                    
+            //         float x = random(width);
+            //         float y = random(height);
+                    
+            //         for (float size = random(25, 100); size >= 0; size -= random(2, 10)) {
+            //             fill(random(345), random(358), random(360));
+            //             ellipse(x, y, size, size);
+            //         }
+            // popMatrix();
+    
+
+
+
+
+            // pushMatrix();
+        //     // Example usage of Word and Follow classes
+        //     Word word1 = new Word("LITTLE FLUFFY CLOUDS");
+        //     Follow follow1 = new Follow("\n\n\nLIVE LIFE ");
+        //     word1.follows.add(follow1);
+    
+        //     // Draw the word
+        //     fill(255);
+        //     text(word1.getWord(), 100, 100);
+    
+        //     // Draw the follows
+        //     for (int i = 0; i < word1.follows.size(); i++) {
+        //         Follow follow = word1.follows.get(i);
+        //         text(follow.getWord(), 100, 120 + i * 20); // Adjust y-position to avoid overlap
+        //         //lerp(10,20,5);
+        //     }
+        // popMatrix();
+
+
+
+
+
+
+            
