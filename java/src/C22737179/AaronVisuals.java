@@ -3,6 +3,8 @@ package C22737179;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import com.jogamp.graph.ui.Shape;
+
 import C22737179.AaronVisuals.Cloud;
 import ddf.minim.AudioInput;
 import ddf.minim.Minim;
@@ -89,15 +91,11 @@ public class AaronVisuals extends Visual {
     //Shape p;
     int cloudColor;
 
-   
-
-    
-
- 
-
     final int N_FRAMES = 200;
     PFont jgs5;
 
+   
+    
     
     
     
@@ -119,6 +117,8 @@ public class AaronVisuals extends Visual {
         {"Purple and red and yellow and on fire"},
         {"And the clouds would catch the colors everywhere"}
     };
+
+    
 
     // Functional interface for visual elements
     interface VisualElement {
@@ -147,11 +147,7 @@ public class AaronVisuals extends Visual {
         grid = new DrawGrid(this);
         Word word1 = new Word("example");
         timeClock = new TimeClock(this);
-        
-
-        
-        
-         
+          
         
         //fade = new Fade(this);
 
@@ -212,6 +208,9 @@ public class AaronVisuals extends Visual {
 
     }
 
+    
+    
+
 
         // Draw Method
         public void draw(CallSet e) {
@@ -230,7 +229,7 @@ public class AaronVisuals extends Visual {
             // Perform FFT analysis
             fft.forward(in.mix);
 
-            
+           
             
     
         //Audio code 
@@ -239,9 +238,9 @@ public class AaronVisuals extends Visual {
             e.calculateAverageAmplitude();
 
             pushMatrix();
+    
+    // Draw the sun and its rays directly for debugging
             
-            popMatrix();
-
             pushMatrix();
             e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
             timeClock.drawTimeClock();
@@ -536,7 +535,7 @@ public class AaronVisuals extends Visual {
     
 
         public void lyricsStart(CallSet e){
-        pushMatrix();
+        
             translate(width / 2, height / 2); // Center the text
             
             textAlign(CENTER);
@@ -555,8 +554,7 @@ public class AaronVisuals extends Visual {
                     translate(-textWidth(line), 30);
                 }
             }
-            popMatrix();
-
+            
         }
     
 
@@ -581,9 +579,10 @@ public class AaronVisuals extends Visual {
         
 
         public void spiralShape(CallSet e) {
-            
-            stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
             e.calculateAverageAmplitude(); 
+            stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+            fill(random(255),random(255),random(255));
+            
             int num = 40;
             int circles = 20;
             float theta = 0; // Initialize theta
@@ -603,6 +602,7 @@ public class AaronVisuals extends Visual {
             int num = 40; // Move num variable inside drawWobble
             float theta = e.frameCount * 0.01f; // Adjust theta calculation
             beginShape();
+            fill(random(255),random(255),random(255));
             for (int i = 0; i < num; i++) {
                 float x = (float) (e.width / 2 + cos(TWO_PI / num * i + offSet) * radius * 1.2);
                 float y = e.height / 2 + sin(TWO_PI / num * i + offSet) * radius;
@@ -620,7 +620,7 @@ public class AaronVisuals extends Visual {
         }
 
         public void stars(CallSet e) {
-            
+            e.calculateAverageAmplitude(); 
             
             for (int i = 0; i < 50; i++) {
                 float x = random(e.width); // Random x-coordinate within canvas width
@@ -632,6 +632,7 @@ public class AaronVisuals extends Visual {
         }
         
         void drawStar(float x, float y, float radius) {
+            calculateAverageAmplitude(); 
             beginShape();
             
             for (int i = 0; i < 10; i++) {
@@ -651,7 +652,7 @@ public class AaronVisuals extends Visual {
 
 
     public void visualCube(CallSet e){
-
+        e.calculateAverageAmplitude(); 
         
 
         //e.background(0);
@@ -686,6 +687,7 @@ public class AaronVisuals extends Visual {
     
 
     public void drawWords(CallSet e){
+        e.calculateAverageAmplitude(); 
         // Draw words
         pushMatrix();
         for (int i = 0; i < numWords; i++) {
@@ -713,36 +715,36 @@ public class AaronVisuals extends Visual {
 
     //Method to simulate Boxes
     public void boxes(CallSet e){
-
+        e.calculateAverageAmplitude(); 
         
-            e.translate(e.random(e.width), e.random(e.height)); 
-            e.rotateX(e.frameCount * 0.06f);
-            e.rotateY(e.frameCount * 0.06f);
-            e.rotateZ(e.frameCount * 0.06f);
-            float boxSize = 6 + (e.sin(e.frameCount / 0.07f) * 0.02f);
-            float r = e.random(255);
-            float g = e.random(255);
-            float b = e.random(255);
-            e.fill(r, g, b);
-            e.box(boxSize);
+        e.translate(e.random(e.width), e.random(e.height)); 
+        e.rotateX(e.frameCount * 0.06f);
+        e.rotateY(e.frameCount * 0.06f);
+        e.rotateZ(e.frameCount * 0.06f);
+        float boxSize = 6 + (e.sin(e.frameCount / 0.07f) * 0.02f);
+        float r = e.random(255);
+        float g = e.random(255);
+        float b = e.random(255);
+        e.fill(r, g, b);
+        e.box(boxSize);
 
-            e.translate(100, 100, 50);
-            boxSize = 2 + (e.sin(e.frameCount / 0.05f) * 0.01f);
-            r = e.random(255);
-            g = e.random(255);
-            b = e.random(255);
-            e.fill(r, g, b);
-            e.box(boxSize);
+        e.translate(100, 100, 50);
+        boxSize = 2 + (e.sin(e.frameCount / 0.05f) * 0.01f);
+        r = e.random(255);
+        g = e.random(255);
+        b = e.random(255);
+        e.fill(r, g, b);
+        e.box(boxSize);
 
-            boxSize = 8 + (e.sin(e.frameCount / 0.09f) * 0.05f);
-            r = e.random(255);
-            g = e.random(255);
-            b = e.random(255);
-            e.fill(r, g, b);
-            e.box(boxSize);
+        boxSize = 8 + (e.sin(e.frameCount / 0.09f) * 0.05f);
+        r = e.random(255);
+        g = e.random(255);
+        b = e.random(255);
+        e.fill(r, g, b);
+        e.box(boxSize);
 
-            e.strokeWeight(2); 
-            e.box(e.frameCount);
+        e.strokeWeight(2); 
+        e.box(e.frameCount);
             
 
             
@@ -778,8 +780,6 @@ public class AaronVisuals extends Visual {
 
     // Method to simulate rain
     public void rain(CallSet e) {
-
-       
         e.calculateAverageAmplitude();
         translate(0, e.height);
         d = new Drop[100];
@@ -796,6 +796,7 @@ public class AaronVisuals extends Visual {
     }
 
     public void circles(CallSet e){
+        e.calculateAverageAmplitude(); 
         float x = random(width);
         float y = random(height);
         for (float ring = 150; ring >= 0; ring -= random(2, 10)) {
@@ -925,7 +926,7 @@ public class AaronVisuals extends Visual {
             e.popMatrix();
         }
     }
-    
+
 
     int colorFromOffset(int offset) {
         return (int) ((offset + OFF_MAX) / (2.0 * OFF_MAX) * 255);
@@ -934,7 +935,7 @@ public class AaronVisuals extends Visual {
     }
 
 
-
+    
 
 
 
@@ -961,24 +962,13 @@ public class AaronVisuals extends Visual {
             // spiralShape(e);
             // popMatrix();
     
-            //code for setting image timers
-           //fill(200); // Set fill color to light gray
-            // Check if it's time to switch to the next image
-            // if (e.frameCount % frameCountThreshold == 0) {
-            //     // Increment the current image index
-            //     currentImageIndex++;
-            //     // Reset the index if it exceeds the number of images
-            //     if (currentImageIndex >= visualElements.length) {
-            //         currentImageIndex = 0;
-            //     }
-            // }
+           
 
 
 
 
 
-            // Draw the current visual element
-            //visualElements[currentImageIndex].draw(e);
+           
     
             
 
