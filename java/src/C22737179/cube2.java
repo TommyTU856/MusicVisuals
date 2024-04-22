@@ -4,17 +4,17 @@ import ie.tudublin.*;
 
 public class cube2 extends Visual{
     float angle = 0; // Initial rotation angle
-    
 
-    public void setup() {
-        //size(400, 400, P3D); // Enable 3D rendering
-       
-       
-    }
 
     public void draw(CallSet e) {
         e.calculateAverageAmplitude();
-     
+        Clouds[] clouds = e.getClouds();
+
+        for (Clouds cloud : clouds) {
+            cloud.move(e,clouds); // Pass the array of all clouds to check for overlap
+            cloud.display(e);
+        }
+        
 
       // Update rotation angle
         angle += 0.01;
@@ -28,26 +28,31 @@ public class cube2 extends Visual{
 
         // Draw the big cube
         drawBigCube(e);
+        
     }
 
     void drawBigCube(CallSet e) {
+        
         int bigCubeSize = 200; // Size of the big cube
         int numSmallCubes = 5; // Number of small cubes in each dimension
         int smallCubeSize = bigCubeSize / numSmallCubes; // Size of each small cube
+    
+       
+
 
         // Nested loops to draw the small cubes
         for (int x = 0; x < numSmallCubes; x++) {
             for (int y = 0; y < numSmallCubes; y++) {
-            for (int z = 0; z < numSmallCubes; z++) {
+                 for (int z = 0; z < numSmallCubes; z++) {
                 // Calculate position of each small cube within the big cube
-                float posX = x * (smallCubeSize+10)- bigCubeSize / 2;
-                float posY = y * (smallCubeSize+10) - bigCubeSize / 2;
-                float posZ = z * (smallCubeSize+10) - bigCubeSize / 2;
+                    float posX = x * (smallCubeSize+30)- bigCubeSize / 2;
+                    float posY = y * (smallCubeSize+30) - bigCubeSize / 2;
+                    float posZ = z * (smallCubeSize+30) - bigCubeSize / 2;
 
                 // Calculate size of the cube based on music amplitude
-                float cubeSize = smallCubeSize + e.getAmplitude() * 100;
+                   float cubeSize = smallCubeSize + e.getAmplitude() * 70;
 
-                // Randomly select cubes to change size
+               
                 if (e.random.nextFloat() < 0.1) { // Adjust probability as needed
                     //cubeSize *= 1 + e.random.nextFloat() * e.getAmplitude(); // Adjust size based on amplitude
                     cubeSize += e.getAmplitude() * 100;
@@ -55,8 +60,9 @@ public class cube2 extends Visual{
 
                 // Randomly select cubes to change color
                 e.fill(e.random.nextInt(255), e.random.nextInt(255), e.random.nextInt(255));
+                //e.fill(240);
                 
-                // Draw the small cube
+                // Draw the small cub
                 e.pushMatrix(); // Save the current transformation state
                 e.translate(posX, posY, posZ); // Move to the position of the small cube
                 
@@ -69,5 +75,11 @@ public class cube2 extends Visual{
 
     
 
+    
 
 }
+
+    
+
+
+
