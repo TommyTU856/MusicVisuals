@@ -1,23 +1,157 @@
 # Music Visualiser Project
 
-Name:
+# Group Members
+| Name | Student Number |
+|-----------|-----------|
+|Aaron Baggot | C22716399 |
+|Thomas Burke | C22737179 |
+|Aniket Bedade | C22737179 |
+|Basak Deveci | D22124576 |
 
-Student Number: 
+# Video Of Our Visualisations
+[<img src="Image of Youtube link here" width="600px" target="_blank">](Youtube Link Here "Our group Video")
 
-## Instructions
-- Fork this repository and use it a starter project for your assignment
-- Create a new package named your student number and put all your code in this package.
-- You should start by creating a subclass of ie.tudublin.Visual
-- There is an example visualiser called MyVisual in the example package
-- Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
 
 # Description of the assignment
+In this project, our team collaborated to create four unique visualizations using Java Processing, with each section contributed by a different team member. Our chosen song is "Little Fluffy Clouds" by The Orb. The goal was to develop visualizations that respond dynamically to music, adjusting colours, shapes, and sizes based on the amplitude and frequency of the audio. To extract audio data from MP3 files, we utilized the Audio Minim library.
+
+The implementation consists of several classes and components, each serving a specific purpose:
+
+Minim, AudioInput, and FFT: These classes from the Minim library handle audio input and fast Fourier transform (FFT) analysis, allowing us to extract features such as amplitude and frequency from the audio.
+Visual Elements: Various visual elements, including shapes, images, and text, are used to create the visualizations. These elements respond to the audio features and change dynamically over time.
+
 
 # Instructions
+Execution: 
+Run the main.java file located in the ie\tudublin package to start the project.
+Controls and Functionality:
+Play/Pause: 
+Use the space bar to toggle between pausing and resuming the audio playback.
+Visualization Selection: 
+Switch between different visualizations by pressing the 6, 7, 8, and 9 keys. Each key corresponds to a specific visualization created by Tommy, Aniket, Basak, and Aaron, respectively.
+Reset: Press "r" to reset the song to its beginning.
+Automatic Transitions: 
+Note that the visualizations automatically transition at specific segments of the song to match the corresponding visuals.
 
 # How it works
+Each visualization is encapsulated within its own class, all residing within the same package. The driver file for the project is CallSet.java. In this project, objects were instantiated for each visualization. Utilizing inheritance, methods like "calculateAverageAmplitude" from the Visual class were inherited. Minim was employed to load the audio file "LittleFluffyClouds.mp3" within the setup method. Additionally, assets such as .obj files and .png pictures were loaded.
+The code utilizes the Minim library for audio processing. It initializes audio objects such as AudioInput and FFT to analyse the audio input. The draw method continuously updates and renders the visuals based on the audio amplitude and frequency.
 
-# What I am most proud of in the assignment
+'''
+ 	AaronVisuals Aaron = new AaronVisuals();
+    AniketVisuals Aniket = new AniketVisuals();
+    BasakVisuals Basak = new BasakVisuals();
+    TommyVisuals Tommy = new TommyVisuals();
+'''
+    
+'''
+public void keyPressed()
+    {
+        if (key >= '5' && key <= '9')
+        {
+		    mode = key - '0';
+	    }
+
+        switch (key)
+        {
+            case '5':
+            {
+                if (paused)
+                {
+                    getAudioPlayer().play();
+                    paused = false;
+                }
+
+                else
+                {
+                    getAudioPlayer().pause();
+                    paused = true;
+                }
+
+                break;
+            }
+
+            case '1':
+            {
+                getAudioPlayer().play();
+                break;
+            }
+
+            case 'r':
+            {
+                getAudioPlayer().cue(0);
+                getAudioPlayer().play();
+                break;
+            }
+        }
+        
+    }
+	
+'''
+
+### Section 1 - Aaron
+
+![Clock]
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Clock.png" width="300" />
+
+![Cube_1]
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Cube_2.png" width="300" />
+
+![Cube_2]
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Cube_3.png" width="300" />
+
+![Lyrics]
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Lyrics_Floating_Words.png" width="300" />
+
+![Moving_Shape]
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/MovingShape.png" width="300" />
+
+![Reacting_Clouds]
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Reacting_Clouds.png" width="300" />
+
+![Colours_Shape]
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/ShapeColourChange.png" width="300" />
+
+![Moving_Clouds_and_Stars]
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Stars_Moving_Clouds.png" width="300" />
+
+
+
+
+
+
+
+
+
+
+
+
+### Section 2 - Tommy
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis9.png" width="300" /><img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis10.png" width="300" /><img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis1.png" width="300" />
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis2.png" width="300" /><img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis3.png" width="300" />
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis7.png" width="300" />
+
+
+
+### Section 3 - Basak
+
+![Basak's visual](link to images)
+
+
+
+### Section 4 - Aniket
+
+![Aniket's visual](link to images)
+
+# Accomplishments in Our Assignment - What we are most proud of.
+Our collaboration on this assignment, centered around a song featuring skies and clouds, was a testament to our teamwork and dedication. Throughout the process, we navigated various challenges, particularly concerning the implementation across different operating systems, Mac and Windows. Despite initial differences in ideas, we effectively coordinated our efforts to synchronize colors, map amplitudes, shape visuals, integrate a clock, and even incorporate a rooster object in OBJ format, all harmonized to the music.
+
+Working closely with our lecturer during labs, we overcame obstacles together and grew in our understanding of advanced concepts. Our regular meetings allowed us to discuss our progress and ensure alignment with our goals. Utilizing tools like Git enhanced our collaboration and will undoubtedly benefit us in future career endeavors and team projects.
+
+The diversity of elements in our project, including cubes, various cloud formations, rain effects, responsive shapes, lollipops, balls, lyrics integration, ellipses, and stars, showcases our comprehensive exploration of visualizations. Our use of inheritance, polymorphism, the PApplet library, and other programming principles reflects the depth of our learning in this module.
+
+Ultimately, seeing the final project come together was immensely rewarding, reaffirming our hard work and dedication as a group. This experience has not only enriched our understanding but also provided us with invaluable lessons and memories to carry forward in our academic and professional journeys.
+
 
 # Markdown Tutorial
 

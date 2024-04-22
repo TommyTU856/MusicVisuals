@@ -10,6 +10,7 @@ class TimeClock {
     }
 
     public void drawTimeClock() {
+        
         pa.pushMatrix(); // Push the current transformation matrix onto the stack
         pa.translate(pa.width/2, pa.height/2); // Translate to the center of the screen
         pa.rotate(-pa.HALF_PI); // Rotate coordinate system so that 0 is located at the top
@@ -28,6 +29,7 @@ class TimeClock {
         pa.arc(30, 0, 250, 250, 0, M_a);
         
         // Arc display for second
+        
         float S_a = pa.map(pa.second(), 0, 59, 0, pa.TWO_PI);
         pa.stroke(pa.color(92, 219, 149)); // Use color() function for stroke color
         pa.strokeWeight(15);

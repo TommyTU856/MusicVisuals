@@ -17,7 +17,7 @@ public class Rain {
     }
 
     public void render() {
-        // e.calculateAverageAmplitude(); // This method does not exist in PApplet
+        // e.calculateAverageAmplitude();
 
         for (int i = 0; i < d.length; i++) {
             d[i].show();
@@ -26,18 +26,18 @@ public class Rain {
     }
 }
 
-class Drop {
-    float x, y, z;
-    PApplet e;
-    int dropColor; // Color of the drop
+    class Drop {
+        float x, y, z;
+        PApplet e;
+        int dropColor; // Color of the drop
 
-    Drop(float x, float y, float z, PApplet e) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.e = e;
-        this.dropColor = e.color(e.random(200, 255), e.random(200, 255), e.random(200, 255)); // Generate random bright drop color
-    }
+        Drop(float x, float y, float z, PApplet e) {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+            this.e = e;
+            this.dropColor = e.color(e.random(200, 255), e.random(200, 255), e.random(200, 255)); // Generate random bright drop color
+        }
 
     void update() {
         float spd = e.map(z, 0, 5, 10, 4);

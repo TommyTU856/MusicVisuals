@@ -192,7 +192,8 @@ public class AaronVisuals extends Visual {
         e.calculateAverageAmplitude();
 
         pushMatrix();
-        e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
+        //e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
+        e.calculateAverageAmplitude(); 
         timeClock.drawTimeClock();
         popMatrix();  
                 
@@ -269,6 +270,7 @@ public class AaronVisuals extends Visual {
             pushMatrix();
             circles(e);
             popMatrix();
+
 
         }
 
@@ -682,6 +684,7 @@ public class AaronVisuals extends Visual {
     
     // Method to draw a visual cube
     public void visualCube(CallSet e){
+        e.calculateAverageAmplitude(); 
         // float boxSize = 50 + (getAmplitude() * 300);//map(average, 0, 1, 100, 400); 
         // frameCount = (int) lerp(frameCount, boxSize, 0.2f);
 
@@ -714,6 +717,7 @@ public class AaronVisuals extends Visual {
 
     // Method to draw words
     public void drawWords(CallSet e){
+        e.calculateAverageAmplitude(); 
         
         pushMatrix();
         for (int i = 0; i < numWords; i++) {
@@ -741,6 +745,7 @@ public class AaronVisuals extends Visual {
 
     //Method to simulate Boxes
     public void boxes(CallSet e){
+        e.calculateAverageAmplitude(); 
 
             e.translate(e.random(e.width), e.random(e.height)); 
             e.rotateX(e.frameCount * 0.06f);
