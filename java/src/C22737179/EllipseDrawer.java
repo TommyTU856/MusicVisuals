@@ -57,14 +57,7 @@ public class EllipseDrawer extends Visual {
             strokeWeightMapped = map(e.getAmplitude(), 0, 1, 1, 5);
             e.strokeWeight(strokeWeightMapped * 2);
 
-            //int elapsedTime = millis() - startTime;
-
-            // Check if 10 seconds have passed
-           // if (elapsedTime >= 10000) {
-                //e.strokeWeight(strokeWeightMapped*4);
-            // Perform changes here after 10 seconds
-          // }
-
+           
             e.line(properties.x * sin(radians(properties.angle)), 0, 0, properties.y);
             e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), 0, 5, 5);
             e.line(properties.x * sin(radians(properties.angle)), 0, 0, 5, 0, 0);
@@ -96,11 +89,11 @@ public class EllipseDrawer extends Visual {
             e.stroke(32, 255, 255);
             //e.fill(255, 255, 0);
             
-            float triangleBaseX = properties.x + 48; // Üçgenin tabanının x koordinatı
-            float triangleBaseY = properties.y; // Üçgenin tabanının y koordinatı
-            float triangleHeight = 20; // Üçgenin yüksekliği (tabandan tepeye kadar olan mesafe)
-            float triangleTopX = properties.x + 10; // Üçgenin tepe noktasının x koordinatı
-            float triangleTopY = properties.y - triangleHeight; // Üçgenin tepe noktasının y koordinatı
+            float triangleBaseX = properties.x + 48; 
+            float triangleBaseY = properties.y; 
+            float triangleHeight = 20; 
+            float triangleTopX = properties.x + 10; 
+            float triangleTopY = properties.y - triangleHeight; 
             e.triangle(triangleBaseX+40, triangleBaseY+20, triangleTopX, triangleTopY, properties.x +30, properties.y-40);
             e.popMatrix();
 

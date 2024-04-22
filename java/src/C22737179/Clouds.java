@@ -29,7 +29,7 @@ public class Clouds extends Visual {
     void move(CallSet e,Clouds[] allClouds){
         x += speed; // Move the cloud towards the left
 
-    // Wrap around to the left side of the screen if the cloud moves beyond the right boundary
+    // if the cloud moves beyond the right boundary
         if (x > e.width) {
             x = random(0, e.width); // Reset x position to a random position within the screen width
             y = random(e.height); // Reset y position to a random height
@@ -40,7 +40,6 @@ public class Clouds extends Visual {
             if (otherCloud != this && dist(x, y, otherCloud.x, otherCloud.y) < (z + otherCloud.z) / 2) {
                 // If the cloud overlaps with another cloud, adjust its position to the right of the overlapping cloud
                 x = otherCloud.x + otherCloud.z + 220;
-               // Adjust the spacing between clouds
                
             }
         }

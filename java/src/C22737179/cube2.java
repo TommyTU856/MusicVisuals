@@ -24,7 +24,7 @@ public class cube2 extends Visual{
 
         // Apply rotation to the big cube
         e.rotateY(angle); // Rotate around the Y-axis
-        e.rotateX(angle);
+        e.rotateX(angle);// Rotate around the X-axis
 
         // Draw the big cube
         drawBigCube(e);
@@ -53,8 +53,7 @@ public class cube2 extends Visual{
                    float cubeSize = smallCubeSize + e.getAmplitude() * 70;
 
                
-                if (e.random.nextFloat() < 0.1) { // Adjust probability as needed
-                    //cubeSize *= 1 + e.random.nextFloat() * e.getAmplitude(); // Adjust size based on amplitude
+                if (e.random.nextFloat() < 0.1) { // Adjust size based on amplitude
                     cubeSize += e.getAmplitude() * 100;
                 }
 
@@ -62,8 +61,8 @@ public class cube2 extends Visual{
                 e.fill(e.random.nextInt(255), e.random.nextInt(255), e.random.nextInt(255));
                 //e.fill(240);
                 
-                // Draw the small cub
-                e.pushMatrix(); // Save the current transformation state
+                // Draw the small cube
+                e.pushMatrix(); 
                 e.translate(posX, posY, posZ); // Move to the position of the small cube
                 
                 e.box(cubeSize); // Draw the small cube

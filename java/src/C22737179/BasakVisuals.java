@@ -56,8 +56,6 @@ public class BasakVisuals extends Visual {
         }
     }
 }
-        //ellipse.draw(e);
-        //cube2.draw(e);
        
 
 
