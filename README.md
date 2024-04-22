@@ -91,6 +91,52 @@ public void keyPressed()
 
 ### Section 1 - Aaron
 
+My section of the project aims to create an immersive audio-visual experience that synchronizes visual elements with the mood, tempo, and structure of the song “Little Fluffy Clouds”. To achieve this, I employ object-oriented programming (OOP) principles in Java, utilizing the Processing library. Through encapsulation, inheritance, polymorphism, and other Java features, I enhance code organization, reusability, and maintainability.
+
+The functionality related to visualizations and audio playback is encapsulated within the CallSet class. Methods like keyPressed() and setup() encapsulate logic for handling user input and initializing program setup.
+Variables such as mode, paused, rooster, and cloud are encapsulated within the CallSet class to manage state and resources required for visualization. The CallSet class inherits from the Visual class, facilitating code reusability and organization.The draw() method in CallSet demonstrates polymorphism by invoking the draw() method of different visual components based on the mode variable. Control structures like switch-case and if-else statements handle user input and program flow efficiently.
+String manipulation and conditional statements are used to load appropriate audio files based on the detected operating system.
+
+Rain.java
+- Encapsulates functionality related to rendering and updating raindrops.Contains an array of 
+- Drop objects, encapsulating raindrop properties within the class.
+- Utilizes constructors to initialize Drop objects and methods to render and update raindrops.
+
+TimeClock.java
+- Encapsulates functionality related to displaying a clock with hour, minute, and second arcs.
+- Utilizes constructors to initialize PApplet variables and methods to draw arcs representing clock hands.
+
+
+Integration of AaronVisuals Class
+
+- Comprehensive integration of various visual elements, including audio processing, drawing shapes, displaying text, etc.
+- Utilizes Minim Audio Processing to analyse audio input.
+- Implements diverse visual effects and elements, such as clouds, raindrops, stars, cubes, and spirals.
+- Ensures audio-visual synchronization by associating different audio sections with corresponding visual effects.
+- Responds to user interaction, enhancing interactivity and engagement.
+- Provides an immersive audio-visual experience through the harmonious integration of visual and auditory elements.
+
+
+By effectively leveraging OOP concepts and Java features, my project delivers a captivating audio-visual experience that reflects the mood, tempo, and structure of the selected song. Encapsulation, inheritance, polymorphism, and other principles facilitate code organization, reusability, and flexibility, enhancing the overall quality and interactivity of the program.
+Through this project and research, I've gained invaluable personal learning experiences that extend far beyond the realms of textbooks and lectures. Engaging in hands-on development has been a journey of discovery, where each line of code written and every bug fixed has been a lesson in itself. Collaborating with fellow students has added layers of depth to my learning, as we navigated through challenges together, sharing insights and brainstorming solutions. Learning by doing has been immensely enjoyable, as it allowed me to apply theoretical knowledge in a practical context, reinforcing concepts and sharpening my problem-solving skills. Working alongside peers has fostered a sense of camaraderie and mutual support, transforming the project into a collaborative adventure rather than a solitary endeavour. Overall, this experience has not only enhanced my technical proficiency but also enriched my interpersonal skills and instilled in me a deeper appreciation for the iterative process of learning and growth.
+
+From the fundamental lessons of W3Schools' Online Web Tutorials to the boundless opportunities revealed by ChatGPT, each source enriched my understanding and guided my progress. Immersed in the world of Processing, I found inspiration and comfort within its virtual confines. As I tackled the intricacies of OOP, Java, and Processing, the insights shared by respected lecturer Dr Bryan Duggan acted as a guiding light, illuminating my path forward. With appreciation for these invaluable resources, I embarked on an exploration of theory and application, weaving together knowledge and practice to craft an engaging digital experience.
+
+
+Bibiography and References
+
+ Learn to code (no date) W3Schools Online Web Tutorials. Available at: https://www.w3schools.com/ (Accessed: 18 March 2024).
+
+ Chatgpt. Available at: https://chat.openai.com/ (Accessed: 12 April 2024).
+
+ Welcome to processing! (no date) Processing. Available at: https://processing.org/ (Accessed: 15 March 2024).
+
+ Duggan, B. (2024) ‘OOP, Java, Processing’, https://github.com/skooter500/OOP-2024. https://github.com/skooter500/OOP-2024, 20 March.
+ 
+
+
+
+
 ![Clock]
 <img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Clock.png" width="300" />
 
