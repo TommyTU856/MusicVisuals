@@ -196,11 +196,31 @@ Welcome to processing! (no date) Processing. Available at: https://processing.or
 
 
 ### Section 2 - Tommy
+
 <img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis9.png" width="300" /><img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis10.png" width="300" /><img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis1.png" width="300" />
 <img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis2.png" width="300" /><img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis3.png" width="300" />
 <img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis7.png" width="300" />
 
+I worked on the main structure of the code that would handle calling each of our visual files using a switch statement. 
+I also created the intro, and the visual with the spiral spheres and the hyper cube.
 
+A very high level of what I have done is as follows:
+
+In my draw function in TommyVisuals, I render several different elements based on timing, using the current state of the audio player.
+The constructor handles the initialising of the objects.
+
+In my TommyVisuals file I have different methods to render certain visual elements like, cloud(), randomCloud(), rooster(), These methods
+encapsulate the rendering logic for each element, providing modularity. This abstraction also helps with maintainability and easy modification.
+
+TommyVisuals also integrates with other classes, like Lyrics.java, HyperCube.java, Lollipop.java. These classes encapsulate certain elements and functions.
+
+The main visual is the spiral of spheres, the original code from this came from a blog i foun online it was a group of moons orbiting a planet. I really liked the look of it so i started playing around with it and completely changed its behavior and by adding a lot of control keys, visual reactions to the sound and colour changing it really came to life.
+
+The Hypercude I coded, it is made up of 4 boxes of decending sizes inside each other that react to the music.
+
+The intro actually has the most elements working at the same time and i really just used that at the start to experiment with but as the song takes some time to come in it worked well. There is a .obj file of a rooster a load of random clouds and the lyrics type across the screen. Its such simple code looking at it now but finguring out how to type the lyrics across the screen was a lot of fun and frustration.
+
+The part of the project i am most proud of is actually the key controls. I had created and deleted so many different visuals at a point, I was about to delete the spiral spheres, as at the time they werent part of my project. Then our lecturer mentioned a stretch goal that had possiblity of controlling the visual with a midi controller and i thought of the possiblities with the spiral spheres. I got it submited and i loved how it looked so once again scrapped everything and added the sprial sphere to my project but this time i would add live control functions to manipulate the visual elements. None of my other elements that i had scrapped had any control features. It is such a great interactive experience now and when it matches the music it looks great.
 
 ### Section 3 - Basak
 
