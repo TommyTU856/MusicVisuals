@@ -95,10 +95,10 @@ public void keyPressed()
 
 ### Section 2 - Tommy
 
-![Tommy's visual](Screenshot 2024-04-22 180911.png)
-![Tommy's visual](Screenshot 2024-04-22 173651.png)
-![Tommy's visual](Screenshot 2024-04-22 173714.png)
-![Tommy's visual](Screenshot 2024-04-22 175329.png)
+![Tommy's visual](images/Screenshot 2024-04-22 180911.png)
+![Tommy's visual](images/Screenshot 2024-04-22 173651.png)
+![Tommy's visual](images/Screenshot 2024-04-22 173714.png)
+![Tommy's visual](images/Screenshot 2024-04-22 175329.png)
 
 
 ### Section 3 - Basak
