@@ -93,12 +93,14 @@ public void keyPressed()
 
 
 ![Clock](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Clock.png)
-![Cube](..vscode/Images/Aarons_Images/Cube_2.png)
-![Cube](../MusicVisuals/.vscode/Images/Aarons_Images/Cube_3.png)
+![Cube](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Cube_2.png)
+![Cube](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Cube_3.png)
 ![Cube](../MusicVisuals/.vscode/Images/Aarons_Images/Cube.png)
-![Lyrics](../MusicVisuals/.vscode/Images/Aarons_Images/Lyrics_Floating_Words.png)
-![Moving Shape](../MusicVisuals/.vscode/Images/Aarons_Images/MovingShape.png)
-![Clouds](../MusicVisuals/.vscode/Images/Aarons_Images/Reacting_Clouds.png)
+![Lyrics](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Lyrics_Floating_Words.png)
+![Moving Shape](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/MovingShape.png)
+![Reacting Clouds](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Reacting_Clouds.png)
+![Colours Shape](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/ShapeColourChange.png)
+![Moving Clouds and Stars](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Stars_Moving_Clouds.png)
 
 
 ### Section 2 - Tommy
