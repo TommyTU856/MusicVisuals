@@ -6,7 +6,7 @@ import processing.core.PImage;
 public class BasakVisuals extends Visual {
 
     
-    float x=50*2+100;
+    float x=80*2+100;
     float y=80*2+50;
     float angle;
     int value=300;
@@ -15,6 +15,11 @@ public class BasakVisuals extends Visual {
 
     
     PImage backgroundImage;
+    boolean drawEllipse = true;
+    boolean timeStarted = false;
+    int startTime;
+    int switchTime = 0;
+
 
     
 
@@ -31,21 +36,30 @@ public class BasakVisuals extends Visual {
        
         this.g = e.getGraphics();
         background(0);
+        
        
         //e.translate(e.width/2,e.height/2);
         colorMode(HSB);
-        
+        // Check if 15 seconds have passed
+        // Check if it's time to switch
+        if (millis() - switchTime > 15000) {
+            // Switch the drawing mode
+            drawEllipse = !drawEllipse;
+            switchTime = millis(); // Update the switch time
+        }
 
-        //ellipse.draw(e);
-        cube2.draw(e);
-       
-     
-
-        
-        
+        // Draw the appropriate shape
+        if (drawEllipse) {
+            ellipse.draw(e);
+        } else {
+            cube2.draw(e);
+        }
     }
-
 }
+        //ellipse.draw(e);
+        //cube2.draw(e);
+       
+
 
     
 
