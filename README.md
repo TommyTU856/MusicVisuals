@@ -92,15 +92,25 @@ public void keyPressed()
 ### Section 1 - Aaron
 
 
-![Clock](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Clock.png)
-![Cube](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Cube_2.png)
-![Cube](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Cube_3.png)
+![Clock]<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Clock.png" width="300" />
+![Cube]<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Cube_2.png" width="300" />
+![Cube]<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Cube_3.png" width="300" />
 ![Cube](../MusicVisuals/.vscode/Images/Aarons_Images/Cube.png)
-![Lyrics](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Lyrics_Floating_Words.png)
-![Moving Shape](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/MovingShape.png)
-![Reacting Clouds](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Reacting_Clouds.png)
-![Colours Shape](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/ShapeColourChange.png)
-![Moving Clouds and Stars](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Stars_Moving_Clouds.png)
+![Lyrics]<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Lyrics_Floating_Words.png" width="300" />
+![Moving_Shape]<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/MovingShape.png" width="300" />
+![Reacting_Clouds]<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Reacting_Clouds.png" width="300" />
+![Colours_Shape]<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/ShapeColourChange.png" width="300" />
+![Moving_Clouds_and_Stars]<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Stars_Moving_Clouds.png" width="300" />
+
+
+
+
+
+
+
+
+
+
 
 
 ### Section 2 - Tommy
