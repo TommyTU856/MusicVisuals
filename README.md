@@ -102,6 +102,7 @@ public void keyPressed()
 
 
 ### Section 2 - Tommy
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis9.png" width="200" />
 ![TommyVisual](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis9.png)
 ![TommyVisual](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis1.png)
 ![TommyVisual](https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis2.png)
