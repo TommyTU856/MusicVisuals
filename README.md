@@ -227,15 +227,15 @@ The intro actually has the most elements working at the same time and i really j
 
 '''
 
-public void render(CallSet e, String lyrics) {
+        public void render(CallSet e, String lyrics) {
 
-        e.text(lyrics.substring(0, index), xPos, yPos);
-  
-        if (index < lyrics.length()) {
-            index += 1;
-            e.delay(typingSpeed);
+            e.text(lyrics.substring(0, index), xPos, yPos);
+    
+            if (index < lyrics.length()) {
+                index += 1;
+                e.delay(typingSpeed);
+            }
         }
-    }
 
 '''
 
@@ -243,35 +243,35 @@ The part of the project i am most proud of is actually the key controls. I had c
 
 '''
 
-if (e.keyPressed) {
-    if (e.keyCode == PConstants.LEFT) {
-        rotSpeed -= 0.01f;
-    } else if (e.keyCode == PConstants.RIGHT) {
-        rotSpeed += 0.01f;
-    } else if (e.keyCode == PConstants.UP) {
-        radius += 1;
-    } else if (e.keyCode == PConstants.DOWN) {
-        radius -= 1;
-    } else if (e.keyCode == PConstants.SHIFT) {	
-        rotSpeed = 0;
-    } else if (e.keyCode == PConstants.CONTROL) {
-        sphereBaseSize -= .5f;
-    } else if (e.keyCode == PConstants.ALT) {
-        sphereBaseSize += .5f;
-    } else if (e.key == 'p') {
-        c = 290; 
-    } else if (e.key == 'o') {
-        c = 360; 
-    } else if (e.key == 'i') {
-        c = 60; 
-    } else if (e.key == 'l') {
-        c = e.random(0, 360); 
-    } else if (e.key == 't') {
-        alph += 0.5f;
-    } else if (e.key == 'g') {
-        alph -= 0.5f;
-    } 
-}
+        if (e.keyPressed) {
+            if (e.keyCode == PConstants.LEFT) {
+                rotSpeed -= 0.01f;
+            } else if (e.keyCode == PConstants.RIGHT) {
+                rotSpeed += 0.01f;
+            } else if (e.keyCode == PConstants.UP) {
+                radius += 1;
+            } else if (e.keyCode == PConstants.DOWN) {
+                radius -= 1;
+            } else if (e.keyCode == PConstants.SHIFT) {	
+                rotSpeed = 0;
+            } else if (e.keyCode == PConstants.CONTROL) {
+                sphereBaseSize -= .5f;
+            } else if (e.keyCode == PConstants.ALT) {
+                sphereBaseSize += .5f;
+            } else if (e.key == 'p') {
+                c = 290; 
+            } else if (e.key == 'o') {
+                c = 360; 
+            } else if (e.key == 'i') {
+                c = 60; 
+            } else if (e.key == 'l') {
+                c = e.random(0, 360); 
+            } else if (e.key == 't') {
+                alph += 0.5f;
+            } else if (e.key == 'g') {
+                alph -= 0.5f;
+            } 
+        }
 
 '''
 
