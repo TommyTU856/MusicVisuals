@@ -88,8 +88,8 @@ public class CallSet extends Visual {
         String osName = System.getProperty("os.name");
 
         if (osName.toLowerCase().contains("win")) {
-            loadAudio("heroplanet.mp3");
-            //loadAudio("LittleFlufyClouds.mp3");
+            //loadAudio("heroplanet.mp3");
+            loadAudio("LittleFluffyClouds.mp3");
         } else if (osName.toLowerCase().contains("mac")) {
             loadAudio("/Users/aaronbaggot/GroupCA/MusicVisuals/data/LittleFluffyClouds.mp3");
         } else {
