@@ -1,3 +1,13 @@
+/* Student Name: Aaron Baggot
+ * Student Number: C22716399
+ * Date: 20/12/2020
+ * Project Name: Music Visuals
+ * Description: This project is a music visualiser that uses the minim library to process audio data,
+ * and the processing library to create visual elements. 
+ * The visual elements include clouds, words, rain, stars, cubes, spirals, and shapes.
+ * The visual elements change based on the amplitude of the audio data.
+ */
+
 package C22737179;
 
 import java.util.ArrayList;
