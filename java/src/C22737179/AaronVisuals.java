@@ -271,6 +271,7 @@ public class AaronVisuals extends Visual {
             circles(e);
             popMatrix();
 
+
         }
 
         if(e.getAudioPlayer().position() > 50000 && e.getAudioPlayer().position() < 56000 && !e.paused) {
