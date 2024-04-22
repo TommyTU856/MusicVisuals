@@ -1,18 +1,20 @@
 package C22737179;
 import ie.tudublin.*;
-import processing.core.PImage;
+
 
 public class EllipseDrawer extends Visual {
     private EllipseProperties properties;
     private float smoothedEllipseSize = 0;
     //private float previousVolume = 10;
     private float strokeWeightMapped;
-    private int startTime;
+    //private int startTime;
+    //private PImage smallCircleImage;
    
 
     public EllipseDrawer(EllipseProperties properties) {
         this.properties = properties;
-        startTime = millis(); 
+        //startTime = millis(); 
+        //smallCircleImage = loadImage("sky.jpg");
         
     }
 
@@ -30,6 +32,10 @@ public class EllipseDrawer extends Visual {
     //float hueOffset = 0;
     
     public void draw(CallSet e) {
+
+        e.translate(e.width/2,e.height/2);
+        e.backgroundImage.resize(e.width, e.height);
+        e.background(e.backgroundImage);
         
 
     
@@ -67,6 +73,7 @@ public class EllipseDrawer extends Visual {
             e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), 0, 5, 5);
             e.line(properties.x * sin(radians(properties.angle)), 0, 0, 5, 0, 0);
 
+
             e.pushMatrix();
             e.rotate(-radians(properties.angle));
             e.ellipse(smoothedEllipseSize* sin(radians(properties.angle)), properties.y, 5, 5);
@@ -103,7 +110,7 @@ public class EllipseDrawer extends Visual {
 
             e.popMatrix();
 
-            //println(getAmplitude());
+          
         }
 
         properties.angle += 1;
