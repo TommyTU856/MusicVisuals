@@ -16,12 +16,7 @@ public class Lyrics {
 
     public void render(CallSet e, String lyrics) {
 
-        
-        
-        //e.textSize(40);
-        //e.fill(0, 0, 100);
         e.text(lyrics.substring(0, index), xPos, yPos);
-  
   
         if (index < lyrics.length()) {
             index += 1;
