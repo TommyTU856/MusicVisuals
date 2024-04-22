@@ -26,7 +26,7 @@ Execution:
 Run the main.java file located in the ie\tudublin package to start the project.
 Controls and Functionality:
 Play/Pause: 
-Use the space bar to toggle between pausing and resuming the audio playback.
+Use the key "5" to toggle between pausing and resuming the audio playback.
 Visualization Selection: 
 Switch between different visualizations by pressing the 6, 7, 8, and 9 keys. Each key corresponds to a specific visualization created by Tommy, Aniket, Basak, and Aaron, respectively.
 Reset: Press "r" to reset the song to its beginning.
