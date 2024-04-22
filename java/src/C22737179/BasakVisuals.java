@@ -41,7 +41,7 @@ public class BasakVisuals extends Visual {
     }
 
     public void setup() {
-        randomizedCubePattern.generateRandomCubePattern(null);
+        
     
        
        
@@ -54,6 +54,10 @@ public class BasakVisuals extends Visual {
        
         this.g = e.getGraphics();
         background(0);
+
+        e.image(e.cloudImage, 0, 0, width, height);
+        e.translate(e.width/2,e.height/2);
+        
         //e.backgroundImage.resize(g.width, g.height);
         //e.background(e.backgroundImage);
 
@@ -63,9 +67,9 @@ public class BasakVisuals extends Visual {
         colorMode(HSB);
         
 
-        //ellipse.draw(e);
+        ellipse.draw(e);
         //cube2.draw(e);
-        randomizedCubePattern.draw(e);
+        //randomizedCubePattern.draw(e);
      
 
         

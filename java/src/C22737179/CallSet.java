@@ -25,7 +25,7 @@ public class CallSet extends Visual {
     PImage backgroundImage;
     PImage img;
     Random random;
-    
+    PImage cloudImage;
    
    
     
@@ -87,7 +87,7 @@ public class CallSet extends Visual {
         String osName = System.getProperty("os.name");
 
         if (osName.toLowerCase().contains("win")) {
-            loadAudio("heroplanet.mp3");
+            loadAudio("LittleFluffyClouds.mp3");
         } else if (osName.toLowerCase().contains("mac")) {
             loadAudio("/Users/aaronbaggot/GroupCA/MusicVisuals/data/LittleFluffyClouds.mp3");
         } else {
@@ -95,12 +95,14 @@ public class CallSet extends Visual {
         }
 
         rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
-        backgroundImage = loadImage("sky.jpg");
+        //backgroundImage = loadImage("dd.png");
         img = loadImage("data/feature_clouds.jpg");
         random=new Random();
+        cloudImage = loadImage("data/clo.png");
         
 
       
+
       
         //getAudioPlayer().setGain(-25);
         //cloud = loadShape("cloud1.svg");
