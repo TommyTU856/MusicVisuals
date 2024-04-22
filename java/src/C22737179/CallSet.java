@@ -3,6 +3,8 @@ package C22737179;
 import ie.tudublin.Visual;
 import processing.core.PShape;
 import processing.core.PImage;
+import java.util.Random;
+
 
 public class CallSet extends Visual {
     
@@ -14,7 +16,7 @@ public class CallSet extends Visual {
         
         println("CWD: " + System.getProperty("user.dir"));
     }
-
+    
     int mode = 1;
     boolean paused = true;
     PShape rooster;
@@ -22,6 +24,10 @@ public class CallSet extends Visual {
     PShape mountainClouds;
     PImage backgroundImage;
     PImage img;
+    Random random;
+    PImage cloudImage;
+   
+   
     
 
     public void keyPressed()
@@ -63,6 +69,7 @@ public class CallSet extends Visual {
                 break;
             }
         }
+        
     }
 
     public void setup()
@@ -88,8 +95,15 @@ public class CallSet extends Visual {
         }
 
         rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
-        backgroundImage = loadImage("sky.jpg");
+        //backgroundImage = loadImage("dd.png");
         img = loadImage("data/feature_clouds.jpg");
+        random=new Random();
+        cloudImage = loadImage("data/clo.png");
+        
+
+      
+
+      
         //getAudioPlayer().setGain(-25);
         //cloud = loadShape("cloud1.svg");
        
