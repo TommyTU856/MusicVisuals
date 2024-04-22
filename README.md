@@ -102,11 +102,10 @@ public void keyPressed()
 
 
 ### Section 2 - Tommy
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis9.png" width="300" /><img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis1.png" width="300" />
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis2.png" width="300" /><img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis3.png" width="300" />
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vis7.png" width="300" />
 
-[![TommyVisual](MusicVisuals\.vscode\Images\vis9.png)]
-![TommyVisual](images/vis4.png)
-![TommyVisual](images/vis6.png)
-![TommyVisual](images/vis2.png)
 
 
 ### Section 3 - Basak
