@@ -32,14 +32,14 @@ public class CallSet extends Visual {
 
     public void keyPressed()
     {
-        if (key >= '6' && key <= '9')
+        if (key >= '5' && key <= '9')
         {
 		    mode = key - '0';
 	    }
 
         switch (key)
         {
-            case ' ':
+            case '5':
             {
                 if (paused)
                 {
@@ -120,34 +120,39 @@ public class CallSet extends Visual {
     public void draw()
     {
         //Tommy.draw(this);
-        //Tommy.draw(this);
         //Aniket.draw(this);
         //Basak.draw(this);
         //Aaron.draw(this);
 
         switch (mode) {
 
-            case 6:
+            case 5:
             {
                 Tommy.draw(this);
                 break;
             }
             
-            case 7:
+            case 6:
             {
                 Aniket.draw(this);
                 break;
             }
 
-            case 8:
+            case 7:
             {
                 Basak.draw(this);
                 break;
             }
 
-            case 9:
+            case 8:
             {
                 Aaron.draw(this);
+                break;
+            }
+
+            case 9:
+            {
+                Tommy.draw(this);
                 break;
             }
 
