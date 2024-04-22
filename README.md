@@ -19,7 +19,7 @@
 - Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
 
 # Description of the assignment
-In this project, our team collaborated to create four unique visualizations using Java Processing, with each section contributed by a different team member. Our chosen song is “Little Fluffy Clouds” by The Orb. The goal was to develop visualizations that respond dynamically to music, adjusting colours, shapes, and sizes based on the amplitude and frequency of the audio. To extract audio data from MP3 files, we utilized the Audio Minim library.
+In this project, our team collaborated to create four unique visualizations using Java Processing, with each section contributed by a different team member. Our chosen song is "Little Fluffy Clouds" by The Orb. The goal was to develop visualizations that respond dynamically to music, adjusting colours, shapes, and sizes based on the amplitude and frequency of the audio. To extract audio data from MP3 files, we utilized the Audio Minim library.
 
 The implementation consists of several classes and components, each serving a specific purpose:
 
@@ -40,8 +40,84 @@ Automatic Transitions:
 Note that the visualizations automatically transition at specific segments of the song to match the corresponding visuals.
 
 # How it works
+Each visualization is encapsulated within its own class, all residing within the same package. The driver file for the project is CallSet.java. In this project, objects were instantiated for each visualization. Utilizing inheritance, methods like "calculateAverageAmplitude" from the Visual class were inherited. Minim was employed to load the audio file "LittleFluffyClouds.mp3" within the setup method. Additionally, assets such as .obj files and .png pictures were loaded.
+The code utilizes the Minim library for audio processing. It initializes audio objects such as AudioInput and FFT to analyse the audio input. The draw method continuously updates and renders the visuals based on the audio amplitude and frequency.
 
-# What I am most proud of in the assignment
+'''
+ 	AaronVisuals Aaron = new AaronVisuals();
+    AniketVisuals Aniket = new AniketVisuals();
+    BasakVisuals Basak = new BasakVisuals();
+    TommyVisuals Tommy = new TommyVisuals();
+'''
+    
+'''
+public void keyPressed()
+    {
+        if (key >= '5' && key <= '9')
+        {
+		    mode = key - '0';
+	    }
+
+        switch (key)
+        {
+            case '5':
+            {
+                if (paused)
+                {
+                    getAudioPlayer().play();
+                    paused = false;
+                }
+
+                else
+                {
+                    getAudioPlayer().pause();
+                    paused = true;
+                }
+
+                break;
+            }
+
+            case '1':
+            {
+                getAudioPlayer().play();
+                break;
+            }
+
+            case 'r':
+            {
+                getAudioPlayer().cue(0);
+                getAudioPlayer().play();
+                break;
+            }
+        }
+        
+    }
+	
+'''
+
+### Section 1 - Aaron
+
+![Aaron's visual](link to images)
+
+### Section 2 - Tommy
+
+
+![Tommy's visual](link to images)
+
+
+### Section 3 - Basak
+
+![Basak's visual](link to images)
+
+
+
+### Section 4 - Aniket
+
+![Aniket's visual](link to images)
+
+# Accomplishments in Our Assignment - What we are most proud of.
+
+
 
 # Markdown Tutorial
 
