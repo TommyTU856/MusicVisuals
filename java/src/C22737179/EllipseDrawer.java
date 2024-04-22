@@ -5,23 +5,20 @@ import ie.tudublin.*;
 public class EllipseDrawer extends Visual {
     private EllipseProperties properties;
     private float smoothedEllipseSize = 0;
-    //private float previousVolume = 10;
+
     private float strokeWeightMapped;
-    //private int startTime;
-    //private PImage smallCircleImage;
+ 
    
 
     public EllipseDrawer(EllipseProperties properties) {
         this.properties = properties;
         //startTime = millis(); 
-        //smallCircleImage = loadImage("sky.jpg");
+        
         
     }
 
     public void setup() {
         size(1020, 683); // Set the canvas size
-        
-       
         
     }
 
@@ -29,14 +26,12 @@ public class EllipseDrawer extends Visual {
 
     
   
-    //float hueOffset = 0;
     
     public void draw(CallSet e) {
 
-        //e.translate(e.width/2,e.height/2);
-        e.image(e.cloudImage, 0, 0, width, height);
-        //e.backgroundImage.resize(e.width, e.height);
-        //e.background(e.backgroundImage);
+        e.translate(e.width/2,e.height/2);
+        e.backgroundImage.resize(e.width, e.height);
+        e.background(e.backgroundImage);
         
 
     
@@ -49,7 +44,7 @@ public class EllipseDrawer extends Visual {
             e.lights();
 
             e.noFill();
-            float EllipseSize = 75 + (e.getAmplitude() * 1000);
+            float EllipseSize = 75 + (e.getAmplitude() * 500);
             smoothedEllipseSize = lerp(smoothedEllipseSize, EllipseSize, 0.2f);
          
 

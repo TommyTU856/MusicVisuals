@@ -26,7 +26,8 @@ public class CallSet extends Visual {
     PImage img;
     Random random;
     PImage cloudImage;
-   
+
+    Clouds[] clouds;
    
     
 
@@ -87,7 +88,8 @@ public class CallSet extends Visual {
         String osName = System.getProperty("os.name");
 
         if (osName.toLowerCase().contains("win")) {
-            loadAudio("LittleFluffyClouds.mp3");
+            loadAudio("heroplanet.mp3");
+            //loadAudio("LittleFlufyClouds.mp3");
         } else if (osName.toLowerCase().contains("mac")) {
             loadAudio("/Users/aaronbaggot/GroupCA/MusicVisuals/data/LittleFluffyClouds.mp3");
         } else {
@@ -95,10 +97,22 @@ public class CallSet extends Visual {
         }
 
         rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
-        //backgroundImage = loadImage("dd.png");
+        backgroundImage = loadImage("skyy.jpg");
         img = loadImage("data/feature_clouds.jpg");
         random=new Random();
-        cloudImage = loadImage("data/clo.png");
+        cloudImage = loadImage("asd.jpg");
+
+
+
+        //clouds
+
+        clouds = new Clouds[50];
+        for (int i = 0; i < clouds.length; i++) {
+            // Initialize clouds with random parameters
+            clouds[i] = new Clouds(random(width), random(height), random(300, 400),3);
+            clouds[i].setSize(370);
+        }
+        
         
 
       
@@ -109,6 +123,12 @@ public class CallSet extends Visual {
        
         
     }
+
+    public Clouds[] getClouds() {
+        return clouds;
+    }
+
+   
 
     AaronVisuals Aaron = new AaronVisuals();
     AniketVisuals Aniket = new AniketVisuals();
