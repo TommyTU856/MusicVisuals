@@ -39,7 +39,7 @@ public class Clouds extends Visual {
         for (Clouds otherCloud : allClouds) {
             if (otherCloud != this && dist(x, y, otherCloud.x, otherCloud.y) < (z + otherCloud.z) / 2) {
                 // If the cloud overlaps with another cloud, adjust its position to the right of the overlapping cloud
-                x = otherCloud.x + otherCloud.z + 120;
+                x = otherCloud.x + otherCloud.z + 220;
                // Adjust the spacing between clouds
                
             }
