@@ -26,7 +26,7 @@ Execution:
 Run the main.java file located in the ie\tudublin package to start the project.
 Controls and Functionality:
 Play/Pause: 
-Use the space bar to toggle between pausing and resuming the audio playback.
+Use the key "5" to toggle between pausing and resuming the audio playback.
 Visualization Selection: 
 Switch between different visualizations by pressing the 6, 7, 8, and 9 keys. Each key corresponds to a specific visualization created by Tommy, Aniket, Basak, and Aaron, respectively.
 Reset: Press "r" to reset the song to its beginning.
@@ -89,6 +89,11 @@ public void keyPressed()
 	
 '''
 
+
+
+
+
+
 ### Section 1 - Aaron
 
 My section of the project aims to create an immersive audio-visual experience that synchronizes visual elements with the mood, tempo, and structure of the song “Little Fluffy Clouds”. To achieve this, I employ object-oriented programming (OOP) principles in Java, utilizing the Processing library. Through encapsulation, inheritance, polymorphism, and other Java features, I enhance code organization, reusability, and maintainability.
@@ -150,7 +155,7 @@ Through this project and research, I've gained invaluable personal learning expe
 From the fundamental lessons of W3Schools' Online Web Tutorials to the boundless opportunities revealed by ChatGPT, each source enriched my understanding and guided my progress. Immersed in the world of Processing, I found inspiration and comfort within its virtual confines. As I tackled the intricacies of OOP, Java, and Processing, the insights shared by respected lecturer Dr Bryan Duggan acted as a guiding light, illuminating my path forward. With appreciation for these invaluable resources, I embarked on an exploration of theory and application, weaving together knowledge and practice to craft an engaging digital experience.
 
 
-Bibiography and References
+Bibliography and References
 
  Chatgpt. Available at: https://chat.openai.com/ (Accessed: 12 April 2024).
 
@@ -222,15 +227,49 @@ The intro actually has the most elements working at the same time and i really j
 
 The part of the project i am most proud of is actually the key controls. I had created and deleted so many different visuals at a point, I was about to delete the spiral spheres, as at the time they werent part of my project. Then our lecturer mentioned a stretch goal that had possiblity of controlling the visual with a midi controller and i thought of the possiblities with the spiral spheres. I got it submited and i loved how it looked so once again scrapped everything and added the sprial sphere to my project but this time i would add live control functions to manipulate the visual elements. None of my other elements that i had scrapped had any control features. It is such a great interactive experience now and when it matches the music it looks great.
 
+
+
+
+
+
+
+
+
+
 ### Section 3 - Basak
 
 ![Basak's visual](link to images)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ### Section 4 - Aniket
 
 ![Aniket's visual](link to images)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Accomplishments in Our Assignment - What we are most proud of.
 Our collaboration on this assignment, centered around a song featuring skies and clouds, was a testament to our teamwork and dedication. Throughout the process, we navigated various challenges, particularly concerning the implementation across different operating systems, Mac and Windows. Despite initial differences in ideas, we effectively coordinated our efforts to synchronize colors, map amplitudes, shape visuals, integrate a clock, and even incorporate a rooster object in OBJ format, all harmonized to the music.
