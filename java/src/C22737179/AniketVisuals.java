@@ -6,23 +6,42 @@ import processing.core.PShape;
 public class AniketVisuals extends Visual {
     CallSet e;
     PShape c;
-    int cloudNum = 4;
-    float cloudWidth = 560;
-    float cloudHeight = 300;
+    int cloudNum = 16;
+    float cloudWidth = 400;
+    float cloudHeight = 216;
     float cloudX[] = new float[cloudNum];
     float cloudY[] = new float[cloudNum];
+    float brightness = 0;
 
     public AniketVisuals()
     {
-        randomisePosition();
+        setPosition();
     }
 
-    public void randomisePosition()
+    public void setPosition()
     {
         for(int i = 0; i < cloudNum; i++)
         {
-            cloudX[i] = random(100, 1000);
-            cloudY[i] = random(50, 600);
+            if (i < 4)
+            {
+                cloudX[i] = 100 + ((i % 4) * cloudWidth);
+                cloudY[i] = 50;
+            }
+            else if (i >= 4 && i < 8)
+            {
+                cloudX[i] = 300 + ((i % 4) * cloudWidth);
+                cloudY[i] = 50 + cloudHeight;
+            }
+            else if (i >= 8 && i < 12)
+            {
+                cloudX[i] = 100 + ((i % 4) * cloudWidth);
+                cloudY[i] = 50 + (2 * cloudHeight);
+            }
+            else if (i >= 12 && i < 16)
+            {
+                cloudX[i] = 300 + ((i % 4) * cloudWidth);
+                cloudY[i] = 50 + (3 * cloudHeight);
+            }
         }
     }
 
@@ -34,56 +53,41 @@ public class AniketVisuals extends Visual {
 
             if(cloudX[i] > 1500)
             {
-                cloudX[i] = -cloudWidth;
+                cloudX[i] = -200;
             }
         }
     }
 
-    public void changeColour()
+    public void changeColour(int frameCount)
     {
-        c.setFill(color(random(360), random(100), random(100)));
+        if (frameCount % 60 == 0)
+            c.setFill(color(random(255),random(255),random(255)));
     }
 
-    public void decreaseSize()
+    public void changeSize(float amplitude)
     {
-        cloudWidth += 56;
-        cloudHeight += 30;
-    }
-
-    public void increaseSize()
-    {
-        cloudWidth -= 56;
-        cloudHeight -= 30;
+        cloudWidth = 56 + (4000 * amplitude);
+        cloudHeight = 30 + (2160 * amplitude);
     }
 
     public void draw(CallSet e) {
         if(e.paused == false)
         {
+            if (e.frameCount % 60 == 0)
+            {
+                brightness += 10;
+            }
+
+            if (e.frameCount % 60 == 0 && brightness == 100)
+            {
+                brightness = 0;
+            }
+            
             c = e.cloud;
             e.colorMode(HSB, 360, 100, 100);
-            e.background(0, 0, 0);
+            e.background(200, 100, brightness);
 
             e.calculateAverageAmplitude();
-            
-            if(e.getAudioPlayer().left.level() > 0.14 && e.frameCount % 60 == 0)
-            {
-                // value printed is the RMS (root mean square)
-                println(e.getAudioPlayer().left.level());
-
-                if(cloudWidth == 560 && cloudHeight == 300)
-                {
-                    decreaseSize();
-                }
-                else
-                {
-                    increaseSize();
-                }
-            }
-
-            if(e.getAudioPlayer().left.level() > 0.16)
-            {
-                changeColour();
-            }
 
             for(int i = 0; i < cloudNum; i++)
             {
@@ -91,6 +95,10 @@ public class AniketVisuals extends Visual {
             }
     
             moveCloud();
+
+            changeSize(e.getSmoothedAmplitude());
+
+            changeColour(e.frameCount);
         }
           
     }
