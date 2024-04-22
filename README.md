@@ -106,6 +106,33 @@ TimeClock.java
 - Encapsulates functionality related to displaying a clock with hour, minute, and second arcs.
 - Utilizes constructors to initialize PApplet variables and methods to draw arcs representing clock hands.
 
+- The cloudyShapes method draws clouds. It uses the pushMatrix and popMatrix functions to isolate transformations. The rotate function rotates by a specified angle, adding variation to each cloud's appearance. Inside the loop, each cloud's position is updated using the move function, and its display is updated using the display function.
+
+- The spiralShape method draws a spiral shape. It calculates the colour of the shape based on the audio amplitude using the map function. Inside the loop, the spiralShape function is called multiple times to draw concentric circles forming the spiral.
+
+- The stars method draws stars. Inside the loop, it generates random positions and sizes for the stars using the random function and then calls the drawStar function to draw each star.
+
+- The visualCube method draws cubes on the canvas. Inside nested loops, it translates, rotates, and fills each cube based on its position and orientation. The cube's size is determined by the audio amplitude, and its colour is based on its position.
+
+- The drawWords method draws words on the canvas. Inside the loop, it translates each word's position and rotates it slightly. The text size and colour are set, and the word is drawn using the text function.
+
+- The boxes method simulates the appearance of boxes. Inside the loop, it rotates and fills each box based on its position and orientation. The box's size is determined by the audio amplitude, and its colour is randomly generated.
+
+- The rain method simulates raindrops falling. Inside the loop, it creates and updates instances of the Drop class to represent individual raindrops.
+
+- The circles method draws circles in a spiral pattern. Inside the loop, it translates the origin and rotates the canvas before drawing each circle with varying radius.
+
+- The update method updates the position of a line. It increments the y-coordinate of the line and resets it when it reaches the bottom of the screen.
+
+- The formCloud method simulates the formation of clouds. Inside nested loops, it updates and displays instances of the Cloud class to represent clouds.
+
+- The cloudObject method draws a cloud shape. It uses various parameters to specify the position, size, and colour of the cloud.
+
+- The Cloud class represents a cloud object with properties such as position, size, and colour. It has methods to move and display the cloud.
+
+- The colorFromOffset function calculates the colour value based on the offset parameter. It maps the offset value to a colour value between 0 and 255.
+
+
 
 Integration of AaronVisuals Class
 
