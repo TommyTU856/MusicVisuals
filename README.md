@@ -93,7 +93,7 @@ public void keyPressed()
 
 
 ![Clock](https://github.com/TommyTU856/MusicVisuals/blob/master/MusicVisuals/.vscode/Images/Aarons_Images/Clock.png)
-![Cube](../Users/aaronbaggot/GroupCA/MusicVisuals/.vscode/Images/Aarons_Images/Cube_2.png)
+![Cube](https://github.com/TommyTU856/MusicVisuals/blob/master/MusicVisuals/.vscode/Images/Aarons_Images/Cube_2.png)
 ![Cube](/MusicVisuals/.vscode/Images/Aarons_Images/Cube_3.png)
 ![Cube](/MusicVisuals/.vscode/Images/Aarons_Images/Cube.png)
 ![Lyrics](/MusicVisuals/.vscode/Images/Aarons_Images/Lyrics_Floating_Words.png)
