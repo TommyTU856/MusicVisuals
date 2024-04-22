@@ -95,7 +95,7 @@ public void keyPressed()
 ![Clock]<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Clock.png" width="300" />
 ![Cube]<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Cube_2.png" width="300" />
 ![Cube]<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Cube_3.png" width="300" />
-![Cube](../Users/aaronbaggot/GroupCA/MusicVisuals/.vscode/Images/Aarons_Images/Cube.png)
+![Cube](..vscode/Images/Aarons_Images/Cube.png)
 ![Lyrics]<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Lyrics_Floating_Words.png" width="300" />
 ![Moving_Shape]<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/MovingShape.png" width="300" />
 ![Reacting_Clouds]<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Reacting_Clouds.png" width="300" />
