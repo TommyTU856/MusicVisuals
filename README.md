@@ -89,6 +89,11 @@ public void keyPressed()
 	
 '''
 
+
+
+
+
+
 ### Section 1 - Aaron
 
 My section of the project aims to create an immersive audio-visual experience that synchronizes visual elements with the mood, tempo, and structure of the song “Little Fluffy Clouds”. To achieve this, I employ object-oriented programming (OOP) principles in Java, utilizing the Processing library. Through encapsulation, inheritance, polymorphism, and other Java features, I enhance code organization, reusability, and maintainability.
@@ -150,7 +155,7 @@ Through this project and research, I've gained invaluable personal learning expe
 From the fundamental lessons of W3Schools' Online Web Tutorials to the boundless opportunities revealed by ChatGPT, each source enriched my understanding and guided my progress. Immersed in the world of Processing, I found inspiration and comfort within its virtual confines. As I tackled the intricacies of OOP, Java, and Processing, the insights shared by respected lecturer Dr Bryan Duggan acted as a guiding light, illuminating my path forward. With appreciation for these invaluable resources, I embarked on an exploration of theory and application, weaving together knowledge and practice to craft an engaging digital experience.
 
 
-Bibiography and References
+Bibliography and References
 
  Chatgpt. Available at: https://chat.openai.com/ (Accessed: 12 April 2024).
 
@@ -202,15 +207,49 @@ Welcome to processing! (no date) Processing. Available at: https://processing.or
 
 
 
+
+
+
+
+
+
+
+
+
 ### Section 3 - Basak
 
 ![Basak's visual](link to images)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ### Section 4 - Aniket
 
 ![Aniket's visual](link to images)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Accomplishments in Our Assignment - What we are most proud of.
 Our collaboration on this assignment, centered around a song featuring skies and clouds, was a testament to our teamwork and dedication. Throughout the process, we navigated various challenges, particularly concerning the implementation across different operating systems, Mac and Windows. Despite initial differences in ideas, we effectively coordinated our efforts to synchronize colors, map amplitudes, shape visuals, integrate a clock, and even incorporate a rooster object in OBJ format, all harmonized to the music.
