@@ -152,7 +152,7 @@ From the fundamental lessons of W3Schools' Online Web Tutorials to the boundless
 
 Bibiography and References
 
- Learn to code (no date) W3Schools Online Web Tutorials. Available at: https://www.w3schools.com/ (Accessed: 18 March 2024).
+ Learn to code W3Schools Online Web Tutorials. Available at: https://www.w3schools.com/ (Accessed: 18 March 2024).
 
  Chatgpt. Available at: https://chat.openai.com/ (Accessed: 12 April 2024).
 
