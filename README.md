@@ -91,7 +91,15 @@ public void keyPressed()
 
 ### Section 1 - Aaron
 
-![Aaron's visual](link to images)
+
+![Clock](/MusicVisuals/.vscode/Images/Aarons_Images/Clock.png)
+![Cube](/MusicVisuals/.vscode/Images/Aarons_Images/Cube_2.png)
+![Cube](/MusicVisuals/.vscode/Images/Aarons_Images/Cube_3.png)
+![Cube](/MusicVisuals/.vscode/Images/Aarons_Images/Cube.png)
+![Lyrics](/MusicVisuals/.vscode/Images/Aarons_Images/Lyrics_Floating_Words.png)
+![Moving Shape](/MusicVisuals/.vscode/Images/Aarons_Images/MovingShape.png)
+![Clouds](/MusicVisuals/.vscode/Images/Aarons_Images/Reacting_Clouds.png)
+
 
 ### Section 2 - Tommy
 
