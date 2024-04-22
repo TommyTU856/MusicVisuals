@@ -152,17 +152,13 @@ From the fundamental lessons of W3Schools' Online Web Tutorials to the boundless
 
 Bibiography and References
 
- Learn to code W3Schools Online Web Tutorials. Available at: https://www.w3schools.com/ (Accessed: 18 March 2024).
-
  Chatgpt. Available at: https://chat.openai.com/ (Accessed: 12 April 2024).
 
- Welcome to processing! (no date) Processing. Available at: https://processing.org/ (Accessed: 15 March 2024).
-
- Duggan, B. (2024) ‘OOP, Java, Processing’, https://github.com/skooter500/OOP-2024. https://github.com/skooter500/OOP-2024, 20 March.
+ Duggan, B. (2024) ‘OOP, Java, Processing’, https://github.com/skooter500/OOP-2024. https://github.com/skooter500/OOP-2024, (Accessed: 20 February 2024).
  
+Learn to code W3Schools Online Web Tutorials. Available at: https://www.w3schools.com/ (Accessed: 18 March 2024).
 
-
-
+Welcome to processing! (no date) Processing. Available at: https://processing.org/ (Accessed: 15 March 2024).
 
 ![Clock]
 <img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Aarons_Images/Clock.png" width="300" />
