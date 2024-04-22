@@ -95,7 +95,7 @@ public void keyPressed()
 
 ### Section 2 - Tommy
 
-![TommyVisual](MusicVisuals\.vscode\Images\vis9.png)
+[![TommyVisual](MusicVisuals\.vscode\Images\vis9.png)]
 ![TommyVisual](images/vis4.png)
 ![TommyVisual](images/vis6.png)
 ![TommyVisual](images/vis2.png)
