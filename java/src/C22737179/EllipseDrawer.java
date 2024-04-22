@@ -33,9 +33,10 @@ public class EllipseDrawer extends Visual {
     
     public void draw(CallSet e) {
 
-        e.translate(e.width/2,e.height/2);
-        e.backgroundImage.resize(e.width, e.height);
-        e.background(e.backgroundImage);
+        //e.translate(e.width/2,e.height/2);
+        e.image(e.cloudImage, 0, 0, width, height);
+        //e.backgroundImage.resize(e.width, e.height);
+        //e.background(e.backgroundImage);
         
 
     
