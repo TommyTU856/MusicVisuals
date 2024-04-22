@@ -92,7 +92,7 @@ public void keyPressed()
 ### Section 1 - Aaron
 
 
-![Clock](/MusicVisuals/.vscode/Images/Aarons_Images/Clock.png)
+![Clock](https://github.com/TommyTU856/MusicVisuals/blob/master/MusicVisuals/.vscode/Images/Aarons_Images/Clock.png)
 ![Cube](/MusicVisuals/.vscode/Images/Aarons_Images/Cube_2.png)
 ![Cube](/MusicVisuals/.vscode/Images/Aarons_Images/Cube_3.png)
 ![Cube](/MusicVisuals/.vscode/Images/Aarons_Images/Cube.png)
