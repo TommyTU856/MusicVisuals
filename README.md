@@ -92,8 +92,8 @@ public void keyPressed()
 ### Section 1 - Aaron
 
 
-![Clock](https://github.com/TommyTU856/MusicVisuals/blob/master/MusicVisuals/.vscode/Images/Aarons_Images/Clock.png)
-![Cube](https://github.com/TommyTU856/MusicVisuals/blob/master/MusicVisuals/.vscode/Images/Aarons_Images/Cube_2.png)
+![Clock](.vscode/Images/Aarons_Images/Clock.png)
+![Cube](.vscode/Images/Aarons_Images/Cube_2.png)
 ![Cube](/MusicVisuals/.vscode/Images/Aarons_Images/Cube_3.png)
 ![Cube](/MusicVisuals/.vscode/Images/Aarons_Images/Cube.png)
 ![Lyrics](/MusicVisuals/.vscode/Images/Aarons_Images/Lyrics_Floating_Words.png)
