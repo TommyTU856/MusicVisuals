@@ -38,11 +38,11 @@ public class EllipseDrawer extends Visual {
         e.calculateAverageAmplitude();
         
 
-        for (float a = 0; a < 360; a += 5) {
+        for (float rad = 0; rad < 360; rad += 5) {
             e.pushMatrix();
-            e.rotate(radians(a));
+            e.rotate(radians(rad));
             e.lights();
-
+            //e.stroke(map(rad, 0, 360, 0, 255), 255, 255);
             e.noFill();
             float EllipseSize = 75 + (e.getAmplitude() * 500);
             smoothedEllipseSize = lerp(smoothedEllipseSize, EllipseSize, 0.2f);
@@ -52,15 +52,17 @@ public class EllipseDrawer extends Visual {
             //float hue =(float) (hueOffset + millis() / 20.0) % 255;
             //e.stroke(hue, 255, 255);
       
-            
-            e.stroke(map(a, 0, 360, 0, 255), 255, 255);
+            //e.pushMatrix();
+            e.stroke(map(rad, 0, 255, 0, 360), 255, 255);
             strokeWeightMapped = map(e.getAmplitude(), 0, 1, 1, 5);
             e.strokeWeight(strokeWeightMapped * 2);
+            //e.popMatrix();
 
            
             e.line(properties.x * sin(radians(properties.angle)), 0, 0, properties.y);
             e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), 0, 5, 5);
             e.line(properties.x * sin(radians(properties.angle)), 0, 0, 5, 0, 0);
+            //e.popMatrix();
 
 
             e.pushMatrix();
@@ -87,6 +89,7 @@ public class EllipseDrawer extends Visual {
             //e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), properties.y + 150, 30, 30);
            
             e.stroke(32, 255, 255);
+            //e.stroke(map(rad, 0, 360, 0, 255), 255, 255);
             //e.fill(255, 255, 0);
             
             float triangleBaseX = properties.x + 48; 
@@ -95,6 +98,7 @@ public class EllipseDrawer extends Visual {
             float triangleTopX = properties.x + 10; 
             float triangleTopY = properties.y - triangleHeight; 
             e.triangle(triangleBaseX+40, triangleBaseY+20, triangleTopX, triangleTopY, properties.x +30, properties.y-40);
+            //e.stroke(32, 255, 255);
             e.popMatrix();
 
             e.popMatrix();
