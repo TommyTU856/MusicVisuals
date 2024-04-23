@@ -98,7 +98,7 @@ public class CallSet extends Visual {
 
         rooster = loadShape("GS0D6S94RVZNHC4AZDRXMJDLF.obj");
         backgroundImage = loadImage("skyy.jpg");
-        img = loadImage("data/feature_clouds.jpg");
+        //img = loadImage("data/feature_clouds.jpg");
         random=new Random();
         cloudImage = loadImage("asd.jpg");
 
