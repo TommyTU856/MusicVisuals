@@ -26,6 +26,7 @@ public class CallSet extends Visual {
     PImage img;
     Random random;
     PImage cloudImage;
+    PImage blackClouds;
 
     Clouds[] clouds;
    
@@ -101,6 +102,7 @@ public class CallSet extends Visual {
         //img = loadImage("data/feature_clouds.jpg");
         random=new Random();
         cloudImage = loadImage("asd.jpg");
+        blackClouds = loadImage("java/data/BlackClouds.jpg");
 
 
 
