@@ -53,6 +53,7 @@ public class BasakVisuals extends Visual {
             ellipse.draw(e);
         } else {
             cube2.draw(e);
+            
         }
     }
 }

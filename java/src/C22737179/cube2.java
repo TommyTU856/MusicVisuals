@@ -4,9 +4,11 @@ import ie.tudublin.*;
 
 public class cube2 extends Visual{
     float angle = 0; // Initial rotation angle
+    float cul = 1;
 
 
     public void draw(CallSet e) {
+        e.pushMatrix();
         e.calculateAverageAmplitude();
         Clouds[] clouds = e.getClouds();
 
@@ -28,6 +30,7 @@ public class cube2 extends Visual{
 
         // Draw the big cube
         drawBigCube(e);
+        e.popMatrix();
         
     }
 
@@ -51,15 +54,21 @@ public class cube2 extends Visual{
 
                 // Calculate size of the cube based on music amplitude
                    float cubeSize = smallCubeSize + e.getAmplitude() * 70;
+                   //e.stroke(map(z, 0, 255, 0, 360), 255, 255);
 
                
                 if (e.random.nextFloat() < 0.1) { // Adjust size based on amplitude
                     cubeSize += e.getAmplitude() * 100;
                 }
-
+                
                 // Randomly select cubes to change color
-                e.fill(e.random.nextInt(255), e.random.nextInt(255), e.random.nextInt(255));
-                //e.fill(240);
+                //e.fill(e.random.nextInt(255), e.random.nextInt(255), e.random.nextInt(255));
+                //e.fill(e.random(0, 360), 80, 80);
+                e.fill(x*y*z,255,255);
+                cul += 10;
+                if(e.getAmplitude()>0.1f){
+                    e.fill(e.random.nextInt(360), e.random.nextInt(255), e.random.nextInt(360));
+                }
                 
                 // Draw the small cube
                 e.pushMatrix(); 
