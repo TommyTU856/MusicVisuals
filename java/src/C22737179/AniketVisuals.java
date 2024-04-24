@@ -6,6 +6,7 @@ import processing.core.PShape;
 public class AniketVisuals extends Visual {
     CallSet e;
     PShape c;
+    PShape sun;
     int cloudNum = 16;
     float cloudWidth = 400;
     float cloudHeight = 216;
@@ -14,6 +15,8 @@ public class AniketVisuals extends Visual {
     float brightness = 0;
     boolean sunrise;
     float speed = 5;
+    float sunX = 750;
+    float sunY = 1100; 
 
     public AniketVisuals()
     {
@@ -104,10 +107,12 @@ public class AniketVisuals extends Visual {
                 if (sunrise)
                 {
                     brightness += 10;
+                    sun.translate(0, -90);
                 }
                 else
                 {
                     brightness -= 10;
+                    sun.translate(0, 90);
                 }
             }
             
@@ -127,6 +132,10 @@ public class AniketVisuals extends Visual {
             changeSize(e.getSmoothedAmplitude());
 
             changeColour(e.frameCount);
+
+            sun = e.sun;
+
+            e.shape(sun, sunX, sunY);
         }
           
     }
