@@ -103,7 +103,6 @@ public class CallSet extends Visual {
         random=new Random();
         cloudImage = loadImage("asd.jpg");
         blackClouds = loadImage("java/data/BlackClouds.jpg");
-g
 
 
         //clouds
