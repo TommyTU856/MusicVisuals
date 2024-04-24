@@ -5,7 +5,7 @@
 |-----------|-----------|
 |Aaron Baggot | C22716399 |
 |Thomas Burke | C22737179 |
-|Aniket Bedade | C22737179 |
+|Aniket Bedade | C22448826 |
 |Basak Deveci | D22124576 |
 
 # Video Of Our Visualisations
@@ -285,6 +285,159 @@ The part of the project i am most proud of is actually the key controls. I had c
 ### Section 3 - Basak
 
 ![Basak's visual](link to images)
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/cube.png">
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/cube2.png">
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/cube3.png">
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/cube4.png">
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/cube5.png">
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/cube6.png">
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/ellipse.png">
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/ellipse2.png">
+
+
+This report provides an introduction about my contributions to the Music Visuals project, 
+specifically focusing on the development and integration of visual elements such as 
+the Ellipse and Cube classes. Through the application of Object-Oriented 
+Programming (OOP) principles and utilization of Processing functions, I aimed to 
+create dynamic and responsive visualizations that synchronized with the music 
+playback.
+
+Implementation of OOP Principles:
+
+Central to my approach was the adherence to OOP principles, facilitating code 
+reusability. I extended the Visual class provided by the project 
+framework to access essential functionalities for audio analysis and visualization. By 
+extending the Visual class, I used its methods and variables within my 
+ visual classes, promoting code reuse and ensuring consistency over
+different classes of the project.
+
+ I imported necessary libraries and resources to enhance the 
+functionality of my visual classes. For instance, I imported the processing.core.PImage 
+class to handle image loading and manipulation within the Ellipse class. 
+
+The tried to implement OOP principles across the project's classes. 
+In the EllipseProperties class, for instance, I encapsulated 
+essential properties such as position, angle, and size, thereby promoting 
+encapsulation and abstraction. By defining a separate class for ellipse properties, I 
+ensuring that each class had a seperate responsibilities.
+
+Similarly, in the EllipseDrawer class, I encapsulated the drawing logic specific to 
+elliptical visual elements.This modular approach facilitated code organization and maintenance, 
+enabling me to focus on the implementation details of ellipse rendering without 
+affecting other components of the project.
+
+The Clouds and Cube2 classes also I applied the OOP principles, with 
+each class encapsulating rendering logic specific to cloud and cube visualizations, 
+respectively. By defining separate classes for different visual elements, I could use each class from differetn part of the project without affecting each other.
+
+Furthermore, in the CallSet class, we managed the integration of individual visual 
+components,and polymorphism to create a cohesive architecture. 
+By extending the Visual class and encapsulating setup and 
+rendering logic within the CallSet class, we ensured that each visual component could 
+be easily managed and manipulated without affecting the project's overall 
+functionality.
+
+Processing Functions:
+
+Central to the project's implementation was the utilization of Processing functions to 
+create dynamic and responsive visualizations. Functions such as lerp, map, translate, 
+and rotate played a crucial role in manipulating visual elements and synchronizing 
+them with the music playback.
+
+Lerp (linear interpolation), was utilized to smoothly transition between visual states, 
+such as adjusting the size of visual elements based on audio amplitude. By 
+interpolating between two values , I ensured that visual changes, 
+enhancing the overall aesthetic appeal of the project.
+
+The map function facilitated the mapping of input values (such as audio amplitude or 
+frequency) to output ranges, allowing for dynamic modulation of visual parameters. 
+For example, I mapped audio amplitude values to the size and color of visual 
+elements, ensuring that the visuals responded dynamically to changes in music 
+intensity. This mapping process enabled me to create visually engaging effects that 
+reflected the nuances of the music being played.
+
+Additionally, translate and rotate functions were instrumental in manipulating the 
+coordinate system and animating visual elements' rotation. By translating and 
+rotating visual elements based on audio analysis data, I created visually dynamic and 
+interactive experiences that synchronized with the rhythm and tempo of the music. 
+These functions enabled me to transform the position and orientation of visual 
+elements dynamically, adding depth and dimensionality to the project's visuals.
+
+For instance, within the EllipseDrawer class, I leveraged the map function to 
+dynamically adjust the size and rotation of ellipses based on audio amplitude, 
+creating visually dynamic effects that synchronized with the music tempo. Similarly, 
+in the Cube2 class, I utilized the translate and rotate functions to animate cube 
+visualizations, to improve the project's visual interactivity.
+
+Also, the Clouds class made extensive use of Processing functions to manipulate 
+cloud positions and velocities dynamically. By integrating functions such as random
+and dist, I created visually immersive cloud effects that responded dynamically to 
+changes in music amplitude.
+
+Group Collaboration:
+
+Collaboration with team members played a crucial role in the success of the project
+Regular meetings were held to effectively progress and coordinate the project.
+Joint decisions were made regarding the progress of the project, and design and implementation options were discussed.
+
+Version control systems, such as Git, were utilized to manage code changes and 
+facilitate collaboration among team members. Branching strategies we were able to 
+work on features or fixes independently, minimizing conflicts and ensuring code 
+works. This allowed each team member to contribute to the project's 
+development without stopping progress or introducing errors.
+
+Reflecting on the collaborative experience, the team identified effective 
+communication, proactive problem-solving, and mutual support as key strengths. 
+Challenges, such as integrating individual visual components seamlessly overcome 
+through teamwork. Git played a crucial role in overcoming code conflicts, enabling us 
+to resolve conflicts efficiently and maintain a cohesive program throughout the 
+project's lifecycle.
+
+
+
+
+Reflection :
+
+My involvement in the Music Visuals project provided valuable opportunities for 
+learning and growth, both as a programmer and as a team member. Through this 
+experience, I gained insights into various aspects of visual programming, 
+collaboration, and problem-solving.
+
+One of the most significant learnings from this project was the importance of 
+applying Object-Oriented Programming (OOP) principles in software development. 
+By organizing code into classes and encapsulating functionalities, I learned how to 
+create modular, reusable, and maintainable code. This approach not only facilitated 
+code organization but also allowed for easier collaboration with team members, as 
+each class had defined responsibilities .
+
+Additionally, I deepened my understanding of Processing functions and their role in 
+creating dynamic and responsive visualizations. Experimenting with functions like
+lerp, map, translate, and rotate, I discovered how they could be used to manipulate 
+visual elements in real-time based on music data. This hands-on experience 
+enhanced my proficiency in using Processing for creative and dynamic visual effects.
+Furthermore, collaboration with team members provided valuable insights into 
+effective communication, teamwork, and problem-solving. Engaging in regular 
+meetings and discussions allowed us to share ideas, address challenges, and make 
+collective decisions. 
+
+One of the key learnings was the importance of version control in managing code 
+changes and facilitating collaboration among team members. By using Git and 
+GitHub, I gained hands-on experience in creating branches, committing changes, and 
+merging code contributions. 
+
+Moreover, encountering code conflicts during collaborative development taught me 
+lessons about conflict resolution and communication. When conflicts arise, I learned 
+to approach them carefully reviewing the changes and discussing potential solutions 
+with team members. 
+
+Additionally, I learned the importance of utilizing Git comments effectively to provide 
+clear and descriptive commit messages. By following best practices for writing 
+meaningful commit messages, this helped track the evolution of the project over 
+time.
+
+Overall, Java processing during the Music Visuals project was instrumental in helping 
+me to learn Git bash commands and the OOP concept, and improving my ability to 
+work effectively as part of a team.
 
 
 
@@ -302,12 +455,78 @@ The part of the project i am most proud of is actually the key controls. I had c
 
 ### Section 4 - Aniket
 
-![Aniket's visual](link to images)
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode\Images\Anikets_Images\cloud_day.png">
+
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode\Images\Anikets_Images\cloud_night.png">
+
+The class manages the visual representation of a cloud scene. It uses Processing's drawing functions to create a scene with moving clouds and adjusts their behavior based on external inputs such as frame count and amplitude.
+
+Background Brightness Control:
+The draw() method adjusts the background brightness based on a sunrise flag. It toggles the flag between sunrise and sunset as the brightness reaches 0 or 100.
+
+Cloud Movement:
+The moveCloud() method changes the X positions of clouds based on their current direction. Clouds move at a fixed rate, with wrap-around logic when they go out of bounds.
+
+'''
+
+    public void moveCloud()
+    {
+        for (int i = 0 ; i < cloudNum ; i++) 
+        {
+            if (i < 4 || (i >= 8 && i < 12))
+            {
+                cloudX[i] += speed;
+
+                if(cloudX[i] > 1500)
+                {
+                    cloudX[i] = -100;
+                }
+            }
+            else
+            {
+                cloudX[i] -= speed;
+
+                if(cloudX[i] < -cloudWidth)
+                {
+                    cloudX[i] = 1600;
+                }
+            }
+
+        }
+    }
+
+'''
+
+Dynamic Cloud Sizing:
+The changeSize() method alters cloud dimensions based on the current amplitude of the song.
+
+'''
+
+    public void changeSize(float amplitude)
+    {
+        cloudWidth = 56 + (4000 * amplitude);
+        cloudHeight = 30 + (2160 * amplitude);
+    }
+
+'''
+
+Cloud Color Change:
+The changeColour() method changes the cloud color every 60 frames, for a dynamic visual effect.
+
+'''
+
+    public void changeColour(int frameCount)
+    {
+        if (frameCount % 60 == 0)
+        {
+            c.setFill(color(random(255),random(255),random(255)));
+        }
+    }
+
+'''
 
 
-
-
-
+The part of the project I'm proud of was figuring out how to sync the visuals to our song. 
 
 
 

@@ -202,6 +202,7 @@ public class AaronVisuals extends Visual {
         e.calculateAverageAmplitude();
 
         pushMatrix();
+        e.image(e.morningClouds, 0, 0, e.width, e.height);
         //e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
         e.calculateAverageAmplitude(); 
         timeClock.drawTimeClock();
@@ -212,11 +213,11 @@ public class AaronVisuals extends Visual {
         if(e.getAudioPlayer().position() > 10000 && e.getAudioPlayer().position() < 36000 && !e.paused) {
             e.calculateAverageAmplitude();
             
-                // Map the amplitude to the background color
-            colorChange = map(amplitude, 0, 1, 0, 255);
+            //Map the amplitude to the background color
+            //colorChange = map(amplitude, 0, 1, 0, 255);
+           
             pushMatrix();
             e.background(colorChange += (50 * getSmoothedAmplitude()),0,0);
-
             drawWords(e);
             timeClock.drawTimeClock();
             popMatrix();
