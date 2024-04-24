@@ -103,6 +103,7 @@ public class CallSet extends Visual {
         //img = loadImage("data/feature_clouds.jpg");
         random=new Random();
         cloudImage = loadImage("asd.jpg");
+        blackClouds = loadImage("java/data/BlackClouds.jpg");
         morningClouds = loadImage("data/Morning.jpg");
 
 
@@ -116,15 +117,8 @@ public class CallSet extends Visual {
             clouds[i].setSize(370);
         }
         
-        
-
-      
-
-      
         //getAudioPlayer().setGain(-25);
         cloud = loadShape("cloud1.svg");
-       
-        
     }
 
     public Clouds[] getClouds() {
@@ -132,14 +126,12 @@ public class CallSet extends Visual {
     }
 
    
-
     AaronVisuals Aaron = new AaronVisuals();
     AniketVisuals Aniket = new AniketVisuals();
     BasakVisuals Basak = new BasakVisuals();
     TommyVisuals Tommy = new TommyVisuals();
     
     
-
     public void draw()
     {
         //Tommy.draw(this);
