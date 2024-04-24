@@ -455,12 +455,76 @@ work effectively as part of a team.
 
 ### Section 4 - Aniket
 
-![Aniket's visual](link to images)
+<img src="">
+
+The class manages the visual representation of a cloud scene. It uses Processing's drawing functions to create a scene with moving clouds and adjusts their behavior based on external inputs such as frame count and amplitude.
+
+Background Brightness Control:
+The draw() method adjusts the background brightness based on a sunrise flag. It toggles the flag between sunrise and sunset as the brightness reaches 0 or 100.
+
+Cloud Movement:
+The moveCloud() method changes the X positions of clouds based on their current direction. Clouds move at a fixed rate, with wrap-around logic when they go out of bounds.
+
+'''
+
+    public void moveCloud()
+    {
+        for (int i = 0 ; i < cloudNum ; i++) 
+        {
+            if (i < 4 || (i >= 8 && i < 12))
+            {
+                cloudX[i] += speed;
+
+                if(cloudX[i] > 1500)
+                {
+                    cloudX[i] = -100;
+                }
+            }
+            else
+            {
+                cloudX[i] -= speed;
+
+                if(cloudX[i] < -cloudWidth)
+                {
+                    cloudX[i] = 1600;
+                }
+            }
+
+        }
+    }
+
+'''
+
+Dynamic Cloud Sizing:
+The changeSize() method alters cloud dimensions based on the current amplitude of the song.
+
+'''
+
+    public void changeSize(float amplitude)
+    {
+        cloudWidth = 56 + (4000 * amplitude);
+        cloudHeight = 30 + (2160 * amplitude);
+    }
+
+'''
+
+Cloud Color Change:
+The changeColour() method changes the cloud color every 60 frames, for a dynamic visual effect.
+
+'''
+
+    public void changeColour(int frameCount)
+    {
+        if (frameCount % 60 == 0)
+        {
+            c.setFill(color(random(255),random(255),random(255)));
+        }
+    }
+
+'''
 
 
-
-
-
+The part of the project I'm proud of was figuring out how to sync the visuals to our song. 
 
 
 

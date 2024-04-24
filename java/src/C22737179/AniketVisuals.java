@@ -13,6 +13,7 @@ public class AniketVisuals extends Visual {
     float cloudY[] = new float[cloudNum];
     float brightness = 0;
     boolean sunrise;
+    float speed = 5;
 
     public AniketVisuals()
     {
@@ -52,7 +53,7 @@ public class AniketVisuals extends Visual {
         {
             if (i < 4 || (i >= 8 && i < 12))
             {
-                cloudX[i] += 5;
+                cloudX[i] += speed;
 
                 if(cloudX[i] > 1500)
                 {
@@ -61,7 +62,7 @@ public class AniketVisuals extends Visual {
             }
             else
             {
-                cloudX[i] -= 5;
+                cloudX[i] -= speed;
 
                 if(cloudX[i] < -cloudWidth)
                 {
