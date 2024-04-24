@@ -177,7 +177,7 @@ public class CallSet extends Visual {
         
     }
 
-    public void creativeTwirl(int i, float f) {
+    /* public void creativeTwirl(int i, float f) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'creativeTwirl'");
     }
@@ -185,6 +185,6 @@ public class CallSet extends Visual {
     public float random(double d, double e) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'random'");
-    }
+    } */
 
 }
