@@ -285,6 +285,15 @@ The part of the project i am most proud of is actually the key controls. I had c
 ### Section 3 - Basak
 
 ![Basak's visual](link to images)
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/cube.png">
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/cube2.png">
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/cube3.png">
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/cube4.png">
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/cube5.png">
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/cube6.png">
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/ellipse.png">
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/ellipse2.png">
+
 
 This report provides an introduction about my contributions to the Music Visuals project, 
 specifically focusing on the development and integration of visual elements such as 
