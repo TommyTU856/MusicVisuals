@@ -284,7 +284,6 @@ The part of the project i am most proud of is actually the key controls. I had c
 
 ### Section 3 - Basak
 
-![Basak's visual](link to images)
 <img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/cube.png">
 <img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/cube2.png">
 <img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/cube3.png">
@@ -294,85 +293,34 @@ The part of the project i am most proud of is actually the key controls. I had c
 <img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/ellipse.png">
 <img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/Basaks_Images/ellipse2.png">
 
+Introduction:
 
-This report provides an introduction about my contributions to the Music Visuals project, 
-specifically focusing on the development and integration of visual elements such as 
-the Ellipse and Cube classes. Through the application of Object-Oriented 
-Programming (OOP) principles and utilization of Processing functions, I aimed to 
-create dynamic and responsive visualizations that synchronized with the music 
-playback.
+This report introduces my work on the Music Visuals project specifically starting with the implementation of the Cube and Ellipse classes.Our main inspiration is the sky and its elements, like clouds, which are often connected to the music we use.Therefore, when creating the Cube and Ellipse classes, I tried to make them to suit this thematic context. By merging Object-Oriented Programming (OOP) principles with Processing functions, I aimed to produce visualizations that dynamically react to the rhythm of the music playback.
 
-Implementation of OOP Principles:
+OOP Principles and Processing Functions:
 
-Central to my approach was the adherence to OOP principles, facilitating code 
-reusability. I extended the Visual class provided by the project 
-framework to access essential functionalities for audio analysis and visualization. By 
-extending the Visual class, I used its methods and variables within my 
- visual classes, promoting code reuse and ensuring consistency over
-different classes of the project.
+I followed OOP principles throughout the project to make the code reusable. I expanded the Visual class provided by the project to access important functions for audio analysis and visualization. This helped keep things consistent across different parts of the project.
 
- I imported necessary libraries and resources to enhance the 
-functionality of my visual classes. For instance, I imported the processing.core.PImage 
-class to handle image loading and manipulation within the Ellipse class. 
+To start with Ellipse class, I aimed to make its shape resemble the sun to align with the sky concept. However, to also represent a colorful sky in accordance with the song lyrics, I intended to create a colorful sun shape.
+In each visual class, like Ellipse and Cube, I organized the code to handle specific tasks. For example, in the Ellipse class, I used a separate class called EllipseProperties to manage properties like position and size. This made it easier to work on each part without messing up others.
 
-The tried to implement OOP principles across the project's classes. 
-In the EllipseProperties class, for instance, I encapsulated 
-essential properties such as position, angle, and size, thereby promoting 
-encapsulation and abstraction. By defining a separate class for ellipse properties, I 
-ensuring that each class had a seperate responsibilities.
+Similarly, in the EllipseDrawer class, I put all the drawing stuff for ellipses in one place. This made the code tidy and easier to understand. I did the same for other visual elements like clouds and cubes, keeping each part separate so they could be used without messing up other parts.
 
-Similarly, in the EllipseDrawer class, I encapsulated the drawing logic specific to 
-elliptical visual elements.This modular approach facilitated code organization and maintenance, 
-enabling me to focus on the implementation details of ellipse rendering without 
-affecting other components of the project.
+Lastly, in the CallSet class, I made sure all the visual components fit together nicely. I extended the Visual class and managed how each part was set up and shown on the screen. This made it simple to control everything without causing problems elsewhere.
 
-The Clouds and Cube2 classes also I applied the OOP principles, with 
-each class encapsulating rendering logic specific to cloud and cube visualizations, 
-respectively. By defining separate classes for different visual elements, I could use each class from differetn part of the project without affecting each other.
+I used Processing functions extensively in the project to create dynamic visuals that matchs with the music. Functions like lerp, map, translate, and rotate were crucial for manipulating visual elements in response to the music.
 
-Furthermore, in the CallSet class, we managed the integration of individual visual 
-components,and polymorphism to create a cohesive architecture. 
-By extending the Visual class and encapsulating setup and 
-rendering logic within the CallSet class, we ensured that each visual component could 
-be easily managed and manipulated without affecting the project's overall 
-functionality.
+Lerp helped me smoothly transition between visual states, like changing the size of elements based on the music's intensity. This made the visuals look more clean and smooth.
 
-Processing Functions:
+The map function was very useful for connecting input values, such as music amplitude, to visual parameters like size and color. This allowed the visuals to react in real-time to changes in the music, making the experience more engaging.
 
-Central to the project's implementation was the utilization of Processing functions to 
-create dynamic and responsive visualizations. Functions such as lerp, map, translate, 
-and rotate played a crucial role in manipulating visual elements and synchronizing 
-them with the music playback.
+Translate and rotate functions were key for moving and animating elements. I used them to make visual elements dance to the beat of the music, adding a lively dimension to the project.
 
-Lerp (linear interpolation), was utilized to smoothly transition between visual states, 
-such as adjusting the size of visual elements based on audio amplitude. By 
-interpolating between two values , I ensured that visual changes, 
-enhancing the overall aesthetic appeal of the project.
+In the EllipseDrawer class, I used the map function to adjust the size and rotation of ellipse visuals, giving them a dynamic quality to recall the sun. This helped tie the visuals into the project's theme of colourful skies and fluffy clouds.
 
-The map function facilitated the mapping of input values (such as audio amplitude or 
-frequency) to output ranges, allowing for dynamic modulation of visual parameters. 
-For example, I mapped audio amplitude values to the size and color of visual 
-elements, ensuring that the visuals responded dynamically to changes in music 
-intensity. This mapping process enabled me to create visually engaging effects that 
-reflected the nuances of the music being played.
+Similarly, in the Cube class, I aimed to show a colorful thing flying in the sky, like in a lively scene. To do this, I used the Clouds class to put cloud pictures in the background, making it feel deeper and more real. This made the cube look like it was moving through an exciting and cool sky.
 
-Additionally, translate and rotate functions were instrumental in manipulating the 
-coordinate system and animating visual elements' rotation. By translating and 
-rotating visual elements based on audio analysis data, I created visually dynamic and 
-interactive experiences that synchronized with the rhythm and tempo of the music. 
-These functions enabled me to transform the position and orientation of visual 
-elements dynamically, adding depth and dimensionality to the project's visuals.
-
-For instance, within the EllipseDrawer class, I leveraged the map function to 
-dynamically adjust the size and rotation of ellipses based on audio amplitude, 
-creating visually dynamic effects that synchronized with the music tempo. Similarly, 
-in the Cube2 class, I utilized the translate and rotate functions to animate cube 
-visualizations, to improve the project's visual interactivity.
-
-Also, the Clouds class made extensive use of Processing functions to manipulate 
-cloud positions and velocities dynamically. By integrating functions such as random
-and dist, I created visually immersive cloud effects that responded dynamically to 
-changes in music amplitude.
+The Cube class and the Cloud class were separately created in line with the OOP concept. They were structured to handle their own functionalities independently. Then, in the CallSet class, objects of both Cube and Cloud classes were initialized as needed.
 
 Group Collaboration:
 
@@ -380,72 +328,28 @@ Collaboration with team members played a crucial role in the success of the proj
 Regular meetings were held to effectively progress and coordinate the project.
 Joint decisions were made regarding the progress of the project, and design and implementation options were discussed.
 
-Version control systems, such as Git, were utilized to manage code changes and 
-facilitate collaboration among team members. Branching strategies we were able to 
-work on features or fixes independently, minimizing conflicts and ensuring code 
-works. This allowed each team member to contribute to the project's 
-development without stopping progress or introducing errors.
-
-Reflecting on the collaborative experience, the team identified effective 
-communication, proactive problem-solving, and mutual support as key strengths. 
-Challenges, such as integrating individual visual components seamlessly overcome 
-through teamwork. Git played a crucial role in overcoming code conflicts, enabling us 
-to resolve conflicts efficiently and maintain a cohesive program throughout the 
-project's lifecycle.
+Git were used to manage code changes and  facilitate collaboration among team members. Branching strategies we were able to work on features or fixes independently, minimizing conflicts and ensuring code works. This allowed each team member to contribute to the project's development without stopping progress.
 
 
+Reflection:
 
+My experience with the Music Visuals project was a great learning opportunity. I discovered a lot about coding, teamwork, and problem-solving.One big lesson was how important it is to use Object-Oriented Programming (OOP) principles. By organizing code into classes, I learned how to make code that's easier to reuse and share with others.
 
-Reflection :
+I also got better at using Processing functions to make cool visual effects. Playing around with functions like lerp,rotate,translate and map showed me how to make visuals that move with the music but also about understanding how they work together to create dynamic visual effects. 
 
-My involvement in the Music Visuals project provided valuable opportunities for 
-learning and growth, both as a programmer and as a team member. Through this 
-experience, I gained insights into various aspects of visual programming, 
-collaboration, and problem-solving.
+For instance, by combining map with amplitude, I learned how to translate music data directly into visual parameters like colour changes, creating visuals that responded directly to changes in the music's intensity. 
+Similarly, using rotate alongside other functions allowed me to animate visual elements in sync with the music. This demonstrated the power of combining functions to add depth and dynamism to the visuals.
 
-One of the most significant learnings from this project was the importance of 
-applying Object-Oriented Programming (OOP) principles in software development. 
-By organizing code into classes and encapsulating functionalities, I learned how to 
-create modular, reusable, and maintainable code. This approach not only facilitated 
-code organization but also allowed for easier collaboration with team members, as 
-each class had defined responsibilities .
+Understanding how setup and draw functions work together was also crucial. Setup lays the groundwork for the visual display, while draw keeps things moving and changing, creating the illusion of animation. 
 
-Additionally, I deepened my understanding of Processing functions and their role in 
-creating dynamic and responsive visualizations. Experimenting with functions like
-lerp, map, translate, and rotate, I discovered how they could be used to manipulate 
-visual elements in real-time based on music data. This hands-on experience 
-enhanced my proficiency in using Processing for creative and dynamic visual effects.
-Furthermore, collaboration with team members provided valuable insights into 
-effective communication, teamwork, and problem-solving. Engaging in regular 
-meetings and discussions allowed us to share ideas, address challenges, and make 
-collective decisions. 
+Also, implementing for loops with these functions enabled me to iterate over element and making it easier to create complex visual shapes.
+This project emphasized the importance of holistic thinking and creative problem-solving in coding.
 
-One of the key learnings was the importance of version control in managing code 
-changes and facilitating collaboration among team members. By using Git and 
-GitHub, I gained hands-on experience in creating branches, committing changes, and 
-merging code contributions. 
+Working with my team taught me a lot about communication and teamwork. We had regular meetings where we shared ideas and solved problems together.
 
-Moreover, encountering code conflicts during collaborative development taught me 
-lessons about conflict resolution and communication. When conflicts arise, I learned 
-to approach them carefully reviewing the changes and discussing potential solutions 
-with team members. 
+Learning Git was also really useful. It helped us manage our code changes and work together more smoothly. Dealing with conflicts taught me how to resolve problems and communicate better with my team.
 
-Additionally, I learned the importance of utilizing Git comments effectively to provide 
-clear and descriptive commit messages. By following best practices for writing 
-meaningful commit messages, this helped track the evolution of the project over 
-time.
-
-Overall, Java processing during the Music Visuals project was instrumental in helping 
-me to learn Git bash commands and the OOP concept, and improving my ability to 
-work effectively as part of a team.
-
-
-
-
-
-
-
-
+And using good commit messages in Git helped us keep track of our progress and changes over time.
 
 
 
