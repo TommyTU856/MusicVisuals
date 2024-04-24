@@ -48,10 +48,6 @@ public class EllipseDrawer extends Visual {
             smoothedEllipseSize = lerp(smoothedEllipseSize, EllipseSize, 0.2f);
          
 
-            // Map amplitude to color values-run one colour in each time
-            //float hue =(float) (hueOffset + millis() / 20.0) % 255;
-            //e.stroke(hue, 255, 255);
-      
             //e.pushMatrix();
             e.stroke(map(rad, 0, 255, 0, 360), 255, 255);
             strokeWeightMapped = map(e.getAmplitude(), 0, 1, 1, 5);
@@ -90,7 +86,7 @@ public class EllipseDrawer extends Visual {
            
             e.stroke(32, 255, 255);
             //e.stroke(map(rad, 0, 360, 0, 255), 255, 255);
-            //e.fill(255, 255, 0);
+            e.fill(60, 255, 255);
             
             float triangleBaseX = properties.x + 48; 
             float triangleBaseY = properties.y; 
