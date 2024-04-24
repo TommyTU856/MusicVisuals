@@ -5,7 +5,7 @@
 |-----------|-----------|
 |Aaron Baggot | C22716399 |
 |Thomas Burke | C22737179 |
-|Aniket Bedade | C22737179 |
+|Aniket Bedade | C22448826 |
 |Basak Deveci | D22124576 |
 
 # Video Of Our Visualisations
