@@ -5,11 +5,12 @@
 |-----------|-----------|
 |Aaron Baggot | C22716399 |
 |Thomas Burke | C22737179 |
-|Aniket Bedade | C22737179 |
+|Aniket Bedade | C22448826 |
 |Basak Deveci | D22124576 |
 
 # Video Of Our Visualisations
 [<img src="Image of Youtube link here" width="600px" target="_blank">](Youtube Link Here "Our group Video")
+[<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vidImage.png" width="300px" target="_blank">](https://youtu.be/RaKEmZIMilY)
 
 
 # Description of the assignment
@@ -150,7 +151,7 @@ Integration of AaronVisuals Class
 
 
 By effectively leveraging OOP concepts and Java features, my project delivers a captivating audio-visual experience that reflects the mood, tempo, and structure of the selected song. Encapsulation, inheritance, polymorphism, and other principles facilitate code organization, reusability, and flexibility, enhancing the overall quality and interactivity of the program.
-Through this project and research, I've gained invaluable personal learning experiences that extend far beyond the realms of textbooks and lectures. Engaging in hands-on development has been a journey of discovery, where each line of code written and every bug fixed has been a lesson in itself. Collaborating with fellow students has added layers of depth to my learning, as we navigated through challenges together, sharing insights and brainstorming solutions. Learning by doing has been immensely enjoyable, as it allowed me to apply theoretical knowledge in a practical context, reinforcing concepts and sharpening my problem-solving skills. Working alongside peers has fostered a sense of camaraderie and mutual support, transforming the project into a collaborative adventure rather than a solitary endeavour. Overall, this experience has not only enhanced my technical proficiency but also enriched my interpersonal skills and instilled in me a deeper appreciation for the iterative process of learning and growth.
+Through this project and research, I've gained invaluable personal learning experiences that extend far beyond the realms of textbooks and lectures. Engaging in hands-on development has been a journey of discovery, where each line of code written and every bug fixed has been a lesson in itself. Collaborating with fellow students has added layers of depth to my learning, as we navigated through challenges together, sharing insights and brainstorming solutions. Learning by doing has been immensely enjoyable, as it allowed me to apply theoretical knowledge in a practical context, reinforcing concepts and sharpening my problem solving skills. Working alongside peers has fostered a sense of camaraderie and mutual support, transforming the project into a collaborative adventure rather than a solitary endeavour. Overall, this experience has not only enhanced my technical proficiency but also enriched my interpersonal skills and instilled in me a deeper appreciation for the iterative process of learning and growth.
 
 From the fundamental lessons of W3Schools' Online Web Tutorials to the boundless opportunities revealed by ChatGPT, each source enriched my understanding and guided my progress. Immersed in the world of Processing, I found inspiration and comfort within its virtual confines. As I tackled the intricacies of OOP, Java, and Processing, the insights shared by respected lecturer Dr Bryan Duggan acted as a guiding light, illuminating my path forward. With appreciation for these invaluable resources, I embarked on an exploration of theory and application, weaving together knowledge and practice to craft an engaging digital experience.
 
@@ -359,19 +360,78 @@ And using good commit messages in Git helped us keep track of our progress and c
 
 ### Section 4 - Aniket
 
-![Aniket's visual](link to images)
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode\Images\Anikets_Images\cloud_day.png">
+
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode\Images\Anikets_Images\cloud_night.png">
+
+The class manages the visual representation of a cloud scene. It uses Processing's drawing functions to create a scene with moving clouds and adjusts their behavior based on external inputs such as frame count and amplitude.
+
+Background Brightness Control:
+The draw() method adjusts the background brightness based on a sunrise flag. It toggles the flag between sunrise and sunset as the brightness reaches 0 or 100.
+
+Cloud Movement:
+The moveCloud() method changes the X positions of clouds based on their current direction. Clouds move at a fixed rate, with wrap-around logic when they go out of bounds.
+
+'''
+
+    public void moveCloud()
+    {
+        for (int i = 0 ; i < cloudNum ; i++) 
+        {
+            if (i < 4 || (i >= 8 && i < 12))
+            {
+                cloudX[i] += speed;
+
+                if(cloudX[i] > 1500)
+                {
+                    cloudX[i] = -100;
+                }
+            }
+            else
+            {
+                cloudX[i] -= speed;
+
+                if(cloudX[i] < -cloudWidth)
+                {
+                    cloudX[i] = 1600;
+                }
+            }
+
+        }
+    }
+
+'''
+
+Dynamic Cloud Sizing:
+The changeSize() method alters cloud dimensions based on the current amplitude of the song.
+
+'''
+
+    public void changeSize(float amplitude)
+    {
+        cloudWidth = 56 + (4000 * amplitude);
+        cloudHeight = 30 + (2160 * amplitude);
+    }
+
+'''
+
+Cloud Color Change:
+The changeColour() method changes the cloud color every 60 frames, for a dynamic visual effect.
+
+'''
+
+    public void changeColour(int frameCount)
+    {
+        if (frameCount % 60 == 0)
+        {
+            c.setFill(color(random(255),random(255),random(255)));
+        }
+    }
+
+'''
 
 
-
-
-
-
-
-
-
-
-
-
+The part of the project I'm proud of was figuring out how to sync the visuals to our song. 
 
 
 # Accomplishments in Our Assignment - What we are most proud of.
@@ -382,73 +442,3 @@ Working closely with our lecturer during labs, we overcame obstacles together an
 The diversity of elements in our project, including cubes, various cloud formations, rain effects, responsive shapes, lollipops, balls, lyrics integration, ellipses, and stars, showcases our comprehensive exploration of visualizations. Our use of inheritance, polymorphism, the PApplet library, and other programming principles reflects the depth of our learning in this module.
 
 Ultimately, seeing the final project come together was immensely rewarding, reaffirming our hard work and dedication as a group. This experience has not only enriched our understanding but also provided us with invaluable lessons and memories to carry forward in our academic and professional journeys.
-
-
-# Markdown Tutorial
-
-This is *emphasis*
-
-This is a bulleted list
-
-- Item
-- Item
-
-This is a numbered list
-
-1. Item
-1. Item
-
-This is a [hyperlink](http://bryanduggan.org)
-
-# Headings
-## Headings
-#### Headings
-##### Headings
-
-This is code:
-
-```Java
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-So is this without specifying the language:
-
-```
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-This is an image using a relative URL:
-
-![An image](images/p8.png)
-
-This is an image using an absolute URL:
-
-![A different image](https://bryanduggandotorg.files.wordpress.com/2019/02/infinite-forms-00045.png?w=595&h=&zoom=2)
-
-This is a youtube video:
-
-[![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
-
-This is a table:
-
-| Heading 1 | Heading 2 |
-|-----------|-----------|
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-

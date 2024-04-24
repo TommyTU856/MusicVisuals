@@ -1,6 +1,7 @@
 package C22737179;
 
 import processing.core.PApplet;
+import processing.core.PConstants;
 
 class Fade {
     PApplet pa;
@@ -20,7 +21,7 @@ class Fade {
     }
 
     void update() {
-        alpha = (int) pa.map(pa.millis() - t_initial, 0, t_final, 255, 0);
+        alpha = (int) PApplet.map(pa.millis() - t_initial, 0, t_final, 255, 0);
     }
 
     void display() {
@@ -33,7 +34,7 @@ class Fade {
     }
 
     void drawShape() {
-        pa.rectMode(pa.CENTER);
+        pa.rectMode(PConstants.CENTER);
         pa.rect(60, 0, 100, 100);
     }
 
@@ -68,7 +69,7 @@ class Rectangle extends Fade {
     }
     
     void drawShape() {
-        pa.rectMode(pa.CENTER);
+        pa.rectMode(PConstants.CENTER);
         pa.rect(150, 0, w, h); // Use pa to access rect() function
     }
   

@@ -6,12 +6,17 @@ import processing.core.PShape;
 public class AniketVisuals extends Visual {
     CallSet e;
     PShape c;
+    PShape sun;
     int cloudNum = 16;
     float cloudWidth = 400;
     float cloudHeight = 216;
     float cloudX[] = new float[cloudNum];
     float cloudY[] = new float[cloudNum];
     float brightness = 0;
+    boolean sunrise;
+    float speed = 5;
+    float sunX = 750;
+    float sunY = 1100; 
 
     public AniketVisuals()
     {
@@ -25,22 +30,22 @@ public class AniketVisuals extends Visual {
             if (i < 4)
             {
                 cloudX[i] = 100 + ((i % 4) * cloudWidth);
-                cloudY[i] = 50;
+                cloudY[i] = 75;
             }
             else if (i >= 4 && i < 8)
             {
                 cloudX[i] = 300 + ((i % 4) * cloudWidth);
-                cloudY[i] = 50 + cloudHeight;
+                cloudY[i] = 75 + cloudHeight;
             }
             else if (i >= 8 && i < 12)
             {
                 cloudX[i] = 100 + ((i % 4) * cloudWidth);
-                cloudY[i] = 50 + (2 * cloudHeight);
+                cloudY[i] = 75 + (2 * cloudHeight);
             }
             else if (i >= 12 && i < 16)
             {
                 cloudX[i] = 300 + ((i % 4) * cloudWidth);
-                cloudY[i] = 50 + (3 * cloudHeight);
+                cloudY[i] = 75 + (3 * cloudHeight);
             }
         }
     }
@@ -49,19 +54,34 @@ public class AniketVisuals extends Visual {
     {
         for (int i = 0 ; i < cloudNum ; i++) 
         {
-            cloudX[i] += 5;
-
-            if(cloudX[i] > 1500)
+            if (i < 4 || (i >= 8 && i < 12))
             {
-                cloudX[i] = -200;
+                cloudX[i] += speed;
+
+                if(cloudX[i] > 1500)
+                {
+                    cloudX[i] = -100;
+                }
             }
+            else
+            {
+                cloudX[i] -= speed;
+
+                if(cloudX[i] < -cloudWidth)
+                {
+                    cloudX[i] = 1600;
+                }
+            }
+
         }
     }
 
     public void changeColour(int frameCount)
     {
         if (frameCount % 60 == 0)
+        {
             c.setFill(color(random(255),random(255),random(255)));
+        }
     }
 
     public void changeSize(float amplitude)
@@ -73,14 +93,27 @@ public class AniketVisuals extends Visual {
     public void draw(CallSet e) {
         if(e.paused == false)
         {
-            if (e.frameCount % 60 == 0)
+            if (brightness == 0)
             {
-                brightness += 10;
+                sunrise = true;
+            }
+            else if (brightness == 100)
+            {
+                sunrise = false;
             }
 
-            if (e.frameCount % 60 == 0 && brightness == 100)
+            if (e.frameCount % 60 == 0)
             {
-                brightness = 0;
+                if (sunrise)
+                {
+                    brightness += 10;
+                    sun.translate(0, -90);
+                }
+                else
+                {
+                    brightness -= 10;
+                    sun.translate(0, 90);
+                }
             }
             
             c = e.cloud;
@@ -99,6 +132,10 @@ public class AniketVisuals extends Visual {
             changeSize(e.getSmoothedAmplitude());
 
             changeColour(e.frameCount);
+
+            sun = e.sun;
+
+            e.shape(sun, sunX, sunY);
         }
           
     }
