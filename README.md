@@ -225,7 +225,7 @@ The Hypercude I coded, it is made up of 4 boxes of decending sizes inside each o
 
 The intro actually has the most elements working at the same time and i really just used that at the start to experiment with but as the song takes some time to come in it worked well. There is a .obj file of a rooster a load of random clouds and the lyrics type across the screen. Its such simple code looking at it now but finguring out how to type the lyrics across the screen was a lot of fun and frustration.
 
-'''
+```java
 
         public void render(CallSet e, String lyrics) {
 
@@ -237,11 +237,11 @@ The intro actually has the most elements working at the same time and i really j
             }
         }
 
-'''
+```
 
 The part of the project i am most proud of is actually the key controls. I had created and deleted so many different visuals at a point, I was about to delete the spiral spheres, as at the time they werent part of my project. Then our lecturer mentioned a stretch goal that had possiblity of controlling the visual with a midi controller and i thought of the possiblities with the spiral spheres. I got it submited and i loved how it looked so once again scrapped everything and added the sprial sphere to my project but this time i would add live control functions to manipulate the visual elements. None of my other elements that i had scrapped had any control features. It is such a great interactive experience now and when it matches the music it looks great.
 
-'''
+```java
 
         if (e.keyPressed) {
             if (e.keyCode == PConstants.LEFT) {
@@ -273,7 +273,7 @@ The part of the project i am most proud of is actually the key controls. I had c
             } 
         }
 
-'''
+```
 
 
 
