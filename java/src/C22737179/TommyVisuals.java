@@ -127,6 +127,7 @@ public class TommyVisuals extends Visual{
 
             
             roosterGrow = Visual.lerp(roosterGrow, 200, 0.1f);
+            e.pushMatrix();
             e.background(198, 100, 100);
             e.translate(e.width / 4, e.height / 1.5f);
             e.rotateX(0);
@@ -140,10 +141,11 @@ public class TommyVisuals extends Visual{
             }
             
             rooster(e);
-
+            e.popMatrix();
+            
         }
 
-        if(e.getAudioPlayer().position() > 2000 && e.getAudioPlayer().position() < 15000 && e.paused == false) {
+        if(e.getAudioPlayer().position() > 2000 && e.getAudioPlayer().position() < 4800 && e.paused == false) {
 
             e.pushMatrix();
             e.background(198, 100, 100);
@@ -157,7 +159,17 @@ public class TommyVisuals extends Visual{
             
         }
         
-        if(e.getAudioPlayer().position() > 4800 && e.getAudioPlayer().position() < 28000 && e.paused == false) {
+        if(e.getAudioPlayer().position() > 4800 && e.getAudioPlayer().position() < 15000 && e.paused == false) {
+
+            e.pushMatrix();
+            e.background(198, 100, 100);
+            e.translate(e.width / 4, e.height / 1.5f);
+            e.rotateX(0);
+            e.rotateY(1.4f);
+            e.rotateZ(3);
+            e.scale(200);
+            rooster(e);
+            e.popMatrix();
 
             songWords1 = "Over the past few years\nTo the traditional sounds of the English summer\nThe drone of lawnmowers\n" + 
                             "The smack of leather on willow\nHas been added a new noise\n";
@@ -172,6 +184,7 @@ public class TommyVisuals extends Visual{
         }
 
         if(e.getAudioPlayer().position() > 15000 && e.getAudioPlayer().position() < 28000 && e.paused == false) {
+
             e.background(198, 100, 100);
             songWords1 = "Over the past few years\nTo the traditional sounds of the English summer\nThe drone of lawnmowers\n" + 
                             "The smack of leather on willow\nHas been added a new noise\n";
