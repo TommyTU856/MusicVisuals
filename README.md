@@ -455,7 +455,9 @@ work effectively as part of a team.
 
 ### Section 4 - Aniket
 
-<img src="">
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode\Images\Anikets_Images\cloud_day.png">
+
+<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode\Images\Anikets_Images\cloud_night.png">
 
 The class manages the visual representation of a cloud scene. It uses Processing's drawing functions to create a scene with moving clouds and adjusts their behavior based on external inputs such as frame count and amplitude.
 
