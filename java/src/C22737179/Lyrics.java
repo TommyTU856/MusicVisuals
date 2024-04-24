@@ -11,7 +11,7 @@ public class Lyrics {
     int index = 1; 
     int xPos = 700;
     int yPos = 350; 
-    int typingSpeed = 30; 
+    int typingSpeed = 10; 
 
 
     public void render(CallSet e, String lyrics) {
@@ -20,7 +20,7 @@ public class Lyrics {
   
         if (index < lyrics.length()) {
             index += 1;
-            e.delay(typingSpeed);
+            //e.delay(typingSpeed);
         }
     }
 
