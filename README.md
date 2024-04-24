@@ -9,7 +9,7 @@
 |Basak Deveci | D22124576 |
 
 # Video Of Our Visualisations
-[<img src="Image of Youtube link here" width="600px" target="_blank">](https://youtu.be/RaKEmZIMilY)
+[<img src="https://github.com/TommyTU856/MusicVisuals/blob/master/.vscode/Images/vidImage.png" width="300px" target="_blank">](https://youtu.be/RaKEmZIMilY)
 
 
 # Description of the assignment
