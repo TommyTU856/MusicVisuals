@@ -22,11 +22,11 @@ public class CallSet extends Visual {
     PShape rooster;
     PShape cloud;
     PShape mountainClouds;
+    PShape sun;
     PImage backgroundImage;
     PImage img;
     Random random;
     PImage cloudImage;
-    PImage blackClouds;
     PImage morningClouds;
 
     Clouds[] clouds;
@@ -103,7 +103,7 @@ public class CallSet extends Visual {
         //img = loadImage("data/feature_clouds.jpg");
         random=new Random();
         cloudImage = loadImage("asd.jpg");
-        blackClouds = loadImage("java/data/BlackClouds.jpg");
+       
         morningClouds = loadImage("data/Morning.jpg");
 
 
@@ -119,6 +119,9 @@ public class CallSet extends Visual {
         
         //getAudioPlayer().setGain(-25);
         cloud = loadShape("cloud1.svg");
+        sun = createShape(ELLIPSE, 0, 0, 300, 300);
+        sun.setFill(color(52, 255 * 0.78f, 255 * 0.92f));
+        
     }
 
     public Clouds[] getClouds() {
@@ -177,14 +180,15 @@ public class CallSet extends Visual {
         
     }
 
-    /* public void creativeTwirl(int i, float f) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'creativeTwirl'");
-    }
+    // Error Checking exception handling
+    // public void creativeTwirl(int i, float f) {
+    //     // TODO Auto-generated method stub
+    //     throw new UnsupportedOperationException("Unimplemented method 'creativeTwirl'");
+    // }
 
-    public float random(double d, double e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'random'");
-    } */
+    // public float random(double d, double e) {
+    //     // TODO Auto-generated method stub
+    //     throw new UnsupportedOperationException("Unimplemented method 'random'");
+    // }
 
 }

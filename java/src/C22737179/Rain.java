@@ -40,7 +40,7 @@ public class Rain {
         }
 
     void update() {
-        float spd = e.map(z, 0, 5, 10, 4);
+        //float spd = PApplet.map(z, 0, 5, 10, 4); //Speed of the raindrop
         y = y + 4;
 
         if (y > e.height + 10) {
@@ -50,7 +50,7 @@ public class Rain {
     }
 
     void show() {
-        float t = e.map(z, 0, 5, 10, 2);
+        float t = PApplet.map(z, 0, 5, 10, 2);
         e.stroke(dropColor); // Set stroke color to the assigned drop color
         e.strokeWeight(t);
         e.line(x, y, x, y + t * 2);
