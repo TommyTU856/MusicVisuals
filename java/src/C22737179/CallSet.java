@@ -116,15 +116,8 @@ public class CallSet extends Visual {
             clouds[i].setSize(370);
         }
         
-        
-
-      
-
-      
         //getAudioPlayer().setGain(-25);
         cloud = loadShape("cloud1.svg");
-       
-        
     }
 
     public Clouds[] getClouds() {
@@ -132,14 +125,12 @@ public class CallSet extends Visual {
     }
 
    
-
     AaronVisuals Aaron = new AaronVisuals();
     AniketVisuals Aniket = new AniketVisuals();
     BasakVisuals Basak = new BasakVisuals();
     TommyVisuals Tommy = new TommyVisuals();
     
     
-
     public void draw()
     {
         //Tommy.draw(this);
