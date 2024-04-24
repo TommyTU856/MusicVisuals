@@ -10,9 +10,6 @@
 
 package C22737179;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import C22737179.AaronVisuals.Cloud;
 import ddf.minim.AudioInput;
 import ddf.minim.Minim;
 import ddf.minim.analysis.FFT;
@@ -22,9 +19,7 @@ import processing.core.PConstants;
 import processing.core.PFont;
 import processing.core.PImage;
 import processing.core.PShape;
-import processing.core.PVector;
-import processing.*;
-import processing.core.PGraphics; // Import the PGraphics class
+
 
 
 public class AaronVisuals extends Visual {
@@ -133,7 +128,6 @@ public class AaronVisuals extends Visual {
         // Initialize variables and objects
         clouds = new Cloud[cloudNumber]; // Array of Cloud objects
         grid = new DrawGrid(this); // DrawGrid object
-        Word word1 = new Word("example"); // Word object
         timeClock = new TimeClock(this); // TimeClock object
 
         // Initialize clouds
@@ -529,7 +523,6 @@ public class AaronVisuals extends Visual {
             popMatrix();
 
             pushMatrix();
-            int cols = mouseX;
                     noStroke();
                     
                     float x = random(width);
@@ -629,7 +622,6 @@ public class AaronVisuals extends Visual {
         stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
         fill(random(255),random(255),random(255));
         
-        int num = 40;
         int circles = 20;
         float theta = 0; // Initialize theta
         background(20);
@@ -762,7 +754,7 @@ public class AaronVisuals extends Visual {
             e.rotateX(e.frameCount * 0.06f);
             e.rotateY(e.frameCount * 0.06f);
             e.rotateZ(e.frameCount * 0.06f);
-            float boxSize = 6 + (e.sin(e.frameCount / 0.07f) * 0.02f);
+            float boxSize = 6 + (PApplet.sin(e.frameCount / 0.07f) * 0.02f);
             float r = e.random(255);
             float g = e.random(255);
             float b = e.random(255);
@@ -770,14 +762,14 @@ public class AaronVisuals extends Visual {
             e.box(boxSize);
 
             e.translate(100, 100, 50);
-            boxSize = 2 + (e.sin(e.frameCount / 0.05f) * 0.01f);
+            boxSize = 2 + (PApplet.sin(e.frameCount / 0.05f) * 0.01f);
             r = e.random(255);
             g = e.random(255);
             b = e.random(255);
             e.fill(r, g, b);
             e.box(boxSize);
 
-            boxSize = 8 + (e.sin(e.frameCount / 0.09f) * 0.05f);
+            boxSize = 8 + (PApplet.sin(e.frameCount / 0.09f) * 0.05f);
             r = e.random(255);
             g = e.random(255);
             b = e.random(255);
