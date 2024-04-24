@@ -6,8 +6,8 @@ import processing.core.PImage;
 public class BasakVisuals extends Visual {
 
     
-    float x=80*2+100;
-    float y=80*2+50;
+    float x=80*2+100;//height
+    float y=80*2+50;//width
     float angle;
     int value=300;
     Ellipse ellipse;

@@ -9,7 +9,7 @@ public class EllipseDrawer extends Visual {
     private float strokeWeightMapped;
  
    
-
+    // Constructor to initialize EllipseDrawer with properties
     public EllipseDrawer(EllipseProperties properties) {
         this.properties = properties;
         //startTime = millis(); 
@@ -29,54 +29,54 @@ public class EllipseDrawer extends Visual {
     
     public void draw(CallSet e) {
 
-        e.translate(e.width/2,e.height/2);
-        e.backgroundImage.resize(e.width, e.height);
-        e.background(e.backgroundImage);
+        e.translate(e.width/2,e.height/2);// Translate to the center of the canvas
+        e.backgroundImage.resize(e.width, e.height);//resize the backgorund img
+        e.background(e.backgroundImage);//set the backgorund
         
 
     
-        e.calculateAverageAmplitude();
+        e.calculateAverageAmplitude();//calculate the music amplitude
         
 
         for (float rad = 0; rad < 360; rad += 5) {
             e.pushMatrix();
-            e.rotate(radians(rad));
+            e.rotate(radians(rad));// Rotate by the specified angle
             e.lights();
             //e.stroke(map(rad, 0, 360, 0, 255), 255, 255);
             e.noFill();
-            float EllipseSize = 75 + (e.getAmplitude() * 500);
-            smoothedEllipseSize = lerp(smoothedEllipseSize, EllipseSize, 0.2f);
+            float EllipseSize = 75 + (e.getAmplitude() * 500);//set the siz of ellipse based on the amplitude of the music
+            smoothedEllipseSize = lerp(smoothedEllipseSize, EllipseSize, 0.2f);//To make it smooth use lerf fucntion
          
 
             //e.pushMatrix();
-            e.stroke(map(rad, 0, 255, 0, 360), 255, 255);
-            strokeWeightMapped = map(e.getAmplitude(), 0, 1, 1, 5);
+            e.stroke(map(rad, 0, 255, 0, 360), 255, 255);// Set stroke color based on the angle
+            strokeWeightMapped = map(e.getAmplitude(), 0, 1, 1, 5);//Make the stroke weight thicker as amplitufe get bigger
             e.strokeWeight(strokeWeightMapped * 2);
             //e.popMatrix();
 
            
-            e.line(properties.x * sin(radians(properties.angle)), 0, 0, properties.y);
-            e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), 0, 5, 5);
-            e.line(properties.x * sin(radians(properties.angle)), 0, 0, 5, 0, 0);
+            e.line(properties.x * sin(radians(properties.angle)), 0, 0, properties.y);//This line helps create a visual effect that extends from the center outwards
+            e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), 0, 5, 5);//This ellipse adds a circular element to the visual representation
+            e.line(properties.x * sin(radians(properties.angle)), 0, 0, 5, 0, 0);//This line creates a shorter extension from the center
             //e.popMatrix();
 
 
             e.pushMatrix();
-            e.rotate(-radians(properties.angle));
+            e.rotate(-radians(properties.angle));//This rotation prepares the canvas for drawing ellipses at different positions
             e.ellipse(smoothedEllipseSize* sin(radians(properties.angle)), properties.y, 5, 5);
             //e.triangle(properties.x*sin(radians(properties.angle)), 0, 0, 5, 0, 0);
             e.popMatrix();
 
             e.pushMatrix();
-            e.rotate(radians(properties.angle));
-            e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), properties.y + 50, 10, 10);
+            e.rotate(radians(properties.angle));//Restores the canvas rotation to its original state
+            e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), properties.y + 50, 10, 10);//draw ellipses getting far away from the center
             e.popMatrix();
             
 
             //e.stroke(hue, 255, 255);
             e.pushMatrix();
             e.rotate(-radians(properties.angle));
-            e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), properties.y + 100, 20, 20);
+            e.ellipse(smoothedEllipseSize * sin(radians(properties.angle)), properties.y + 100, 20, 20);//draw ellipses getting far away from the centerg
             e.popMatrix();
 
             e.pushMatrix();
@@ -88,6 +88,7 @@ public class EllipseDrawer extends Visual {
             //e.stroke(map(rad, 0, 360, 0, 255), 255, 255);
             e.fill(60, 255, 255);
             
+            // Draw triangle
             float triangleBaseX = properties.x + 48; 
             float triangleBaseY = properties.y; 
             float triangleHeight = 20; 
@@ -102,6 +103,7 @@ public class EllipseDrawer extends Visual {
           
         }
 
+        //Increment angle
         properties.angle += 1;
         
     }
