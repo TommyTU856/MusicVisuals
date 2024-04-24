@@ -565,7 +565,6 @@ public class AaronVisuals extends Visual {
                 
     }
 
-
     public void mountainClouds(CallSet e) { 
 
         pushMatrix();
