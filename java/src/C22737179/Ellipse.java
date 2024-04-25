@@ -7,12 +7,12 @@ public class Ellipse extends Visual {
     private EllipseDrawer drawer;
 
     public Ellipse(float x, float y, float angle, int value) {
-        this.properties = new EllipseProperties(x, y, angle, value);
-        this.drawer = new EllipseDrawer(properties);
+        this.properties = new EllipseProperties(x, y, angle, value);//Ellipse Properties Class Object
+        this.drawer = new EllipseDrawer(properties);//Ellipse Drawer class object taking Properties object as argument
     }
 
     public void draw(CallSet e) {
-        drawer.draw(e);
+        drawer.draw(e);//Call EllipseDrawer class draw() method
     }
 
 }

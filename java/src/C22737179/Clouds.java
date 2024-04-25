@@ -35,7 +35,7 @@ public class Clouds extends Visual {
             y = random(e.height); // Reset y position to a random height
         }
 
-        // Check for overlap with other clouds and adjust position if necessary
+        // Check for overlap with other clouds and adjust position 
         for (Clouds otherCloud : allClouds) {
             if (otherCloud != this && dist(x, y, otherCloud.x, otherCloud.y) < (z + otherCloud.z) / 2) {
                 // If the cloud overlaps with another cloud, adjust its position to the right of the overlapping cloud

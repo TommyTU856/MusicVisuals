@@ -22,6 +22,7 @@ public class CallSet extends Visual {
     PShape rooster;
     PShape cloud;
     PShape mountainClouds;
+    PShape sun;
     PImage backgroundImage;
     PImage img;
     Random random;
@@ -118,6 +119,9 @@ public class CallSet extends Visual {
         
         //getAudioPlayer().setGain(-25);
         cloud = loadShape("cloud1.svg");
+        sun = createShape(ELLIPSE, 0, 0, 300, 300);
+        sun.setFill(color(52, 255 * 0.78f, 255 * 0.92f));
+        
     }
 
     public Clouds[] getClouds() {
